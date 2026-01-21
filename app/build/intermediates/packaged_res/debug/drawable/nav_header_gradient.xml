@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Gradiente do header do navigation drawer -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <gradient
+        android:angle="135"
+        android:startColor="#8b5cf6"
+        android:centerColor="#7c3aed"
+        android:endColor="#6d28d9"
+        android:type="linear" />
+</shape>

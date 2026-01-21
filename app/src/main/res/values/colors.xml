@@ -29,6 +29,9 @@
     <color name="error">#ef4444</color>
     <color name="info">#3b82f6</color>
     
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    
     <!-- Transparent Overlays -->
     <color name="overlay_dark">#80000000</color>
     <color name="overlay_light">#40FFFFFF</color>

@@ -1,0 +1,78 @@
+2026-01-21 16:24:16.523 12306-12311 om.example.base         com.example.base                     I  Compiler allocated 5087KB to compile void android.view.ViewRootImpl.performTraversals()
+2026-01-21 16:24:20.364 12306-12335 ProfileInstaller        com.example.base                     D  Installing profile for com.example.base
+2026-01-21 16:24:26.496 12306-12312 om.example.base         com.example.base                     W  userfaultfd: MOVE ioctl seems unsupported: Try again
+2026-01-21 16:24:26.535 12306-12312 om.example.base         com.example.base                     I  Background concurrent mark compact GC freed 3845KB AllocSpace bytes, 0(0B) LOS objects, 49% free, 3983KB/7967KB, paused 7.121ms,5.737ms total 106.673ms
+2026-01-21 16:24:26.691 12306-12306 TransactionExecutor     com.example.base                     E  Failed to execute the transaction: tId:-1853333306 ClientTransaction{
+                                                                                                    tId:-1853333306   transactionItems=[
+                                                                                                    tId:-1853333306     LaunchActivityItem{activityToken=android.os.BinderProxy@32138df,intent=Intent { xflg=0x4 cmp=com.example.base/.StatisticsActivity },ident=17047140,info=ActivityInfo{cbd31cb com.example.base.StatisticsActivity},curConfig={1.0 310mcc260mnc [en_US] ldltr sw411dp w411dp h866dp 420dpi nrml long compactNeeded port finger qwerty/v/v dpad/v winConfig={ mBounds=Rect(0, 0 - 1080, 2400) mAppBounds=Rect(0, 0 - 1080, 2337) mMaxBounds=Rect(0, 0 - 1080, 2400) mDisplayRotation=ROTATION_0 mWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_0} as.2 s.24 fontWeightAdjustment=0},overrideConfig={1.0 310mcc260mnc [en_US] ldltr sw411dp w411dp h866dp 420dpi nrml long compactNeeded port finger qwerty/v/v dpad/v winConfig={ mBounds=Rect(0, 0 - 1080, 2400) mAppBounds=Rect(0, 0 - 1080, 2337) mMaxBounds=Rect(0, 0 - 1080, 2400) mDisplayRotation=ROTATION_0 mWindowingMode=fullscreen mActivityType=standard mAlwaysOnTop=undefined mRotation=ROTATION_0} as.2 s.2 fontWeightAdjustment=0},deviceId=0,referrer=com.example.base,procState=2,state=null,persistentState=null,pendingResults=null,pendingNewIntents=null,sceneTransitionInfo=null,profilerInfo=null,assistToken=android.os.BinderProxy@666c1bc,shareableActivityToken=android.os.BinderProxy@c2ff545,activityWindowInfo=ActivityWindowInfo{isEmbedded=false, taskBounds=Rect(0, 0 - 1080, 2400), taskFragmentBounds=Rect(0, 0 - 1080, 2400)},displayId=0}
+                                                                                                    tId:-1853333306     ResumeActivityItem{mActivityToken=android.os.BinderProxy@32138df,procState=-1,isForward=true,shouldSendCompatFakeFocus=false}
+                                                                                                    tId:-1853333306     Target activity: com.example.base.StatisticsActivity
+                                                                                                    tId:-1853333306   ]
+                                                                                                    tId:-1853333306 }
+2026-01-21 16:24:26.692 12306-12306 AndroidRuntime          com.example.base                     D  Shutting down VM
+2026-01-21 16:24:26.710 12306-12306 AndroidRuntime          com.example.base                     E  FATAL EXCEPTION: main (Explain with AI)
+                                                                                                    Process: com.example.base, PID: 12306
+                                                                                                    java.lang.RuntimeException: Unable to start activity ComponentInfo{com.example.base/com.example.base.StatisticsActivity}
+                                                                                                    	at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:4496)
+                                                                                                    	at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:4699)
+                                                                                                    	at android.app.servertransaction.LaunchActivityItem.execute(LaunchActivityItem.java:224)
+                                                                                                    	at android.app.servertransaction.TransactionExecutor.executeNonLifecycleItem(TransactionExecutor.java:133)
+                                                                                                    	at android.app.servertransaction.TransactionExecutor.executeTransactionItems(TransactionExecutor.java:103)
+                                                                                                    	at android.app.servertransaction.TransactionExecutor.execute(TransactionExecutor.java:80)
+                                                                                                    	at android.app.ActivityThread$H.handleMessage(ActivityThread.java:2961)
+                                                                                                    	at android.os.Handler.dispatchMessage(Handler.java:132)
+                                                                                                    	at android.os.Looper.dispatchMessage(Looper.java:333)
+                                                                                                    	at android.os.Looper.loopOnce(Looper.java:263)
+                                                                                                    	at android.os.Looper.loop(Looper.java:367)
+                                                                                                    	at android.app.ActivityThread.main(ActivityThread.java:9287)
+                                                                                                    	at java.lang.reflect.Method.invoke(Native Method)
+                                                                                                    	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:566)
+                                                                                                    	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:929)
+                                                                                                    Caused by: android.view.InflateException: Binary XML file line #259 in com.example.base:layout/activity_statistics: Binary XML file line #259 in com.example.base:layout/activity_statistics: Error inflating class com.github.mikephil.charting.charts.BarChart
+                                                                                                    Caused by: android.view.InflateException: Binary XML file line #259 in com.example.base:layout/activity_statistics: Error inflating class com.github.mikephil.charting.charts.BarChart
+                                                                                                    Caused by: java.lang.ClassNotFoundException: com.github.mikephil.charting.charts.BarChart
+                                                                                                    	at java.lang.Class.classForName(Native Method)
+                                                                                                    	at java.lang.Class.forName(Class.java:591)
+                                                                                                    	at android.view.LayoutInflater.createView(LayoutInflater.java:704)
+                                                                                                    	at android.view.LayoutInflater.createViewFromTag(LayoutInflater.java:895)
+                                                                                                    	at android.view.LayoutInflater.createViewFromTag(LayoutInflater.java:850)
+                                                                                                    	at android.view.LayoutInflater.rInflate(LayoutInflater.java:1012)
+                                                                                                    	at android.view.LayoutInflater.rInflateChildren(LayoutInflater.java:973)
+                                                                                                    	at android.view.LayoutInflater.rInflate(LayoutInflater.java:1016)
+                                                                                                    	at android.view.LayoutInflater.rInflateChildren(LayoutInflater.java:973)
+                                                                                                    	at android.view.LayoutInflater.rInflate(LayoutInflater.java:1016)
+                                                                                                    	at android.view.LayoutInflater.rInflateChildren(LayoutInflater.java:973)
+                                                                                                    	at android.view.LayoutInflater.rInflate(LayoutInflater.java:1016)
+                                                                                                    	at android.view.LayoutInflater.rInflateChildren(LayoutInflater.java:973)
+                                                                                                    	at android.view.LayoutInflater.rInflate(LayoutInflater.java:1016)
+                                                                                                    	at android.view.LayoutInflater.rInflateChildren(LayoutInflater.java:973)
+                                                                                                    	at android.view.LayoutInflater.inflate(LayoutInflater.java:571)
+                                                                                                    	at android.view.LayoutInflater.inflate(LayoutInflater.java:462)
+                                                                                                    	at android.view.LayoutInflater.inflate(LayoutInflater.java:413)
+                                                                                                    	at androidx.appcompat.app.AppCompatDelegateImpl.setContentView(AppCompatDelegateImpl.java:775)
+                                                                                                    	at androidx.appcompat.app.AppCompatActivity.setContentView(AppCompatActivity.java:197)
+                                                                                                    	at com.example.base.StatisticsActivity.onCreate(StatisticsActivity.kt:10)
+                                                                                                    	at android.app.Activity.performCreate(Activity.java:9306)
+                                                                                                    	at android.app.Activity.performCreate(Activity.java:9284)
+                                                                                                    	at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1541)
+                                                                                                    	at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:4480)
+                                                                                                    	at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:4699)
+                                                                                                    	at android.app.servertransaction.LaunchActivityItem.execute(LaunchActivityItem.java:224)
+                                                                                                    	at android.app.servertransaction.TransactionExecutor.executeNonLifecycleItem(TransactionExecutor.java:133)
+                                                                                                    	at android.app.servertransaction.TransactionExecutor.executeTransactionItems(TransactionExecutor.java:103)
+2026-01-21 16:24:26.713 12306-12306 AndroidRuntime          com.example.base                     E  	at android.app.servertransaction.TransactionExecutor.execute(TransactionExecutor.java:80) (Explain with AI)
+                                                                                                    	at android.app.ActivityThread$H.handleMessage(ActivityThread.java:2961)
+                                                                                                    	at android.os.Handler.dispatchMessage(Handler.java:132)
+                                                                                                    	at android.os.Looper.dispatchMessage(Looper.java:333)
+                                                                                                    	at android.os.Looper.loopOnce(Looper.java:263)
+                                                                                                    	at android.os.Looper.loop(Looper.java:367)
+                                                                                                    	at android.app.ActivityThread.main(ActivityThread.java:9287)
+                                                                                                    	at java.lang.reflect.Method.invoke(Native Method)
+                                                                                                    	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:566)
+                                                                                                    	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:929)
+                                                                                                    Caused by: java.lang.ClassNotFoundException: Didn't find class "com.github.mikephil.charting.charts.BarChart" on path: DexPathList[[zip file "/data/app/~~cwCoypLoF4fhXAK7ClVxVA==/com.example.base-pKFSa8hZYt9xZp3iGi5-3g==/base.apk"],nativeLibraryDirectories=[/data/app/~~cwCoypLoF4fhXAK7ClVxVA==/com.example.base-pKFSa8hZYt9xZp3iGi5-3g==/lib/x86_64, /system/lib64, /system_ext/lib64]]
+                                                                                                    	at dalvik.system.BaseDexClassLoader.findClass(BaseDexClassLoader.java:259)
+                                                                                                    	at java.lang.ClassLoader.loadClass(ClassLoader.java:642)
+                                                                                                    	at java.lang.ClassLoader.loadClass(ClassLoader.java:578)
+                                                                                                    	... 39 more
+---------------------------- PROCESS ENDED (12306) for package com.example.base ----------------------------
