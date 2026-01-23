@@ -5,6 +5,7 @@ color background_secondary
 color background_tertiary
 color black
 color error
+color fire_color
 color glass_background
 color glass_border
 color info
@@ -33,6 +34,7 @@ drawable dialog_background
 drawable glass_background
 drawable ic_app_logo
 drawable ic_arrow_back
+drawable ic_award
 drawable ic_bell
 drawable ic_calendar
 drawable ic_calendar_week
@@ -40,16 +42,21 @@ drawable ic_chart
 drawable ic_check_circle
 drawable ic_chevron_right
 drawable ic_droplet
+drawable ic_fire
 drawable ic_flame
+drawable ic_glass_water_full
+drawable ic_info
 drawable ic_menu
 drawable ic_moon
 drawable ic_palette
 drawable ic_star
+drawable ic_stats
 drawable ic_sunrise
 drawable ic_target
 drawable ic_trophy
 drawable ic_water_glass
 drawable ic_water_tank
+drawable ic_wrench
 drawable icon_circle_background
 drawable nav_header_gradient
 id btn_add_100
@@ -75,6 +82,7 @@ id et_custom_amount
 id et_user_name
 id et_weight
 id iv_achievement_icon
+id iv_streak_fire
 id nav_about
 id nav_achievements
 id nav_home

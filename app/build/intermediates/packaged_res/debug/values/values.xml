@@ -5,6 +5,7 @@
     <color name="background_tertiary">#374151</color>
     <color name="black">#FF000000</color>
     <color name="error">#ef4444</color>
+    <color name="fire_color">#ef4444</color>
     <color name="glass_background">#1A1f2937</color>
     <color name="glass_border">#33FFFFFF</color>
     <color name="info">#3b82f6</color>

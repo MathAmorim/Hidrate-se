@@ -1423,6 +1423,7 @@ color dim_foreground_material_light
 color error
 color error_color_material_dark
 color error_color_material_light
+color fire_color
 color foreground_material_dark
 color foreground_material_light
 color glass_background
@@ -3030,6 +3031,7 @@ drawable glass_background
 drawable ic_app_logo
 drawable ic_arrow_back
 drawable ic_arrow_back_black_24
+drawable ic_award
 drawable ic_bell
 drawable ic_calendar
 drawable ic_calendar_week
@@ -3045,7 +3047,10 @@ drawable ic_chevron_right
 drawable ic_clear_black_24
 drawable ic_clock_black_24dp
 drawable ic_droplet
+drawable ic_fire
 drawable ic_flame
+drawable ic_glass_water_full
+drawable ic_info
 drawable ic_keyboard_black_24dp
 drawable ic_m3_chip_check
 drawable ic_m3_chip_checked_circle
@@ -3059,11 +3064,13 @@ drawable ic_mtrl_chip_close_circle
 drawable ic_palette
 drawable ic_search_black_24
 drawable ic_star
+drawable ic_stats
 drawable ic_sunrise
 drawable ic_target
 drawable ic_trophy
 drawable ic_water_glass
 drawable ic_water_tank
+drawable ic_wrench
 drawable icon_background
 drawable icon_circle_background
 drawable m3_avd_hide_password
@@ -3393,6 +3400,7 @@ id inward
 id italic
 id item_touch_helper_previous_elevation
 id iv_achievement_icon
+id iv_streak_fire
 id jumpToEnd
 id jumpToStart
 id labeled

@@ -198,6 +198,23 @@ class MainActivity : AppCompatActivity() {
         tvTotalEntries.text = "${history.size} entradas"
 
         animateWave(percentage)
+        animateFire()
+    }
+
+    private fun animateFire() {
+        val fireIcon = findViewById<android.widget.ImageView>(R.id.iv_streak_fire)
+        val scaleX = android.animation.ObjectAnimator.ofFloat(fireIcon, "scaleX", 1f, 1.2f, 1f)
+        val scaleY = android.animation.ObjectAnimator.ofFloat(fireIcon, "scaleY", 1f, 1.2f, 1f)
+        
+        android.animation.AnimatorSet().apply {
+            playTogether(scaleX, scaleY)
+            duration = 1000
+            interpolator = android.view.animation.AccelerateDecelerateInterpolator()
+            // Repeat animation
+            scaleX.repeatCount = android.animation.ValueAnimator.INFINITE
+            scaleY.repeatCount = android.animation.ValueAnimator.INFINITE
+            start()
+        }
     }
 
     private fun animateWave(percentage: Int) {

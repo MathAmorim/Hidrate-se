@@ -3,23 +3,23 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
-            android:icon="@drawable/ic_water_glass"
+            android:icon="@drawable/ic_glass_water_full"
             android:title="Início" />
         <item
             android:id="@+id/nav_statistics"
-            android:icon="@drawable/ic_chart"
+            android:icon="@drawable/ic_stats"
             android:title="Estatísticas" />
         <item
             android:id="@+id/nav_achievements"
-            android:icon="@drawable/ic_flame"
+            android:icon="@drawable/ic_award"
             android:title="Conquistas" />
         <item
             android:id="@+id/nav_settings"
-            android:icon="@drawable/ic_menu"
+            android:icon="@drawable/ic_wrench"
             android:title="Configurações" />
         <item
             android:id="@+id/nav_about"
-            android:icon="@drawable/ic_menu"
+            android:icon="@drawable/ic_info"
             android:title="Sobre" />
     </group>
 </menu>
