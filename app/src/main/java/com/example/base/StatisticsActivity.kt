@@ -204,7 +204,7 @@ class StatisticsActivity : AppCompatActivity() {
     ) {
         // Cards
         tvTodayTotal.text = "${todayTotal}ml"
-        tvTotalVolume.text = "${totalVolume / 1000}L" // Convert to Liters
+        tvTotalVolume.text = String.format("%.1fL", totalVolume / 1000f)
         tvCurrentStreak.text = "$streak dias"
         tvWeeklyAvg.text = "${weeklyAvg}ml"
 
