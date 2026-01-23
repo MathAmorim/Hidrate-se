@@ -3053,6 +3053,7 @@ drawable ic_flame
 drawable ic_glass_water_full
 drawable ic_info
 drawable ic_keyboard_black_24dp
+drawable ic_launcher_background
 drawable ic_m3_chip_check
 drawable ic_m3_chip_checked_circle
 drawable ic_m3_chip_close
@@ -3912,6 +3913,9 @@ layout select_dialog_singlechoice_material
 layout splash_screen_view
 layout support_simple_spinner_dropdown_item
 menu drawer_menu
+mipmap ic_launcher
+mipmap ic_launcher_foreground
+mipmap ic_launcher_round
 plurals mtrl_badge_content_description
 string abc_action_bar_home_description
 string abc_action_bar_up_description

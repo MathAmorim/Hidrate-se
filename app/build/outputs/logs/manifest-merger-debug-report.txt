@@ -102,11 +102,11 @@ MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\administrator\.gra
 	android:fullBackupContent
 		ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:11:9-54
 	android:roundIcon
-		ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:14:9-50
+		ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:14:9-54
 	tools:targetApi
 		ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:17:9-29
 	android:icon
-		ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:12:9-45
+		ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:12:9-43
 	android:allowBackup
 		ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:9:9-35
 	android:theme

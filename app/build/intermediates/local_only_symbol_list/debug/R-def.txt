@@ -47,6 +47,7 @@ drawable ic_fire
 drawable ic_flame
 drawable ic_glass_water_full
 drawable ic_info
+drawable ic_launcher_background
 drawable ic_menu
 drawable ic_moon
 drawable ic_night_moon
@@ -130,6 +131,9 @@ layout item_achievement
 layout item_water_entry
 layout nav_header
 menu drawer_menu
+mipmap ic_launcher
+mipmap ic_launcher_foreground
+mipmap ic_launcher_round
 string app_name
 string navigation_drawer_close
 string navigation_drawer_open
