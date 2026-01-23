@@ -41,6 +41,7 @@ drawable ic_calendar_week
 drawable ic_chart
 drawable ic_check_circle
 drawable ic_chevron_right
+drawable ic_day_forecast
 drawable ic_droplet
 drawable ic_fire
 drawable ic_flame
@@ -48,12 +49,14 @@ drawable ic_glass_water_full
 drawable ic_info
 drawable ic_menu
 drawable ic_moon
+drawable ic_night_moon
 drawable ic_palette
 drawable ic_star
 drawable ic_stats
 drawable ic_sunrise
 drawable ic_target
 drawable ic_trophy
+drawable ic_trophy_new
 drawable ic_water_glass
 drawable ic_water_tank
 drawable ic_wrench

@@ -1,5 +1,9 @@
 [
     {
+        "merged": "C:\\Users\\administrator\\.gradle\\daemon\\8.5\\com.example.base.app-merged_res-37:\\drawable_ic_day_forecast.xml.flat",
+        "source": "C:\\Users\\administrator\\.gradle\\daemon\\8.5\\com.example.base.app-main-39:\\drawable\\ic_day_forecast.xml"
+    },
+    {
         "merged": "C:\\Users\\administrator\\.gradle\\daemon\\8.5\\com.example.base.app-merged_res-37:\\drawable_ic_wrench.xml.flat",
         "source": "C:\\Users\\administrator\\.gradle\\daemon\\8.5\\com.example.base.app-main-39:\\drawable\\ic_wrench.xml"
     },
@@ -60,12 +64,12 @@
         "source": "C:\\Users\\administrator\\.gradle\\daemon\\8.5\\com.example.base.app-main-39:\\drawable\\ic_target.xml"
     },
     {
-        "merged": "com.example.base.app-merged_res-37:/layout_activity_statistics.xml.flat",
-        "source": "com.example.base.app-main-39:/layout/activity_statistics.xml"
-    },
-    {
         "merged": "C:\\Users\\administrator\\.gradle\\daemon\\8.5\\com.example.base.app-merged_res-37:\\drawable_circular_progress_primary.xml.flat",
         "source": "C:\\Users\\administrator\\.gradle\\daemon\\8.5\\com.example.base.app-main-39:\\drawable\\circular_progress_primary.xml"
+    },
+    {
+        "merged": "com.example.base.app-merged_res-37:/layout_activity_settings.xml.flat",
+        "source": "com.example.base.app-main-39:/layout/activity_settings.xml"
     },
     {
         "merged": "C:\\Users\\administrator\\.gradle\\daemon\\8.5\\com.example.base.app-merged_res-37:\\drawable_nav_header_gradient.xml.flat",
@@ -132,6 +136,10 @@
         "source": "C:\\Users\\administrator\\.gradle\\daemon\\8.5\\com.example.base.app-main-39:\\drawable\\ic_award.xml"
     },
     {
+        "merged": "C:\\Users\\administrator\\.gradle\\daemon\\8.5\\com.example.base.app-merged_res-37:\\drawable_ic_night_moon.xml.flat",
+        "source": "C:\\Users\\administrator\\.gradle\\daemon\\8.5\\com.example.base.app-main-39:\\drawable\\ic_night_moon.xml"
+    },
+    {
         "merged": "C:\\Users\\administrator\\.gradle\\daemon\\8.5\\com.example.base.app-merged_res-37:\\drawable_color_circle.xml.flat",
         "source": "C:\\Users\\administrator\\.gradle\\daemon\\8.5\\com.example.base.app-main-39:\\drawable\\color_circle.xml"
     },
@@ -166,6 +174,10 @@
     {
         "merged": "C:\\Users\\administrator\\.gradle\\daemon\\8.5\\com.example.base.app-merged_res-37:\\drawable_ic_star.xml.flat",
         "source": "C:\\Users\\administrator\\.gradle\\daemon\\8.5\\com.example.base.app-main-39:\\drawable\\ic_star.xml"
+    },
+    {
+        "merged": "C:\\Users\\administrator\\.gradle\\daemon\\8.5\\com.example.base.app-merged_res-37:\\drawable_ic_trophy_new.xml.flat",
+        "source": "C:\\Users\\administrator\\.gradle\\daemon\\8.5\\com.example.base.app-main-39:\\drawable\\ic_trophy_new.xml"
     },
     {
         "merged": "C:\\Users\\administrator\\.gradle\\daemon\\8.5\\com.example.base.app-merged_res-37:\\drawable_ic_water_glass.xml.flat",
