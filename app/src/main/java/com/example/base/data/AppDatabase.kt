@@ -9,7 +9,7 @@ import com.example.base.data.dao.WaterRecordDao
 import com.example.base.data.model.User
 import com.example.base.data.model.WaterRecord
 
-@Database(entities = [User::class, WaterRecord::class], version = 1, exportSchema = false)
+@Database(entities = [User::class, WaterRecord::class], version = 4, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun userDao(): UserDao
     abstract fun waterRecordDao(): WaterRecordDao
@@ -24,7 +24,9 @@ abstract class AppDatabase : RoomDatabase() {
                     context.applicationContext,
                     AppDatabase::class.java,
                     "hidrate_se_database"
-                ).build()
+                )
+                .fallbackToDestructiveMigration()
+                .build()
                 INSTANCE = instance
                 instance
             }

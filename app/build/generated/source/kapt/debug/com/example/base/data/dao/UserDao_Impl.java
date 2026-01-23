@@ -39,7 +39,7 @@ public final class UserDao_Impl implements UserDao {
       @Override
       @NonNull
       protected String createQuery() {
-        return "INSERT OR REPLACE INTO `user_table` (`id`,`name`,`weight`,`dailyGoal`,`onboardingCompleted`) VALUES (nullif(?, 0),?,?,?,?)";
+        return "INSERT OR REPLACE INTO `user_table` (`id`,`name`,`weight`,`dailyGoal`,`birthDate`,`wakeUpTime`,`sleepTime`,`onboardingCompleted`) VALUES (nullif(?, 0),?,?,?,?,?,?,?)";
       }
 
       @Override
@@ -53,8 +53,19 @@ public final class UserDao_Impl implements UserDao {
         }
         statement.bindDouble(3, entity.getWeight());
         statement.bindLong(4, entity.getDailyGoal());
+        statement.bindLong(5, entity.getBirthDate());
+        if (entity.getWakeUpTime() == null) {
+          statement.bindNull(6);
+        } else {
+          statement.bindString(6, entity.getWakeUpTime());
+        }
+        if (entity.getSleepTime() == null) {
+          statement.bindNull(7);
+        } else {
+          statement.bindString(7, entity.getSleepTime());
+        }
         final int _tmp = entity.getOnboardingCompleted() ? 1 : 0;
-        statement.bindLong(5, _tmp);
+        statement.bindLong(8, _tmp);
       }
     };
     this.__preparedStmtOfUpdateGoal = new SharedSQLiteStatement(__db) {
@@ -128,6 +139,9 @@ public final class UserDao_Impl implements UserDao {
           final int _cursorIndexOfName = CursorUtil.getColumnIndexOrThrow(_cursor, "name");
           final int _cursorIndexOfWeight = CursorUtil.getColumnIndexOrThrow(_cursor, "weight");
           final int _cursorIndexOfDailyGoal = CursorUtil.getColumnIndexOrThrow(_cursor, "dailyGoal");
+          final int _cursorIndexOfBirthDate = CursorUtil.getColumnIndexOrThrow(_cursor, "birthDate");
+          final int _cursorIndexOfWakeUpTime = CursorUtil.getColumnIndexOrThrow(_cursor, "wakeUpTime");
+          final int _cursorIndexOfSleepTime = CursorUtil.getColumnIndexOrThrow(_cursor, "sleepTime");
           final int _cursorIndexOfOnboardingCompleted = CursorUtil.getColumnIndexOrThrow(_cursor, "onboardingCompleted");
           final User _result;
           if (_cursor.moveToFirst()) {
@@ -143,11 +157,25 @@ public final class UserDao_Impl implements UserDao {
             _tmpWeight = _cursor.getFloat(_cursorIndexOfWeight);
             final int _tmpDailyGoal;
             _tmpDailyGoal = _cursor.getInt(_cursorIndexOfDailyGoal);
+            final long _tmpBirthDate;
+            _tmpBirthDate = _cursor.getLong(_cursorIndexOfBirthDate);
+            final String _tmpWakeUpTime;
+            if (_cursor.isNull(_cursorIndexOfWakeUpTime)) {
+              _tmpWakeUpTime = null;
+            } else {
+              _tmpWakeUpTime = _cursor.getString(_cursorIndexOfWakeUpTime);
+            }
+            final String _tmpSleepTime;
+            if (_cursor.isNull(_cursorIndexOfSleepTime)) {
+              _tmpSleepTime = null;
+            } else {
+              _tmpSleepTime = _cursor.getString(_cursorIndexOfSleepTime);
+            }
             final boolean _tmpOnboardingCompleted;
             final int _tmp;
             _tmp = _cursor.getInt(_cursorIndexOfOnboardingCompleted);
             _tmpOnboardingCompleted = _tmp != 0;
-            _result = new User(_tmpId,_tmpName,_tmpWeight,_tmpDailyGoal,_tmpOnboardingCompleted);
+            _result = new User(_tmpId,_tmpName,_tmpWeight,_tmpDailyGoal,_tmpBirthDate,_tmpWakeUpTime,_tmpSleepTime,_tmpOnboardingCompleted);
           } else {
             _result = null;
           }

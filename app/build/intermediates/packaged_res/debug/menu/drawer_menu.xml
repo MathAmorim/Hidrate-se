@@ -6,6 +6,10 @@
             android:icon="@drawable/ic_water_glass"
             android:title="Início" />
         <item
+            android:id="@+id/nav_statistics"
+            android:icon="@drawable/ic_chart"
+            android:title="Estatísticas" />
+        <item
             android:id="@+id/nav_achievements"
             android:icon="@drawable/ic_flame"
             android:title="Conquistas" />

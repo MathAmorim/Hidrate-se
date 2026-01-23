@@ -48,10 +48,6 @@
         "source": "C:\\Users\\administrator\\.gradle\\daemon\\8.5\\com.example.base.app-main-39:\\drawable\\dialog_background.xml"
     },
     {
-        "merged": "com.example.base.app-merged_res-37:/layout_activity_main.xml.flat",
-        "source": "com.example.base.app-main-39:/layout/activity_main.xml"
-    },
-    {
         "merged": "C:\\Users\\administrator\\.gradle\\daemon\\8.5\\com.example.base.app-merged_res-37:\\menu_drawer_menu.xml.flat",
         "source": "C:\\Users\\administrator\\.gradle\\daemon\\8.5\\com.example.base.app-main-39:\\menu\\drawer_menu.xml"
     },
@@ -70,6 +66,10 @@
     {
         "merged": "C:\\Users\\administrator\\.gradle\\daemon\\8.5\\com.example.base.app-merged_res-37:\\drawable_ic_flame.xml.flat",
         "source": "C:\\Users\\administrator\\.gradle\\daemon\\8.5\\com.example.base.app-main-39:\\drawable\\ic_flame.xml"
+    },
+    {
+        "merged": "com.example.base.app-merged_res-37:/menu_drawer_menu.xml.flat",
+        "source": "com.example.base.app-main-39:/menu/drawer_menu.xml"
     },
     {
         "merged": "C:\\Users\\administrator\\.gradle\\daemon\\8.5\\com.example.base.app-merged_res-37:\\layout_activity_main.xml.flat",

@@ -13,6 +13,9 @@ import androidx.lifecycle.lifecycleScope
 import com.example.base.data.AppDatabase
 import com.example.base.data.model.WaterRecord
 import com.example.base.util.NotificationHelper
+import com.example.base.adapter.HistoryAdapter
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.navigation.NavigationView
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -35,6 +38,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var tvStreakDays: TextView
     private lateinit var waterWave: android.view.View
     private lateinit var tvNextNotification: TextView
+    private lateinit var rvHistory: RecyclerView
+    private lateinit var tvTotalEntries: TextView
+    private lateinit var historyAdapter: HistoryAdapter
     
     private lateinit var notificationHelper: NotificationHelper
 
@@ -59,6 +65,10 @@ class MainActivity : AppCompatActivity() {
         tvStreakDays = findViewById(R.id.tv_streak_days)
         waterWave = findViewById(R.id.water_wave)
         tvNextNotification = findViewById(R.id.tv_next_notification)
+        tvTotalEntries = findViewById(R.id.tv_total_entries)
+        rvHistory = findViewById(R.id.rv_history)
+
+        setupHistoryRecyclerView()
         
         notificationHelper = NotificationHelper(this)
         notificationHelper.createNotificationChannel()
@@ -69,6 +79,17 @@ class MainActivity : AppCompatActivity() {
         setupNavigation()
         setupButtons()
         loadWaterData()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        loadWaterData()
+    }
+
+    private fun setupHistoryRecyclerView() {
+        historyAdapter = HistoryAdapter()
+        rvHistory.layoutManager = LinearLayoutManager(this)
+        rvHistory.adapter = historyAdapter
     }
 
     private fun setupNavigation() {
@@ -86,6 +107,9 @@ class MainActivity : AppCompatActivity() {
                 R.id.nav_achievements -> {
                     startActivity(android.content.Intent(this, AchievementsActivity::class.java))
                 }
+                R.id.nav_statistics -> {
+                    startActivity(android.content.Intent(this, StatisticsActivity::class.java))
+                }
                 R.id.nav_settings -> {
                     startActivity(android.content.Intent(this, SettingsActivity::class.java))
                 }
@@ -97,10 +121,7 @@ class MainActivity : AppCompatActivity() {
             true
         }
 
-        // FAB Stats click
-        findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.fab_stats).setOnClickListener {
-            startActivity(android.content.Intent(this, StatisticsActivity::class.java))
-        }
+
     }
 
     private fun setupButtons() {
@@ -142,22 +163,40 @@ class MainActivity : AppCompatActivity() {
             val timestamps = db.waterRecordDao().getAllTimestamps()
             val streak = calculateStreak(timestamps)
 
+            // Get History
+            val history = db.waterRecordDao().getRecordsForDay(todayStart, todayEnd)
+
             withContext(Dispatchers.Main) {
-                updateUI(total, goal, userName, streak)
+                updateUI(total, goal, userName, streak, history)
             }
         }
     }
 
-    private fun updateUI(current: Int, goal: Int, userName: String, streak: Int) {
+    private fun updateUI(current: Int, goal: Int, userName: String, streak: Int, history: List<WaterRecord>) {
         tvCurrentIntake.text = "${current}ml"
         tvGoal.text = "de ${goal}ml"
         val percentage = if (goal > 0) (current * 100 / goal) else 0
         tvPercentage.text = "$percentage%"
-        progressWater.progress = percentage.coerceIn(0, 100)
+        tvPercentage.text = "$percentage%"
+        
+        // Smooth progress animation
+        val targetProgress = percentage.coerceIn(0, 100)
+        android.animation.ObjectAnimator.ofInt(progressWater, "progress", progressWater.progress, targetProgress).apply {
+            duration = 1000 // 1 second animation
+            interpolator = android.view.animation.DecelerateInterpolator()
+            start()
+        }
         
         tvGreeting.text = "Olá, $userName"
         tvStreakDays.text = "$streak dias"
         
+        tvGreeting.text = "Olá, $userName"
+        tvStreakDays.text = "$streak dias"
+        
+        // Update History
+        historyAdapter.updateData(history)
+        tvTotalEntries.text = "${history.size} entradas"
+
         animateWave(percentage)
     }
 

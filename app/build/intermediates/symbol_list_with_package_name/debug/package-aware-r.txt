@@ -3280,8 +3280,6 @@ id clip_vertical
 id clockwise
 id closest
 id collapseActionView
-id color_primary_preview
-id color_secondary_preview
 id compress
 id confirm_button
 id constraint
@@ -3348,7 +3346,6 @@ id et_weight
 id exitUntilCollapsed
 id expand_activities_button
 id expanded_menu
-id fab_stats
 id fade
 id fill
 id fill_horizontal
@@ -3472,6 +3469,7 @@ id nav_about
 id nav_achievements
 id nav_home
 id nav_settings
+id nav_statistics
 id nav_view
 id navigation_bar_item_active_indicator_view
 id navigation_bar_item_icon_container
@@ -3663,6 +3661,7 @@ id tv_calculated_goal
 id tv_current_intake
 id tv_current_streak
 id tv_goal
+id tv_goal_explanation
 id tv_greeting
 id tv_next_notification
 id tv_percentage
