@@ -18,4 +18,10 @@ interface WaterRecordDao {
 
     @Query("SELECT timestamp FROM water_record_table ORDER BY timestamp DESC")
     suspend fun getAllTimestamps(): List<Long>
+
+    @Query("SELECT * FROM water_record_table WHERE timestamp BETWEEN :start AND :end ORDER BY timestamp ASC")
+    suspend fun getRecordsBetween(start: Long, end: Long): List<WaterRecord>
+
+    @Query("SELECT SUM(amount) FROM water_record_table")
+    suspend fun getTotalVolume(): Long?
 }
