@@ -1,0 +1,21 @@
+package com.example.base.data.dao
+
+import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.Query
+import com.example.base.data.model.WaterRecord
+
+@Dao
+interface WaterRecordDao {
+    @Insert
+    suspend fun insertRecord(record: WaterRecord)
+
+    @Query("SELECT * FROM water_record_table WHERE timestamp BETWEEN :start AND :end")
+    suspend fun getRecordsForDay(start: Long, end: Long): List<WaterRecord>
+
+    @Query("SELECT SUM(amount) FROM water_record_table WHERE timestamp BETWEEN :start AND :end")
+    suspend fun getTotalForDay(start: Long, end: Long): Int?
+
+    @Query("SELECT timestamp FROM water_record_table ORDER BY timestamp DESC")
+    suspend fun getAllTimestamps(): List<Long>
+}
