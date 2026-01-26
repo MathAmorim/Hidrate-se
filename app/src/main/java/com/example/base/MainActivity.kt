@@ -202,21 +202,10 @@ class MainActivity : AppCompatActivity() {
     }
     
     private fun animateWave(percentage: Int) {
-        val clampedPercentage = percentage.coerceIn(0, 100)
+        // User requested to remove the rising animation and keep it in initial state.
+        // We only start the horizontal flow if not already running.
         
         waterWave.post {
-            val containerHeight = (waterWave.parent.parent as android.view.View).height
-            val maxTranslation = containerHeight.toFloat()
-            val minTranslation = -100f
-            
-            val targetY = maxTranslation - ((maxTranslation - minTranslation) * (clampedPercentage / 100f))
-            
-            android.animation.ObjectAnimator.ofFloat(waterWave, "translationY", targetY).apply {
-                duration = 1500
-                interpolator = android.view.animation.OvershootInterpolator()
-                start()
-            }
-            
             if (waterWave.animation == null) {
                 val flowAnim = android.animation.ObjectAnimator.ofFloat(waterWave, "translationX", -100f, 100f).apply {
                     duration = 3000
