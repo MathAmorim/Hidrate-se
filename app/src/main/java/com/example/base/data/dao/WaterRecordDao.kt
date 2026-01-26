@@ -8,7 +8,10 @@ import com.example.base.data.model.WaterRecord
 @Dao
 interface WaterRecordDao {
     @Insert
-    suspend fun insertRecord(record: WaterRecord)
+    suspend fun insert(record: WaterRecord)
+
+    @Query("SELECT * FROM water_record_table WHERE date = :date")
+    suspend fun getRecordsByDate(date: String): List<WaterRecord>
 
     @Query("SELECT * FROM water_record_table WHERE timestamp BETWEEN :start AND :end")
     suspend fun getRecordsForDay(start: Long, end: Long): List<WaterRecord>

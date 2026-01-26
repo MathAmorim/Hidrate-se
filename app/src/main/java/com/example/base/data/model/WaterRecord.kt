@@ -7,5 +7,6 @@ import androidx.room.PrimaryKey
 data class WaterRecord(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
     val amount: Int,
+    val date: String,
     val timestamp: Long
 )

@@ -39,4 +39,9 @@ object DateUtils {
         val sdf = SimpleDateFormat("dd/MM/yyyy", Locale("pt", "BR"))
         return sdf.format(timestamp)
     }
+
+    fun getCurrentDate(): String {
+        val sdf = SimpleDateFormat("dd/MM/yyyy", Locale("pt", "BR"))
+        return sdf.format(System.currentTimeMillis())
+    }
 }

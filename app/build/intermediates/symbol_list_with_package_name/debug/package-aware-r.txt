@@ -3074,6 +3074,7 @@ drawable ic_trophy
 drawable ic_trophy_new
 drawable ic_water_glass
 drawable ic_water_tank
+drawable ic_wave
 drawable ic_wrench
 drawable icon_background
 drawable icon_circle_background
@@ -3252,11 +3253,8 @@ id bounceBoth
 id bounceEnd
 id bounceStart
 id btn_add_100
-id btn_add_1000
 id btn_add_250
 id btn_add_500
-id btn_add_750
-id btn_add_custom
 id btn_cancel
 id btn_confirm
 id btn_end_time

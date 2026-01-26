@@ -10,6 +10,7 @@
 
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <permission
         android:name="com.example.base.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
@@ -52,7 +53,14 @@
             android:name="com.example.base.StatisticsActivity"
             android:theme="@style/Theme.Hidratese" />
 
-        <receiver android:name="com.example.base.receiver.NotificationReceiver" />
+        <receiver
+            android:name="com.example.base.receiver.NotificationReceiver"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+            </intent-filter>
+        </receiver>
 
         <provider
             android:name="androidx.startup.InitializationProvider"

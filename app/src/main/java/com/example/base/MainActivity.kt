@@ -128,9 +128,7 @@ class MainActivity : AppCompatActivity() {
         val buttons = mapOf(
             R.id.btn_add_100 to 100,
             R.id.btn_add_250 to 250,
-            R.id.btn_add_500 to 500,
-            R.id.btn_add_750 to 750,
-            R.id.btn_add_1000 to 1000
+            R.id.btn_add_500 to 500
         )
 
         buttons.forEach { (id, amount) ->
@@ -138,12 +136,18 @@ class MainActivity : AppCompatActivity() {
                 addWater(amount)
             }
         }
+        
+        animateEntry()
     }
 
     private fun addWater(amount: Int) {
         lifecycleScope.launch(Dispatchers.IO) {
-            val record = WaterRecord(amount = amount, timestamp = System.currentTimeMillis())
-            db.waterRecordDao().insertRecord(record)
+            val record = WaterRecord(
+                amount = amount, 
+                date = com.example.base.util.DateUtils.getCurrentDate(),
+                timestamp = System.currentTimeMillis()
+            )
+            db.waterRecordDao().insert(record)
             loadWaterData()
         }
     }
@@ -177,7 +181,6 @@ class MainActivity : AppCompatActivity() {
         tvGoal.text = "de ${goal}ml"
         val percentage = if (goal > 0) (current * 100 / goal) else 0
         tvPercentage.text = "$percentage%"
-        tvPercentage.text = "$percentage%"
         
         // Smooth progress animation
         val targetProgress = percentage.coerceIn(0, 100)
@@ -190,9 +193,6 @@ class MainActivity : AppCompatActivity() {
         tvGreeting.text = "Olá, $userName"
         tvStreakDays.text = "$streak dias"
         
-        tvGreeting.text = "Olá, $userName"
-        tvStreakDays.text = "$streak dias"
-        
         // Update History
         historyAdapter.updateData(history)
         tvTotalEntries.text = "${history.size} entradas"
@@ -200,40 +200,68 @@ class MainActivity : AppCompatActivity() {
         animateWave(percentage)
         animateFire()
     }
+    
+    private fun animateWave(percentage: Int) {
+        val clampedPercentage = percentage.coerceIn(0, 100)
+        
+        waterWave.post {
+            val containerHeight = (waterWave.parent.parent as android.view.View).height
+            val maxTranslation = containerHeight.toFloat()
+            val minTranslation = -100f
+            
+            val targetY = maxTranslation - ((maxTranslation - minTranslation) * (clampedPercentage / 100f))
+            
+            android.animation.ObjectAnimator.ofFloat(waterWave, "translationY", targetY).apply {
+                duration = 1500
+                interpolator = android.view.animation.OvershootInterpolator()
+                start()
+            }
+            
+            if (waterWave.animation == null) {
+                val flowAnim = android.animation.ObjectAnimator.ofFloat(waterWave, "translationX", -100f, 100f).apply {
+                    duration = 3000
+                    repeatCount = android.animation.ValueAnimator.INFINITE
+                    repeatMode = android.animation.ValueAnimator.REVERSE
+                    interpolator = android.view.animation.LinearInterpolator()
+                }
+                flowAnim.start()
+            }
+        }
+    }
 
     private fun animateFire() {
         val fireIcon = findViewById<android.widget.ImageView>(R.id.iv_streak_fire)
-        val scaleX = android.animation.ObjectAnimator.ofFloat(fireIcon, "scaleX", 1f, 1.2f, 1f)
-        val scaleY = android.animation.ObjectAnimator.ofFloat(fireIcon, "scaleY", 1f, 1.2f, 1f)
+        
+        val scaleX = android.animation.ObjectAnimator.ofFloat(fireIcon, "scaleX", 1f, 1.3f, 0.9f, 1f)
+        val scaleY = android.animation.ObjectAnimator.ofFloat(fireIcon, "scaleY", 1f, 1.3f, 0.9f, 1f)
         
         android.animation.AnimatorSet().apply {
             playTogether(scaleX, scaleY)
-            duration = 1000
-            interpolator = android.view.animation.AccelerateDecelerateInterpolator()
-            // Repeat animation
+            duration = 1200
+            interpolator = android.view.animation.BounceInterpolator()
             scaleX.repeatCount = android.animation.ValueAnimator.INFINITE
             scaleY.repeatCount = android.animation.ValueAnimator.INFINITE
             start()
         }
     }
-
-    private fun animateWave(percentage: Int) {
-        val clampedPercentage = percentage.coerceIn(0, 100)
-        // Calculate translation Y based on percentage (0% = bottom, 100% = top)
-        // Assuming wave container height is approx 280dp. 
-        // We need to measure it properly or use a fixed value. 
-        // For now, let's assume the view height is available or use a rough estimate.
-        // Better approach: Use View.post to get height if needed, or just translate relative to parent.
+    
+    private fun animateEntry() {
+        val buttons = listOf(
+            findViewById<android.view.View>(R.id.btn_add_100),
+            findViewById<android.view.View>(R.id.btn_add_250),
+            findViewById<android.view.View>(R.id.btn_add_500)
+        )
         
-        waterWave.post {
-            val height = (waterWave.parent as android.view.View).height
-            val targetY = height - (height * (clampedPercentage / 100f))
-            
-            android.animation.ObjectAnimator.ofFloat(waterWave, "translationY", targetY).apply {
-                duration = 1000
-                interpolator = android.view.animation.DecelerateInterpolator()
-                start()
-            }
+        buttons.forEachIndexed { index, view ->
+            view.alpha = 0f
+            view.translationY = 100f
+            view.animate()
+                .alpha(1f)
+                .translationY(0f)
+                .setStartDelay(index * 100L + 500)
+                .setDuration(500)
+                .setInterpolator(android.view.animation.DecelerateInterpolator())
+                .start()
         }
     }
 
@@ -243,7 +271,6 @@ class MainActivity : AppCompatActivity() {
         val distinctDays = timestamps.map { 
             val cal = Calendar.getInstance()
             cal.timeInMillis = it
-            // Reset to start of day for comparison
             cal.set(Calendar.HOUR_OF_DAY, 0)
             cal.set(Calendar.MINUTE, 0)
             cal.set(Calendar.SECOND, 0)
@@ -253,15 +280,14 @@ class MainActivity : AppCompatActivity() {
 
         var streak = 0
         val today = getStartOfDay()
-        val yesterday = today - 86400000 // 24 * 60 * 60 * 1000
+        val yesterday = today - 86400000
 
-        // Check if we have a record for today or yesterday to start the streak
         if (distinctDays.isEmpty()) return 0
         
         var currentCheck = if (distinctDays.contains(today)) today else yesterday
         
         if (!distinctDays.contains(currentCheck)) {
-             return 0 // Streak broken if no record today or yesterday
+             return 0
         }
 
         for (day in distinctDays) {
@@ -269,10 +295,8 @@ class MainActivity : AppCompatActivity() {
                 streak++
                 currentCheck -= 86400000
             } else if (day > currentCheck) {
-                // Should not happen if sorted, but just in case
                 continue 
             } else {
-                // Gap found
                 break
             }
         }
@@ -304,18 +328,17 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-    
+
     private fun scheduleNextNotification() {
         // Schedule for 2 hours from now for demo purposes
         // In a real app, this would be based on user settings
-        val delay = 2 * 60 * 60 * 1000L
-        notificationHelper.scheduleNotification(delay)
-        
-        val nextTime = Calendar.getInstance().apply {
-            timeInMillis = System.currentTimeMillis() + delay
+        // Updated to use the new daily scheduler
+        lifecycleScope.launch {
+            notificationHelper.scheduleDailyNotificationsOptimized()
         }
-        val timeString = String.format("%02d:%02d", nextTime.get(Calendar.HOUR_OF_DAY), nextTime.get(Calendar.MINUTE))
-        tvNextNotification.text = "Próximo: $timeString"
+        
+        // Just show a generic message since we have multiple alarms now
+        tvNextNotification.text = "Notificações Ativas"
     }
 
     override fun onBackPressed() {

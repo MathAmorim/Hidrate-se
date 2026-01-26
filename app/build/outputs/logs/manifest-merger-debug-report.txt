@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:2:1-44:12
-INJECTED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:2:1-44:12
-INJECTED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:2:1-44:12
-INJECTED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:2:1-44:12
+ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:2:1-52:12
+INJECTED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:2:1-52:12
+INJECTED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:2:1-52:12
+INJECTED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:2:1-52:12
 MERGED from [com.google.android.material:material:1.11.0] C:\Users\administrator\.gradle\caches\transforms-3\eedc38a6be86e8d98a5613e5fc49d0ce\transformed\material-1.11.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] C:\Users\administrator\.gradle\caches\transforms-3\cd75f0cc07e51ec7fd23a101456422d5\transformed\constraintlayout-2.1.4\AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.appcompat:appcompat-resources:1.6.1] C:\Users\administrator\.gradle\caches\transforms-3\0e21b64f9fdc99eb848c0f53bda3d565\transformed\appcompat-resources-1.6.1\AndroidManifest.xml:17:1-22:12
@@ -70,9 +70,13 @@ uses-permission#android.permission.SCHEDULE_EXACT_ALARM
 ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:6:5-79
 	android:name
 		ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:6:22-76
+uses-permission#android.permission.RECEIVE_BOOT_COMPLETED
+ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:8:5-81
+	android:name
+		ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:8:22-78
 application
-ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:8:5-42:19
-INJECTED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:8:5-42:19
+ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:10:5-50:19
+INJECTED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:10:5-50:19
 MERGED from [com.google.android.material:material:1.11.0] C:\Users\administrator\.gradle\caches\transforms-3\eedc38a6be86e8d98a5613e5fc49d0ce\transformed\material-1.11.0\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.11.0] C:\Users\administrator\.gradle\caches\transforms-3\eedc38a6be86e8d98a5613e5fc49d0ce\transformed\material-1.11.0\AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] C:\Users\administrator\.gradle\caches\transforms-3\cd75f0cc07e51ec7fd23a101456422d5\transformed\constraintlayout-2.1.4\AndroidManifest.xml:9:5-20
@@ -96,67 +100,79 @@ MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\administrator\.gra
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.12.0] C:\Users\administrator\.gradle\caches\transforms-3\0151249b72d6296e643df148676301af\transformed\core-1.12.0\AndroidManifest.xml:28:18-86
 	android:supportsRtl
-		ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:15:9-35
+		ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:17:9-35
 	android:label
-		ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:13:9-41
+		ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:15:9-41
 	android:fullBackupContent
-		ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:11:9-54
+		ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:13:9-54
 	android:roundIcon
-		ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:14:9-54
-	tools:targetApi
-		ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:17:9-29
-	android:icon
-		ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:12:9-43
-	android:allowBackup
-		ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:9:9-35
-	android:theme
 		ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:16:9-54
+	tools:targetApi
+		ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:19:9-29
+	android:icon
+		ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:14:9-43
+	android:allowBackup
+		ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:11:9-35
+	android:theme
+		ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:18:9-54
 	android:dataExtractionRules
-		ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:10:9-65
+		ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:12:9-65
 activity#com.example.base.MainActivity
-ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:18:9-26:20
+ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:20:9-28:20
 	android:exported
-		ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:20:13-36
+		ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:22:13-36
 	android:name
-		ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:19:13-41
+		ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:21:13-41
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:21:13-25:29
+ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:23:13-27:29
 action#android.intent.action.MAIN
-ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:22:17-69
+ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:24:17-69
 	android:name
-		ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:22:25-66
+		ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:24:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:24:17-77
+ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:26:17-77
 	android:name
-		ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:24:27-74
+		ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:26:27-74
 activity#com.example.base.AboutActivity
-ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:28:9-30:54
+ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:30:9-32:54
 	android:theme
-		ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:30:13-51
+		ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:32:13-51
 	android:name
-		ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:29:13-42
+		ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:31:13-42
 activity#com.example.base.AchievementsActivity
-ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:31:9-33:54
+ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:33:9-35:54
 	android:theme
-		ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:33:13-51
+		ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:35:13-51
 	android:name
-		ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:32:13-49
+		ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:34:13-49
 activity#com.example.base.SettingsActivity
-ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:34:9-36:54
+ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:36:9-38:54
 	android:theme
-		ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:36:13-51
+		ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:38:13-51
 	android:name
-		ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:35:13-45
+		ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:37:13-45
 activity#com.example.base.StatisticsActivity
-ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:37:9-39:54
+ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:39:9-41:54
 	android:theme
-		ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:39:13-51
+		ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:41:13-51
 	android:name
-		ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:38:13-47
+		ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:40:13-47
 receiver#com.example.base.receiver.NotificationReceiver
-ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:41:9-67
+ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:43:9-49:20
+	android:exported
+		ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:44:13-36
 	android:name
-		ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:41:19-64
+		ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:43:19-64
+intent-filter#action:name:android.intent.action.BOOT_COMPLETED+action:name:android.intent.action.MY_PACKAGE_REPLACED
+ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:45:13-48:29
+action#android.intent.action.BOOT_COMPLETED
+ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:46:17-79
+	android:name
+		ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:46:25-76
+action#android.intent.action.MY_PACKAGE_REPLACED
+ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:47:17-84
+	android:name
+		ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:47:25-81
 uses-sdk
 INJECTED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml
