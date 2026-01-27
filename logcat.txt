@@ -1,0 +1,134 @@
+2026-01-27 16:14:35.260 26204-26204 ForceDarkHelperStubImpl com.example.base                     I  setViewRootImplForceDark: false for com.example.base.MainActivity@b4ef3a5, reason: AppDarkModeEnable
+2026-01-27 16:14:35.265 26204-26216 AppScoutStateMachine    com.example.base                     D  26204-ScoutStateMachinecreated
+2026-01-27 16:14:35.265 26204-26216 ActivityThread          com.example.base                     D  handleBoundsCompatInfoChanged remove: name=com.example.base
+2026-01-27 16:14:35.293 26204-26204 SecurityManager         com.example.base                     D  checkAccessControl flag1
+2026-01-27 16:14:35.314 26204-26204 libc                    com.example.base                     W  Access denied finding property "vendor.display.enable_optimal_refresh_rate"
+2026-01-27 16:14:35.309 26204-26204 om.example.base         com.example.base                     W  type=1400 audit(0.0:143911): avc:  denied  { read } for  name="u:object_r:vendor_display_prop:s0" dev="tmpfs" ino=457 scontext=u:r:untrusted_app:s0:c127,c257,c512,c768 tcontext=u:object_r:vendor_display_prop:s0 tclass=file permissive=0 app=com.example.base
+2026-01-27 16:14:35.316 26204-26204 libc                    com.example.base                     W  Access denied finding property "vendor.gpp.create_frc_extension"
+2026-01-27 16:14:35.322 26204-26204 VRI[MainActivity]       com.example.base                     D  vri.reportNextDraw android.view.ViewRootImpl.performTraversals:4923 android.view.ViewRootImpl.doTraversal:3553 android.view.ViewRootImpl$TraversalRunnable.run:11520 android.view.Choreographer$CallbackRecord.run:1730 android.view.Choreographer$CallbackRecord.run:1739 
+2026-01-27 16:14:35.324 26204-26204 VRI[MainActivity]       com.example.base                     D  vri.Setup new sync=wmsSync-VRI[MainActivity]#2
+2026-01-27 16:14:35.356 26204-26211 om.example.base         com.example.base                     I  Background concurrent mark compact GC freed 11MB AllocSpace bytes, 4(68KB) LOS objects, 49% free, 4578KB/9156KB, paused 1.030ms,7.151ms total 92.474ms
+2026-01-27 16:14:35.393 26204-26228 om.example.base         com.example.base                     E  FrameInsert open fail: No such file or directory
+2026-01-27 16:14:35.394 26204-26204 VRI[MainActivity]       com.example.base                     D  vri.reportDrawFinished
+2026-01-27 16:14:35.443 26204-26204 HandWritingStubImpl     com.example.base                     I  refreshLastKeyboardType: 1
+2026-01-27 16:14:35.443 26204-26204 HandWritingStubImpl     com.example.base                     I  getCurrentKeyboardType: 1
+2026-01-27 16:14:36.633 26204-26204 MIUIInput               com.example.base                     I  [MotionEvent] ViewRootImpl windowName 'com.example.base/com.example.base.MainActivity', { action=ACTION_DOWN, id[0]=0, pointerCount=1, eventTime=87582804, downTime=87582804, phoneEventTime=16:14:36.601 } moveCount:0
+2026-01-27 16:14:36.647 26204-26204 MirrorManager           com.example.base                     W  this model don't Support
+2026-01-27 16:14:36.670 26204-26204 MIUIInput               com.example.base                     I  [MotionEvent] ViewRootImpl windowName 'com.example.base/com.example.base.MainActivity', { action=ACTION_UP, id[0]=0, pointerCount=1, eventTime=87582866, downTime=87582804, phoneEventTime=16:14:36.664 } moveCount:0
+2026-01-27 16:14:36.888 26204-26228 RenderInspector         com.example.base                     W  DequeueBuffer time out on com.example.base/com.example.base.MainActivity, count=1, avg=21 ms, max=21 ms.
+2026-01-27 16:14:36.981 26204-26228 RenderInspector         com.example.base                     W  DequeueBuffer time out on com.example.base/com.example.base.MainActivity, count=1, avg=17 ms, max=17 ms.
+2026-01-27 16:14:37.822 26204-26216 FrameEvents             com.example.base                     E  addRelease: Did not find frame.
+2026-01-27 16:14:37.839 26204-26216 FrameEvents             com.example.base                     E  addRelease: Did not find frame.
+2026-01-27 16:14:37.856 26204-26216 FrameEvents             com.example.base                     E  addRelease: Did not find frame.
+2026-01-27 16:14:37.872 26204-26216 FrameEvents             com.example.base                     E  addRelease: Did not find frame.
+2026-01-27 16:14:37.888 26204-26216 FrameEvents             com.example.base                     E  addRelease: Did not find frame.
+2026-01-27 16:14:37.905 26204-26216 FrameEvents             com.example.base                     E  addRelease: Did not find frame.
+2026-01-27 16:14:37.922 26204-26216 FrameEvents             com.example.base                     E  addRelease: Did not find frame.
+2026-01-27 16:14:37.939 26204-26217 FrameEvents             com.example.base                     E  addRelease: Did not find frame.
+2026-01-27 16:14:37.955 26204-26217 FrameEvents             com.example.base                     E  addRelease: Did not find frame.
+2026-01-27 16:14:37.972 26204-26216 FrameEvents             com.example.base                     E  addRelease: Did not find frame.
+2026-01-27 16:14:37.989 26204-26216 FrameEvents             com.example.base                     E  addRelease: Did not find frame.
+2026-01-27 16:14:38.006 26204-26216 FrameEvents             com.example.base                     E  addRelease: Did not find frame.
+2026-01-27 16:14:38.025 26204-26216 FrameEvents             com.example.base                     E  addRelease: Did not find frame.
+2026-01-27 16:14:38.043 26204-26216 FrameEvents             com.example.base                     E  addRelease: Did not find frame.
+2026-01-27 16:14:38.060 26204-26216 FrameEvents             com.example.base                     E  addRelease: Did not find frame.
+2026-01-27 16:14:38.076 26204-26217 FrameEvents             com.example.base                     E  addRelease: Did not find frame.
+2026-01-27 16:14:38.094 26204-26217 FrameEvents             com.example.base                     E  addRelease: Did not find frame.
+2026-01-27 16:14:38.108 26204-26217 FrameEvents             com.example.base                     E  addRelease: Did not find frame.
+2026-01-27 16:14:38.125 26204-26217 FrameEvents             com.example.base                     E  addRelease: Did not find frame.
+2026-01-27 16:14:38.142 26204-26217 FrameEvents             com.example.base                     E  addRelease: Did not find frame.
+2026-01-27 16:14:38.158 26204-26217 FrameEvents             com.example.base                     E  addRelease: Did not find frame.
+2026-01-27 16:14:38.175 26204-26217 FrameEvents             com.example.base                     E  addRelease: Did not find frame.
+2026-01-27 16:14:38.191 26204-26217 FrameEvents             com.example.base                     E  addRelease: Did not find frame.
+2026-01-27 16:14:38.209 26204-26217 FrameEvents             com.example.base                     E  addRelease: Did not find frame.
+2026-01-27 16:14:38.225 26204-26216 FrameEvents             com.example.base                     E  addRelease: Did not find frame.
+2026-01-27 16:14:38.239 26204-26204 VRI[MainActivity]       com.example.base                     D  visibilityChanged oldVisibility=true newVisibility=false
+2026-01-27 16:14:38.285 26204-26204 ActivityThread          com.example.base                     D  Fail to check app heapsize due to java.lang.NoSuchMethodException: dalvik.system.VMRuntime.getBlockingGcCountForAlloc []
+2026-01-27 16:14:46.035 26204-26244 AndroidRuntime          com.example.base                     E  FATAL EXCEPTION: DefaultDispatcher-worker-6 (Explain with AI)
+                                                                                                    Process: com.example.base, PID: 26204
+                                                                                                    java.lang.NullPointerException: Attempt to invoke virtual method 'void android.content.BroadcastReceiver$PendingResult.finish()' on a null object reference
+                                                                                                    	at com.example.base.widget.WaterWidgetProvider$updateAppWidget$1.invokeSuspend(WaterWidgetProvider.kt:119)
+                                                                                                    	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+                                                                                                    	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:106)
+                                                                                                    	at kotlinx.coroutines.internal.LimitedDispatcher$Worker.run(LimitedDispatcher.kt:115)
+                                                                                                    	at kotlinx.coroutines.scheduling.TaskImpl.run(Tasks.kt:100)
+                                                                                                    	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:584)
+                                                                                                    	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:793)
+                                                                                                    	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:697)
+                                                                                                    	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:684)
+                                                                                                    	Suppressed: kotlinx.coroutines.internal.DiagnosticCoroutineContextException: [StandaloneCoroutine{Cancelling}@8c5b5ec, Dispatchers.IO]
+2026-01-27 16:14:46.037 26204-26204 DefaultDispatch         com.example.base                     W  type=1400 audit(0.0:143913): avc:  denied  { search } for  name="miuilog" dev="dm-63" ino=468 scontext=u:r:untrusted_app:s0:c127,c257,c512,c768 tcontext=u:object_r:data_log_file:s0 tclass=dir permissive=0 app=com.example.base
+2026-01-27 16:14:46.037 26204-26204 DefaultDispatch         com.example.base                     W  type=1400 audit(0.0:143914): avc:  denied  { search } for  name="miuilog" dev="dm-63" ino=468 scontext=u:r:untrusted_app:s0:c127,c257,c512,c768 tcontext=u:object_r:data_log_file:s0 tclass=dir permissive=0 app=com.example.base
+2026-01-27 16:14:46.041 26204-26204 DefaultDispatch         com.example.base                     W  type=1400 audit(0.0:143915): avc:  denied  { search } for  name="miuilog" dev="dm-63" ino=468 scontext=u:r:untrusted_app:s0:c127,c257,c512,c768 tcontext=u:object_r:data_log_file:s0 tclass=dir permissive=0 app=com.example.base
+2026-01-27 16:14:46.041 26204-26204 DefaultDispatch         com.example.base                     W  type=1400 audit(0.0:143916): avc:  denied  { search } for  name="miuilog" dev="dm-63" ino=468 scontext=u:r:untrusted_app:s0:c127,c257,c512,c768 tcontext=u:object_r:data_log_file:s0 tclass=dir permissive=0 app=com.example.base
+2026-01-27 16:14:46.041 26204-26204 DefaultDispatch         com.example.base                     W  type=1400 audit(0.0:143917): avc:  denied  { search } for  name="miuilog" dev="dm-63" ino=468 scontext=u:r:untrusted_app:s0:c127,c257,c512,c768 tcontext=u:object_r:data_log_file:s0 tclass=dir permissive=0 app=com.example.base
+2026-01-27 16:14:46.045 26204-26244 ScoutUtils              com.example.base                     W  Failed to mkdir /data/miuilog/stability/hprof/
+2026-01-27 16:14:46.041 26204-26204 DefaultDispatch         com.example.base                     W  type=1400 audit(0.0:143918): avc:  denied  { getattr } for  path="/data/miuilog" dev="dm-63" ino=468 scontext=u:r:untrusted_app:s0:c127,c257,c512,c768 tcontext=u:object_r:data_log_file:s0 tclass=dir permissive=0 app=com.example.base
+2026-01-27 16:14:46.041 26204-26204 DefaultDispatch         com.example.base                     W  type=1400 audit(0.0:143919): avc:  denied  { search } for  name="miuilog" dev="dm-63" ino=468 scontext=u:r:untrusted_app:s0:c127,c257,c512,c768 tcontext=u:object_r:data_log_file:s0 tclass=dir permissive=0 app=com.example.base
+2026-01-27 16:14:46.041 26204-26204 DefaultDispatch         com.example.base                     W  type=1400 audit(0.0:143920): avc:  denied  { search } for  name="miuilog" dev="dm-63" ino=468 scontext=u:r:untrusted_app:s0:c127,c257,c512,c768 tcontext=u:object_r:data_log_file:s0 tclass=dir permissive=0 app=com.example.base
+2026-01-27 16:14:46.093 26204-26204 WindowOnBackDispatcher  com.example.base                     W  sendCancelIfRunning: isInProgress=false callback=android.view.ViewRootImpl$$ExternalSyntheticLambda12@c154c36
+2026-01-27 16:14:49.612 26204-26244 Process                 com.example.base                     I  Process is going to kill itself! (Explain with AI)
+                                                                                                    java.lang.Exception
+                                                                                                    	at android.os.Process.killProcess(Process.java:1495)
+                                                                                                    	at com.android.internal.os.RuntimeInit$KillApplicationHandler.uncaughtException(RuntimeInit.java:193)
+                                                                                                    	at java.lang.ThreadGroup.uncaughtException(ThreadGroup.java:1071)
+                                                                                                    	at java.lang.ThreadGroup.uncaughtException(ThreadGroup.java:1066)
+                                                                                                    	at kotlinx.coroutines.internal.CoroutineExceptionHandlerImplKt.propagateExceptionFinalResort(CoroutineExceptionHandlerImpl.kt:35)
+                                                                                                    	at kotlinx.coroutines.internal.CoroutineExceptionHandlerImpl_commonKt.handleUncaughtCoroutineException(CoroutineExceptionHandlerImpl.common.kt:52)
+                                                                                                    	at kotlinx.coroutines.CoroutineExceptionHandlerKt.handleCoroutineException(CoroutineExceptionHandler.kt:32)
+                                                                                                    	at kotlinx.coroutines.StandaloneCoroutine.handleJobException(Builders.common.kt:194)
+                                                                                                    	at kotlinx.coroutines.JobSupport.finalizeFinishingState(JobSupport.kt:230)
+                                                                                                    	at kotlinx.coroutines.JobSupport.tryMakeCompletingSlowPath(JobSupport.kt:909)
+                                                                                                    	at kotlinx.coroutines.JobSupport.tryMakeCompleting(JobSupport.kt:866)
+                                                                                                    	at kotlinx.coroutines.JobSupport.makeCompletingOnce$kotlinx_coroutines_core(JobSupport.kt:831)
+                                                                                                    	at kotlinx.coroutines.AbstractCoroutine.resumeWith(AbstractCoroutine.kt:100)
+                                                                                                    	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:46)
+                                                                                                    	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:106)
+                                                                                                    	at kotlinx.coroutines.internal.LimitedDispatcher$Worker.run(LimitedDispatcher.kt:115)
+                                                                                                    	at kotlinx.coroutines.scheduling.TaskImpl.run(Tasks.kt:100)
+                                                                                                    	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:584)
+                                                                                                    	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:793)
+                                                                                                    	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:697)
+                                                                                                    	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:684)
+2026-01-27 16:14:49.613 26204-26244 Process                 com.example.base                     I  Sending signal. PID: 26204 SIG: 9
+2026-01-27 16:14:49.613 26204-26244 libc                    com.example.base                     I  kill: send 9 to pid 26204
+---------------------------- PROCESS ENDED (26204) for package com.example.base ----------------------------
+---------------------------- PROCESS STARTED (26717) for package com.example.base ----------------------------
+2026-01-27 16:14:55.099 26717-26717 CompatChangeReporter    com.example.base                     D  Compat change id reported: 242716250; UID 10383; state: ENABLED
+2026-01-27 16:14:55.109 26717-26717 ActivityThread          com.example.base                     I  SetSystemFontMap done
+2026-01-27 16:14:55.118 26717-26717 ActivityThread          com.example.base                     D  setEmbeddedParam packageName=com.example.base processName=com.example.base isEmbedded=false isIsolated=false
+2026-01-27 16:14:55.218 26717-26717 nativeloader            com.example.base                     D  Configuring clns-7 for other apk /data/app/~~A7_V5e1c7-YYMZwFdJuozQ==/com.example.base-0dTyac5A339j9u4da6bd-g==/base.apk. target_sdk_version=34, uses_libraries=, library_path=/data/app/~~A7_V5e1c7-YYMZwFdJuozQ==/com.example.base-0dTyac5A339j9u4da6bd-g==/lib/arm64, permitted_path=/data:/mnt/expand:/data/user/0/com.example.base
+2026-01-27 16:14:55.229 26717-26717 Perf                    com.example.base                     I  Connecting to perf service.
+2026-01-27 16:14:55.234 26717-26717 GraphicsEnvironment     com.example.base                     V  Currently set values for:
+2026-01-27 16:14:55.234 26717-26717 GraphicsEnvironment     com.example.base                     V    angle_gl_driver_selection_pkgs=[]
+2026-01-27 16:14:55.234 26717-26717 GraphicsEnvironment     com.example.base                     V    angle_gl_driver_selection_values=[]
+2026-01-27 16:14:55.234 26717-26717 GraphicsEnvironment     com.example.base                     V  Global.Settings values are invalid: number of packages: 0, number of values: 0
+2026-01-27 16:14:55.234 26717-26717 GraphicsEnvironment     com.example.base                     V  App is not on the allowlist for updatable production driver.
+2026-01-27 16:14:55.236 26717-26717 ActivityThread          com.example.base                     I  TrafficStats init done
+2026-01-27 16:14:55.239 26717-26717 ForceDarkHelperStubImpl com.example.base                     I  initialize for com.example.base , ForceDarkAppConfig: null
+2026-01-27 16:14:55.240 26717-26717 nativeloader            com.example.base                     D  Load libforcedarkimpl.so using system ns (caller=/system_ext/framework/miui-framework.jar): ok
+2026-01-27 16:14:55.241 26717-26717 HWUI                    com.example.base                     D  JNI_OnLoad success
+2026-01-27 16:14:55.241 26717-26717 MiuiForceDarkConfig     com.example.base                     I  setConfig density:2.750000, mainRule:0, secondaryRule:0, tertiaryRule:0
+2026-01-27 16:14:55.248 26717-26717 ActivityThread          com.example.base                     I  Miui Feature Init done
+2026-01-27 16:14:55.266 26717-26717 libc                    com.example.base                     W  Access denied finding property "vendor.boostfwk.frameprefetcher"
+2026-01-27 16:14:55.290 26717-26717 FramePredict            com.example.base                     D  FramePredict init: false
+2026-01-27 16:14:55.592 26717-26735 AndroidRuntime          com.example.base                     E  FATAL EXCEPTION: DefaultDispatcher-worker-2 (Explain with AI)
+                                                                                                    Process: com.example.base, PID: 26717
+                                                                                                    java.lang.NullPointerException: Attempt to invoke virtual method 'void android.content.BroadcastReceiver$PendingResult.finish()' on a null object reference
+                                                                                                    	at com.example.base.widget.WaterWidgetProvider$updateAppWidget$1.invokeSuspend(WaterWidgetProvider.kt:119)
+                                                                                                    	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+                                                                                                    	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:106)
+                                                                                                    	at kotlinx.coroutines.internal.LimitedDispatcher$Worker.run(LimitedDispatcher.kt:115)
+                                                                                                    	at kotlinx.coroutines.scheduling.TaskImpl.run(Tasks.kt:100)
+                                                                                                    	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:584)
+                                                                                                    	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:793)
+                                                                                                    	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:697)
+                                                                                                    	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:684)
+                                                                                                    	Suppressed: kotlinx.coroutines.internal.DiagnosticCoroutineContextException: [StandaloneCoroutine{Cancelling}@6a9b204, Dispatchers.IO]
+2026-01-27 16:14:55.597 26717-26717 DefaultDispatch         com.example.base                     W  type=1400 audit(0.0:146246): avc:  denied  { search } for  name="miuilog" dev="dm-63" ino=468 scontext=u:r:untrusted_app:s0:c127,c257,c512,c768 tcontext=u:object_r:data_log_file:s0 tclass=dir permissive=0 app=com.example.base
+2026-01-27 16:14:55.597 26717-26717 DefaultDispatch         com.example.base                     W  type=1400 audit(0.0:146247): avc:  denied  { search } for  name="miuilog" dev="dm-63" ino=468 scontext=u:r:untrusted_app:s0:c127,c257,c512,c768 tcontext=u:object_r:data_log_file:s0 tclass=dir permissive=0 app=com.example.base
+2026-01-27 16:14:55.605 26717-26735 ScoutUtils              com.example.base                     W  Failed to mkdir /data/miuilog/stability/hprof/
+2026-01-27 16:14:55.601 26717-26717 DefaultDispatch         com.example.base                     W  type=1400 audit(0.0:146248): avc:  denied  { search } for  name="miuilog" dev="dm-63" ino=468 scontext=u:r:untrusted_app:s0:c127,c257,c512,c768 tcontext=u:object_r:data_log_file:s0 tclass=dir permissive=0 app=com.example.base
+2026-01-27 16:14:55.601 26717-26717 DefaultDispatch         com.example.base                     W  type=1400 audit(0.0:146249): avc:  denied  { search } for  name="miuilog" dev="dm-63" ino=468 scontext=u:r:untrusted_app:s0:c127,c257,c512,c768 tcontext=u:object_r:data_log_file:s0 tclass=dir permissive=0 app=com.example.base
+2026-01-27 16:14:55.601 26717-26717 DefaultDispatch         com.example.base                     W  type=1400 audit(0.0:146250): avc:  denied  { search } for  name="miuilog" dev="dm-63" ino=468 scontext=u:r:untrusted_app:s0:c127,c257,c512,c768 tcontext=u:object_r:data_log_file:s0 tclass=dir permissive=0 app=com.example.base
+---------------------------- PROCESS ENDED (26717) for package com.example.base ----------------------------

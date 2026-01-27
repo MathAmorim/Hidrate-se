@@ -13,6 +13,7 @@ import androidx.lifecycle.lifecycleScope
 import com.example.base.data.AppDatabase
 import com.example.base.data.model.WaterRecord
 import com.example.base.util.NotificationHelper
+import com.example.base.util.MotivationManager
 import com.example.base.adapter.HistoryAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -38,6 +39,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var tvStreakDays: TextView
     private lateinit var waterWave: android.view.View
     private lateinit var tvNextNotification: TextView
+    private lateinit var tvMotivation: TextView
     private lateinit var rvHistory: RecyclerView
     private lateinit var tvTotalEntries: TextView
     private lateinit var historyAdapter: HistoryAdapter
@@ -65,6 +67,7 @@ class MainActivity : AppCompatActivity() {
         tvStreakDays = findViewById(R.id.tv_streak_days)
         waterWave = findViewById(R.id.water_wave)
         tvNextNotification = findViewById(R.id.tv_next_notification)
+        tvMotivation = findViewById(R.id.tv_motivation)
         tvTotalEntries = findViewById(R.id.tv_total_entries)
         rvHistory = findViewById(R.id.rv_history)
 
@@ -198,6 +201,9 @@ class MainActivity : AppCompatActivity() {
         
         tvGreeting.text = "Olá, $userName"
         tvStreakDays.text = "$streak dias"
+        
+        // Update Motivation
+        tvMotivation.text = MotivationManager.getPhrase(percentage)
         
         // Update History
         historyAdapter.updateData(history)

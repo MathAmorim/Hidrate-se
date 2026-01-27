@@ -7,6 +7,8 @@ import android.os.Build
 import android.os.Environment
 import android.provider.MediaStore
 import android.util.Base64
+import android.content.Intent
+import com.example.base.widget.WaterWidgetProvider
 import com.example.base.data.model.BackupData
 import com.google.gson.Gson
 import kotlinx.coroutines.Dispatchers
@@ -106,6 +108,11 @@ class BackupManager(private val context: Context) {
             
             // Achievements are recalculated automatically based on records.
             
+            // Update Widget
+            val intent = Intent(context, WaterWidgetProvider::class.java)
+            intent.action = WaterWidgetProvider.ACTION_UPDATE_WIDGET
+            context.sendBroadcast(intent)
+
             Result.success("Dados restaurados com sucesso!")
         } catch (e: Exception) {
             e.printStackTrace()

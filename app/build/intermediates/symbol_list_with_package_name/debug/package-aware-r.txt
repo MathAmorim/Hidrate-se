@@ -3675,6 +3675,7 @@ id tv_current_streak
 id tv_goal
 id tv_goal_explanation
 id tv_greeting
+id tv_motivation
 id tv_next_notification
 id tv_percentage
 id tv_streak_days

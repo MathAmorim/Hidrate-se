@@ -341,10 +341,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Fazer Backup"
-                        android:textColor="#FFFFFF"
                         app:backgroundTint="#374151"
                         app:icon="@drawable/ic_download"
-                        app:iconTint="#FFFFFF"
                         app:iconGravity="textStart"
                         app:cornerRadius="8dp"
                         android:layout_marginBottom="8dp" />
@@ -354,10 +352,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Restaurar Backup"
-                        android:textColor="#FFFFFF"
                         app:backgroundTint="#374151"
                         app:icon="@drawable/ic_upload"
-                        app:iconTint="#FFFFFF"
                         app:iconGravity="textStart"
                         app:cornerRadius="8dp" />
 

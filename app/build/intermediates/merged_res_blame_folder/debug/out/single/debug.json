@@ -116,6 +116,10 @@
         "source": "C:\\Users\\administrator\\.gradle\\daemon\\8.5\\com.example.base.app-main-39:\\drawable\\circular_progress_primary.xml"
     },
     {
+        "merged": "com.example.base.app-merged_res-37:/layout_activity_settings.xml.flat",
+        "source": "com.example.base.app-main-39:/layout/activity_settings.xml"
+    },
+    {
         "merged": "C:\\Users\\administrator\\.gradle\\daemon\\8.5\\com.example.base.app-merged_res-37:\\drawable_nav_header_gradient.xml.flat",
         "source": "C:\\Users\\administrator\\.gradle\\daemon\\8.5\\com.example.base.app-main-39:\\drawable\\nav_header_gradient.xml"
     },
@@ -168,10 +172,6 @@
         "source": "C:\\Users\\administrator\\.gradle\\daemon\\8.5\\com.example.base.app-main-39:\\drawable\\circular_progress_background.xml"
     },
     {
-        "merged": "com.example.base.app-merged_res-37:/drawable_ic_download.xml.flat",
-        "source": "com.example.base.app-main-39:/drawable/ic_download.xml"
-    },
-    {
         "merged": "C:\\Users\\administrator\\.gradle\\daemon\\8.5\\com.example.base.app-merged_res-37:\\color_nav_item_color.xml.flat",
         "source": "C:\\Users\\administrator\\.gradle\\daemon\\8.5\\com.example.base.app-main-39:\\color\\nav_item_color.xml"
     },
@@ -222,10 +222,6 @@
     {
         "merged": "C:\\Users\\administrator\\.gradle\\daemon\\8.5\\com.example.base.app-merged_res-37:\\drawable_ic_calendar.xml.flat",
         "source": "C:\\Users\\administrator\\.gradle\\daemon\\8.5\\com.example.base.app-main-39:\\drawable\\ic_calendar.xml"
-    },
-    {
-        "merged": "com.example.base.app-merged_res-37:/drawable_ic_upload.xml.flat",
-        "source": "com.example.base.app-main-39:/drawable/ic_upload.xml"
     },
     {
         "merged": "C:\\Users\\administrator\\.gradle\\daemon\\8.5\\com.example.base.app-merged_res-37:\\raw_water_anim.mov.flat",
