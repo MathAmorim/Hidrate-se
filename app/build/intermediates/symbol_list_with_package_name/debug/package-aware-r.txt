@@ -3046,6 +3046,7 @@ drawable ic_chevron_right
 drawable ic_clear_black_24
 drawable ic_clock_black_24dp
 drawable ic_day_forecast
+drawable ic_download
 drawable ic_droplet
 drawable ic_fire
 drawable ic_glass_water_full
@@ -3067,6 +3068,7 @@ drawable ic_star
 drawable ic_stats
 drawable ic_target
 drawable ic_trophy_new
+drawable ic_upload
 drawable ic_water_tank
 drawable ic_wave
 drawable ic_wrench
@@ -3251,10 +3253,12 @@ id bounceStart
 id btn_add_200
 id btn_add_300
 id btn_add_500
+id btn_backup
 id btn_cancel
 id btn_confirm
 id btn_end_time
 id btn_menu
+id btn_restore
 id btn_save
 id btn_start_time
 id buttonPanel

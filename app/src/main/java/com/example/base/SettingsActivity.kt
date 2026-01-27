@@ -36,11 +36,20 @@ class SettingsActivity : AppCompatActivity() {
     private lateinit var btnStartTime: MaterialButton
     private lateinit var btnEndTime: MaterialButton
     private lateinit var btnSave: MaterialButton
+    private lateinit var btnBackup: MaterialButton
+    private lateinit var btnRestore: MaterialButton
+    private lateinit var backupManager: com.example.base.data.BackupManager
 
     // State
     private var selectedBirthDate: Long = 0L
     private var selectedStartTime: String = "08:00"
     private var selectedEndTime: String = "22:00"
+
+    private val restoreLauncher = registerForActivityResult(androidx.activity.result.contract.ActivityResultContracts.OpenDocument()) { uri ->
+        if (uri != null) {
+            performRestore(uri)
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,6 +58,7 @@ class SettingsActivity : AppCompatActivity() {
         // Init DB and Helper
         db = AppDatabase.getDatabase(this)
         notificationHelper = NotificationHelper(this)
+        backupManager = com.example.base.data.BackupManager(this)
 
         setupViews()
         loadUserData()
@@ -70,12 +80,16 @@ class SettingsActivity : AppCompatActivity() {
         btnStartTime = findViewById(R.id.btn_start_time)
         btnEndTime = findViewById(R.id.btn_end_time)
         btnSave = findViewById(R.id.btn_save)
+        btnBackup = findViewById(R.id.btn_backup)
+        btnRestore = findViewById(R.id.btn_restore)
 
         // Listeners
         etBirthDate.setOnClickListener { showDatePicker() }
         btnStartTime.setOnClickListener { showTimePicker(true) }
         btnEndTime.setOnClickListener { showTimePicker(false) }
         btnSave.setOnClickListener { saveSettings() }
+        btnBackup.setOnClickListener { performBackup() }
+        btnRestore.setOnClickListener { restoreLauncher.launch(arrayOf("*/*")) }
 
         // Watch for weight changes to update goal preview
         etWeight.addTextChangedListener(object : TextWatcher {
@@ -85,6 +99,32 @@ class SettingsActivity : AppCompatActivity() {
                 updateGoalDisplay()
             }
         })
+    }
+
+    private fun performBackup() {
+        lifecycleScope.launch {
+            Toast.makeText(this@SettingsActivity, "Iniciando backup...", Toast.LENGTH_SHORT).show()
+            val result = backupManager.performBackup()
+            result.onSuccess { message ->
+                Toast.makeText(this@SettingsActivity, message, Toast.LENGTH_LONG).show()
+            }.onFailure { e ->
+                Toast.makeText(this@SettingsActivity, "Erro no backup: ${e.message}", Toast.LENGTH_LONG).show()
+            }
+        }
+    }
+
+    private fun performRestore(uri: android.net.Uri) {
+        lifecycleScope.launch {
+            Toast.makeText(this@SettingsActivity, "Restaurando dados...", Toast.LENGTH_SHORT).show()
+            val result = backupManager.performRestore(uri)
+            result.onSuccess { message ->
+                Toast.makeText(this@SettingsActivity, message, Toast.LENGTH_LONG).show()
+                // Reload data
+                loadUserData()
+            }.onFailure { e ->
+                Toast.makeText(this@SettingsActivity, "Erro na restauração: ${e.message}", Toast.LENGTH_LONG).show()
+            }
+        }
     }
 
     private fun loadUserData() {
