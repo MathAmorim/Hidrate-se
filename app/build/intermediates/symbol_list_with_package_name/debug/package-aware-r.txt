@@ -3048,7 +3048,6 @@ drawable ic_clock_black_24dp
 drawable ic_day_forecast
 drawable ic_droplet
 drawable ic_fire
-drawable ic_flame
 drawable ic_glass_water_full
 drawable ic_info
 drawable ic_keyboard_black_24dp
@@ -3057,7 +3056,6 @@ drawable ic_m3_chip_check
 drawable ic_m3_chip_checked_circle
 drawable ic_m3_chip_close
 drawable ic_menu
-drawable ic_moon
 drawable ic_mtrl_checked_circle
 drawable ic_mtrl_chip_checked_black
 drawable ic_mtrl_chip_checked_circle
@@ -3067,11 +3065,8 @@ drawable ic_palette
 drawable ic_search_black_24
 drawable ic_star
 drawable ic_stats
-drawable ic_sunrise
 drawable ic_target
-drawable ic_trophy
 drawable ic_trophy_new
-drawable ic_water_glass
 drawable ic_water_tank
 drawable ic_wave
 drawable ic_wrench
@@ -3402,7 +3397,8 @@ id invisible
 id inward
 id italic
 id item_touch_helper_previous_elevation
-id iv_achievement_icon
+id ivIcon
+id ivStatus
 id iv_streak_fire
 id jumpToEnd
 id jumpToStart
@@ -3535,6 +3531,7 @@ id pin
 id position
 id postLayout
 id pressed
+id progressBar
 id progress_background
 id progress_circular
 id progress_container
@@ -3551,9 +3548,8 @@ id right_icon
 id right_side
 id rounded
 id row_index_key
+id rvAchievements
 id rv_history
-id rv_streak_achievements
-id rv_volume_achievements
 id save_non_transition_alpha
 id save_overlay_view
 id sawtooth
@@ -3663,8 +3659,9 @@ id transition_position
 id transition_scene_layoutid_cache
 id transition_transform
 id triangle
-id tv_achievement_description
-id tv_achievement_title
+id tvDescription
+id tvProgress
+id tvTitle
 id tv_amount
 id tv_best_day
 id tv_best_day_amount
@@ -3681,7 +3678,6 @@ id tv_time
 id tv_today_total
 id tv_total_entries
 id tv_total_volume
-id tv_unlocked_badge
 id tv_weekly_avg
 id unchecked
 id uniform

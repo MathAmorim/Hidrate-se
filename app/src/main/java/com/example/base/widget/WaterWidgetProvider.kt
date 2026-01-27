@@ -44,7 +44,8 @@ class WaterWidgetProvider : AppWidgetProvider() {
                     val record = WaterRecord(
                         amount = amount,
                         date = DateUtils.getCurrentDate(),
-                        timestamp = System.currentTimeMillis()
+                        timestamp = System.currentTimeMillis(),
+                        source = "WIDGET"
                     )
                     db.waterRecordDao().insert(record)
                     

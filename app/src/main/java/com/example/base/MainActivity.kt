@@ -145,7 +145,8 @@ class MainActivity : AppCompatActivity() {
             val record = WaterRecord(
                 amount = amount, 
                 date = com.example.base.util.DateUtils.getCurrentDate(),
-                timestamp = System.currentTimeMillis()
+                timestamp = System.currentTimeMillis(),
+                source = "APP"
             )
             db.waterRecordDao().insert(record)
             loadWaterData()

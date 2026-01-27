@@ -37,13 +37,13 @@ public final class AppDatabase_Impl extends AppDatabase {
   @Override
   @NonNull
   protected SupportSQLiteOpenHelper createOpenHelper(@NonNull final DatabaseConfiguration config) {
-    final SupportSQLiteOpenHelper.Callback _openCallback = new RoomOpenHelper(config, new RoomOpenHelper.Delegate(5) {
+    final SupportSQLiteOpenHelper.Callback _openCallback = new RoomOpenHelper(config, new RoomOpenHelper.Delegate(6) {
       @Override
       public void createAllTables(@NonNull final SupportSQLiteDatabase db) {
         db.execSQL("CREATE TABLE IF NOT EXISTS `user_table` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT NOT NULL, `weight` REAL NOT NULL, `dailyGoal` INTEGER NOT NULL, `birthDate` INTEGER NOT NULL, `wakeUpTime` TEXT NOT NULL, `sleepTime` TEXT NOT NULL, `onboardingCompleted` INTEGER NOT NULL)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS `water_record_table` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `amount` INTEGER NOT NULL, `date` TEXT NOT NULL, `timestamp` INTEGER NOT NULL)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS `water_record_table` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `amount` INTEGER NOT NULL, `date` TEXT NOT NULL, `timestamp` INTEGER NOT NULL, `source` TEXT NOT NULL)");
         db.execSQL("CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)");
-        db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'd346882eb898e7c35ea082a6e00afbc2')");
+        db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'c2196c700af4623483a3b9e341ef982c')");
       }
 
       @Override
@@ -111,11 +111,12 @@ public final class AppDatabase_Impl extends AppDatabase {
                   + " Expected:\n" + _infoUserTable + "\n"
                   + " Found:\n" + _existingUserTable);
         }
-        final HashMap<String, TableInfo.Column> _columnsWaterRecordTable = new HashMap<String, TableInfo.Column>(4);
+        final HashMap<String, TableInfo.Column> _columnsWaterRecordTable = new HashMap<String, TableInfo.Column>(5);
         _columnsWaterRecordTable.put("id", new TableInfo.Column("id", "INTEGER", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsWaterRecordTable.put("amount", new TableInfo.Column("amount", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsWaterRecordTable.put("date", new TableInfo.Column("date", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsWaterRecordTable.put("timestamp", new TableInfo.Column("timestamp", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsWaterRecordTable.put("source", new TableInfo.Column("source", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         final HashSet<TableInfo.ForeignKey> _foreignKeysWaterRecordTable = new HashSet<TableInfo.ForeignKey>(0);
         final HashSet<TableInfo.Index> _indicesWaterRecordTable = new HashSet<TableInfo.Index>(0);
         final TableInfo _infoWaterRecordTable = new TableInfo("water_record_table", _columnsWaterRecordTable, _foreignKeysWaterRecordTable, _indicesWaterRecordTable);
@@ -127,7 +128,7 @@ public final class AppDatabase_Impl extends AppDatabase {
         }
         return new RoomOpenHelper.ValidationResult(true, null);
       }
-    }, "d346882eb898e7c35ea082a6e00afbc2", "70aa04f5865d0382dd938a43a04ed33e");
+    }, "c2196c700af4623483a3b9e341ef982c", "af4b9da0d0a4c18c34ab75f6030e7968");
     final SupportSQLiteOpenHelper.Configuration _sqliteConfig = SupportSQLiteOpenHelper.Configuration.builder(config.context).name(config.name).callback(_openCallback).build();
     final SupportSQLiteOpenHelper _helper = config.sqliteOpenHelperFactory.create(_sqliteConfig);
     return _helper;

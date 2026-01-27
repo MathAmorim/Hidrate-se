@@ -41,7 +41,7 @@ public final class WaterRecordDao_Impl implements WaterRecordDao {
       @Override
       @NonNull
       protected String createQuery() {
-        return "INSERT OR ABORT INTO `water_record_table` (`id`,`amount`,`date`,`timestamp`) VALUES (nullif(?, 0),?,?,?)";
+        return "INSERT OR ABORT INTO `water_record_table` (`id`,`amount`,`date`,`timestamp`,`source`) VALUES (nullif(?, 0),?,?,?,?)";
       }
 
       @Override
@@ -51,6 +51,7 @@ public final class WaterRecordDao_Impl implements WaterRecordDao {
         statement.bindLong(2, entity.getAmount());
         statement.bindString(3, entity.getDate());
         statement.bindLong(4, entity.getTimestamp());
+        statement.bindString(5, entity.getSource());
       }
     };
   }
@@ -91,6 +92,7 @@ public final class WaterRecordDao_Impl implements WaterRecordDao {
           final int _cursorIndexOfAmount = CursorUtil.getColumnIndexOrThrow(_cursor, "amount");
           final int _cursorIndexOfDate = CursorUtil.getColumnIndexOrThrow(_cursor, "date");
           final int _cursorIndexOfTimestamp = CursorUtil.getColumnIndexOrThrow(_cursor, "timestamp");
+          final int _cursorIndexOfSource = CursorUtil.getColumnIndexOrThrow(_cursor, "source");
           final List<WaterRecord> _result = new ArrayList<WaterRecord>(_cursor.getCount());
           while (_cursor.moveToNext()) {
             final WaterRecord _item;
@@ -102,7 +104,9 @@ public final class WaterRecordDao_Impl implements WaterRecordDao {
             _tmpDate = _cursor.getString(_cursorIndexOfDate);
             final long _tmpTimestamp;
             _tmpTimestamp = _cursor.getLong(_cursorIndexOfTimestamp);
-            _item = new WaterRecord(_tmpId,_tmpAmount,_tmpDate,_tmpTimestamp);
+            final String _tmpSource;
+            _tmpSource = _cursor.getString(_cursorIndexOfSource);
+            _item = new WaterRecord(_tmpId,_tmpAmount,_tmpDate,_tmpTimestamp,_tmpSource);
             _result.add(_item);
           }
           return _result;
@@ -134,6 +138,7 @@ public final class WaterRecordDao_Impl implements WaterRecordDao {
           final int _cursorIndexOfAmount = CursorUtil.getColumnIndexOrThrow(_cursor, "amount");
           final int _cursorIndexOfDate = CursorUtil.getColumnIndexOrThrow(_cursor, "date");
           final int _cursorIndexOfTimestamp = CursorUtil.getColumnIndexOrThrow(_cursor, "timestamp");
+          final int _cursorIndexOfSource = CursorUtil.getColumnIndexOrThrow(_cursor, "source");
           final List<WaterRecord> _result = new ArrayList<WaterRecord>(_cursor.getCount());
           while (_cursor.moveToNext()) {
             final WaterRecord _item;
@@ -145,7 +150,9 @@ public final class WaterRecordDao_Impl implements WaterRecordDao {
             _tmpDate = _cursor.getString(_cursorIndexOfDate);
             final long _tmpTimestamp;
             _tmpTimestamp = _cursor.getLong(_cursorIndexOfTimestamp);
-            _item = new WaterRecord(_tmpId,_tmpAmount,_tmpDate,_tmpTimestamp);
+            final String _tmpSource;
+            _tmpSource = _cursor.getString(_cursorIndexOfSource);
+            _item = new WaterRecord(_tmpId,_tmpAmount,_tmpDate,_tmpTimestamp,_tmpSource);
             _result.add(_item);
           }
           return _result;
@@ -240,6 +247,7 @@ public final class WaterRecordDao_Impl implements WaterRecordDao {
           final int _cursorIndexOfAmount = CursorUtil.getColumnIndexOrThrow(_cursor, "amount");
           final int _cursorIndexOfDate = CursorUtil.getColumnIndexOrThrow(_cursor, "date");
           final int _cursorIndexOfTimestamp = CursorUtil.getColumnIndexOrThrow(_cursor, "timestamp");
+          final int _cursorIndexOfSource = CursorUtil.getColumnIndexOrThrow(_cursor, "source");
           final List<WaterRecord> _result = new ArrayList<WaterRecord>(_cursor.getCount());
           while (_cursor.moveToNext()) {
             final WaterRecord _item;
@@ -251,7 +259,9 @@ public final class WaterRecordDao_Impl implements WaterRecordDao {
             _tmpDate = _cursor.getString(_cursorIndexOfDate);
             final long _tmpTimestamp;
             _tmpTimestamp = _cursor.getLong(_cursorIndexOfTimestamp);
-            _item = new WaterRecord(_tmpId,_tmpAmount,_tmpDate,_tmpTimestamp);
+            final String _tmpSource;
+            _tmpSource = _cursor.getString(_cursorIndexOfSource);
+            _item = new WaterRecord(_tmpId,_tmpAmount,_tmpDate,_tmpTimestamp,_tmpSource);
             _result.add(_item);
           }
           return _result;
@@ -310,6 +320,7 @@ public final class WaterRecordDao_Impl implements WaterRecordDao {
           final int _cursorIndexOfAmount = CursorUtil.getColumnIndexOrThrow(_cursor, "amount");
           final int _cursorIndexOfDate = CursorUtil.getColumnIndexOrThrow(_cursor, "date");
           final int _cursorIndexOfTimestamp = CursorUtil.getColumnIndexOrThrow(_cursor, "timestamp");
+          final int _cursorIndexOfSource = CursorUtil.getColumnIndexOrThrow(_cursor, "source");
           final List<WaterRecord> _result = new ArrayList<WaterRecord>(_cursor.getCount());
           while (_cursor.moveToNext()) {
             final WaterRecord _item;
@@ -321,7 +332,9 @@ public final class WaterRecordDao_Impl implements WaterRecordDao {
             _tmpDate = _cursor.getString(_cursorIndexOfDate);
             final long _tmpTimestamp;
             _tmpTimestamp = _cursor.getLong(_cursorIndexOfTimestamp);
-            _item = new WaterRecord(_tmpId,_tmpAmount,_tmpDate,_tmpTimestamp);
+            final String _tmpSource;
+            _tmpSource = _cursor.getString(_cursorIndexOfSource);
+            _item = new WaterRecord(_tmpId,_tmpAmount,_tmpDate,_tmpTimestamp,_tmpSource);
             _result.add(_item);
           }
           return _result;

@@ -9,7 +9,7 @@ import com.example.base.data.dao.WaterRecordDao
 import com.example.base.data.model.User
 import com.example.base.data.model.WaterRecord
 
-@Database(entities = [User::class, WaterRecord::class], version = 5, exportSchema = false)
+@Database(entities = [User::class, WaterRecord::class], version = 6, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun userDao(): UserDao
     abstract fun waterRecordDao(): WaterRecordDao

@@ -8,5 +8,6 @@ data class WaterRecord(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
     val amount: Int,
     val date: String,
-    val timestamp: Long
+    val timestamp: Long,
+    val source: String = "APP"
 )

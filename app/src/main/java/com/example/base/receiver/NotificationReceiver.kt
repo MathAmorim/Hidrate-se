@@ -50,7 +50,8 @@ class NotificationReceiver : BroadcastReceiver() {
         val record = com.example.base.data.model.WaterRecord(
             amount = amount,
             date = com.example.base.util.DateUtils.getCurrentDate(),
-            timestamp = System.currentTimeMillis()
+            timestamp = System.currentTimeMillis(),
+            source = "NOTIFICATION"
         )
         database.waterRecordDao().insert(record)
         

@@ -8,10 +8,6 @@
         "source": "C:\\Users\\administrator\\.gradle\\daemon\\8.5\\com.example.base.app-main-39:\\mipmap-xxxhdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "com.example.base.app-merged_res-37:/layout_activity_about.xml.flat",
-        "source": "com.example.base.app-main-39:/layout/activity_about.xml"
-    },
-    {
         "merged": "C:\\Users\\administrator\\.gradle\\daemon\\8.5\\com.example.base.app-merged_res-37:\\layout_activity_about.xml.flat",
         "source": "C:\\Users\\administrator\\.gradle\\daemon\\8.5\\com.example.base.app-main-39:\\layout\\activity_about.xml"
     },
@@ -24,20 +20,20 @@
         "source": "C:\\Users\\administrator\\.gradle\\daemon\\8.5\\com.example.base.app-main-39:\\drawable\\ic_glass_water_full.xml"
     },
     {
-        "merged": "C:\\Users\\administrator\\.gradle\\daemon\\8.5\\com.example.base.app-merged_res-37:\\drawable_widget_progress_horizontal.xml.flat",
-        "source": "C:\\Users\\administrator\\.gradle\\daemon\\8.5\\com.example.base.app-main-39:\\drawable\\widget_progress_horizontal.xml"
-    },
-    {
-        "merged": "C:\\Users\\administrator\\.gradle\\daemon\\8.5\\com.example.base.app-merged_res-37:\\layout_activity_achievements.xml.flat",
-        "source": "C:\\Users\\administrator\\.gradle\\daemon\\8.5\\com.example.base.app-main-39:\\layout\\activity_achievements.xml"
+        "merged": "C:\\Users\\administrator\\.gradle\\daemon\\8.5\\com.example.base.app-merged_res-37:\\mipmap-xhdpi_ic_launcher_foreground.webp.flat",
+        "source": "C:\\Users\\administrator\\.gradle\\daemon\\8.5\\com.example.base.app-main-39:\\mipmap-xhdpi\\ic_launcher_foreground.webp"
     },
     {
         "merged": "C:\\Users\\administrator\\.gradle\\daemon\\8.5\\com.example.base.app-merged_res-37:\\layout_nav_header.xml.flat",
         "source": "C:\\Users\\administrator\\.gradle\\daemon\\8.5\\com.example.base.app-main-39:\\layout\\nav_header.xml"
     },
     {
-        "merged": "C:\\Users\\administrator\\.gradle\\daemon\\8.5\\com.example.base.app-merged_res-37:\\mipmap-xhdpi_ic_launcher_foreground.webp.flat",
-        "source": "C:\\Users\\administrator\\.gradle\\daemon\\8.5\\com.example.base.app-main-39:\\mipmap-xhdpi\\ic_launcher_foreground.webp"
+        "merged": "C:\\Users\\administrator\\.gradle\\daemon\\8.5\\com.example.base.app-merged_res-37:\\layout_activity_achievements.xml.flat",
+        "source": "C:\\Users\\administrator\\.gradle\\daemon\\8.5\\com.example.base.app-main-39:\\layout\\activity_achievements.xml"
+    },
+    {
+        "merged": "C:\\Users\\administrator\\.gradle\\daemon\\8.5\\com.example.base.app-merged_res-37:\\drawable_widget_progress_horizontal.xml.flat",
+        "source": "C:\\Users\\administrator\\.gradle\\daemon\\8.5\\com.example.base.app-main-39:\\drawable\\widget_progress_horizontal.xml"
     },
     {
         "merged": "C:\\Users\\administrator\\.gradle\\daemon\\8.5\\com.example.base.app-merged_res-37:\\mipmap-xxxhdpi_ic_launcher_foreground.webp.flat",
