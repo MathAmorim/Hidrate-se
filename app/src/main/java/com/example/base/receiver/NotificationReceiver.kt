@@ -53,5 +53,10 @@ class NotificationReceiver : BroadcastReceiver() {
             timestamp = System.currentTimeMillis()
         )
         database.waterRecordDao().insert(record)
+        
+        // Update Widget
+        val intent = Intent(context, com.example.base.widget.WaterWidgetProvider::class.java)
+        intent.action = com.example.base.widget.WaterWidgetProvider.ACTION_UPDATE_WIDGET
+        context.sendBroadcast(intent)
     }
 }

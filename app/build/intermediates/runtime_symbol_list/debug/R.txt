@@ -3027,7 +3027,6 @@ int drawable design_password_eye 0x7f07008b
 int drawable design_snackbar_background 0x7f07008c
 int drawable dialog_background 0x7f07008d
 int drawable glass_background 0x7f07008e
-int drawable ic_app_logo 0x7f07008f
 int drawable ic_arrow_back 0x7f070090
 int drawable ic_arrow_back_black_24 0x7f070091
 int drawable ic_award 0x7f070092
@@ -3153,6 +3152,8 @@ int drawable notify_panel_notification_icon_bg 0x7f070109
 int drawable test_level_drawable 0x7f07010a
 int drawable tooltip_frame_dark 0x7f07010b
 int drawable tooltip_frame_light 0x7f07010c
+int drawable widget_button_background 0x7f07010d
+int drawable widget_progress_horizontal 0x7f07010e
 int id ALT 0x7f080000
 int id BOTTOM_END 0x7f080001
 int id BOTTOM_START 0x7f080002
@@ -3251,8 +3252,8 @@ int id bounce 0x7f08005e
 int id bounceBoth 0x7f08005f
 int id bounceEnd 0x7f080060
 int id bounceStart 0x7f080061
-int id btn_add_100 0x7f080062
-int id btn_add_250 0x7f080063
+int id btn_add_200 0x7f080228
+int id btn_add_300 0x7f080229
 int id btn_add_500 0x7f080064
 int id btn_cancel 0x7f080065
 int id btn_confirm 0x7f080066
@@ -3697,6 +3698,11 @@ int id visible 0x7f08021c
 int id visible_removing_fragment_view_tag 0x7f08021d
 int id water_wave 0x7f08021e
 int id west 0x7f08021f
+int id widget_btn_add_200 0x7f08022a
+int id widget_btn_add_500 0x7f08022b
+int id widget_progress_bar 0x7f08022c
+int id widget_tv_incentive 0x7f08022d
+int id widget_tv_progress 0x7f08022e
 int id withText 0x7f080220
 int id with_icon 0x7f080221
 int id withinBounds 0x7f080222
@@ -3909,6 +3915,7 @@ int layout select_dialog_multichoice_material 0x7f0b0071
 int layout select_dialog_singlechoice_material 0x7f0b0072
 int layout splash_screen_view 0x7f0b0073
 int layout support_simple_spinner_dropdown_item 0x7f0b0074
+int layout widget_small 0x7f0b0075
 int menu drawer_menu 0x7f0d0000
 int mipmap ic_launcher 0x7f0e0000
 int mipmap ic_launcher_foreground 0x7f0e0001
@@ -7295,3 +7302,4 @@ int[] styleable include { 0x7f030132 }
 int styleable include_constraintSet 0
 int xml backup_rules 0x7f130000
 int xml data_extraction_rules 0x7f130001
+int xml widget_info 0x7f130002

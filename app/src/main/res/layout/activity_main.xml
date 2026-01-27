@@ -280,27 +280,27 @@
                     android:columnOrderPreserved="false"
                     android:layout_marginBottom="24dp">
 
-                    <!-- 100ml Button -->
+                    <!-- 200ml Button -->
                     <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btn_add_100"
+                        android:id="@+id/btn_add_200"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_columnWeight="1"
                         android:layout_margin="4dp"
-                        android:text="100ml"
+                        android:text="200ml"
                         android:textColor="#FFFFFF"
                         app:backgroundTint="@color/secondary_color"
                         app:cornerRadius="12dp"
                         style="@style/Widget.Material3.Button.ElevatedButton" />
 
-                    <!-- 250ml Button -->
+                    <!-- 300ml Button -->
                     <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btn_add_250"
+                        android:id="@+id/btn_add_300"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_columnWeight="1"
                         android:layout_margin="4dp"
-                        android:text="250ml"
+                        android:text="300ml"
                         android:textColor="#FFFFFF"
                         app:backgroundTint="@color/secondary_color"
                         app:cornerRadius="12dp"

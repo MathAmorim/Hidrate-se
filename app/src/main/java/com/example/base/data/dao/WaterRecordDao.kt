@@ -27,4 +27,7 @@ interface WaterRecordDao {
 
     @Query("SELECT SUM(amount) FROM water_record_table")
     suspend fun getTotalVolume(): Long?
+
+    @Query("SELECT * FROM water_record_table ORDER BY timestamp DESC")
+    suspend fun getAllRecords(): List<WaterRecord>
 }

@@ -32,7 +32,6 @@ drawable circular_progress_primary
 drawable color_circle
 drawable dialog_background
 drawable glass_background
-drawable ic_app_logo
 drawable ic_arrow_back
 drawable ic_award
 drawable ic_bell
@@ -64,8 +63,10 @@ drawable ic_wave
 drawable ic_wrench
 drawable icon_circle_background
 drawable nav_header_gradient
-id btn_add_100
-id btn_add_250
+drawable widget_button_background
+drawable widget_progress_horizontal
+id btn_add_200
+id btn_add_300
 id btn_add_500
 id btn_cancel
 id btn_confirm
@@ -119,6 +120,11 @@ id tv_total_volume
 id tv_unlocked_badge
 id tv_weekly_avg
 id water_wave
+id widget_btn_add_200
+id widget_btn_add_500
+id widget_progress_bar
+id widget_tv_incentive
+id widget_tv_progress
 layout activity_about
 layout activity_achievements
 layout activity_main
@@ -128,6 +134,7 @@ layout dialog_custom_amount
 layout item_achievement
 layout item_water_entry
 layout nav_header
+layout widget_small
 menu drawer_menu
 mipmap ic_launcher
 mipmap ic_launcher_foreground
@@ -145,3 +152,4 @@ style Widget.Hidratese.Card.Glass
 style Widget.Hidratese.TextInputLayout
 xml backup_rules
 xml data_extraction_rules
+xml widget_info

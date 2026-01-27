@@ -8,6 +8,10 @@
         "source": "C:\\Users\\administrator\\.gradle\\daemon\\8.5\\com.example.base.app-main-39:\\mipmap-xxxhdpi\\ic_launcher_round.webp"
     },
     {
+        "merged": "com.example.base.app-merged_res-37:/layout_activity_about.xml.flat",
+        "source": "com.example.base.app-main-39:/layout/activity_about.xml"
+    },
+    {
         "merged": "C:\\Users\\administrator\\.gradle\\daemon\\8.5\\com.example.base.app-merged_res-37:\\layout_activity_about.xml.flat",
         "source": "C:\\Users\\administrator\\.gradle\\daemon\\8.5\\com.example.base.app-main-39:\\layout\\activity_about.xml"
     },
@@ -20,20 +24,20 @@
         "source": "C:\\Users\\administrator\\.gradle\\daemon\\8.5\\com.example.base.app-main-39:\\drawable\\ic_glass_water_full.xml"
     },
     {
-        "merged": "com.example.base.app-merged_res-37:/drawable_ic_wave.xml.flat",
-        "source": "com.example.base.app-main-39:/drawable/ic_wave.xml"
+        "merged": "C:\\Users\\administrator\\.gradle\\daemon\\8.5\\com.example.base.app-merged_res-37:\\drawable_widget_progress_horizontal.xml.flat",
+        "source": "C:\\Users\\administrator\\.gradle\\daemon\\8.5\\com.example.base.app-main-39:\\drawable\\widget_progress_horizontal.xml"
     },
     {
-        "merged": "C:\\Users\\administrator\\.gradle\\daemon\\8.5\\com.example.base.app-merged_res-37:\\mipmap-xhdpi_ic_launcher_foreground.webp.flat",
-        "source": "C:\\Users\\administrator\\.gradle\\daemon\\8.5\\com.example.base.app-main-39:\\mipmap-xhdpi\\ic_launcher_foreground.webp"
+        "merged": "C:\\Users\\administrator\\.gradle\\daemon\\8.5\\com.example.base.app-merged_res-37:\\layout_activity_achievements.xml.flat",
+        "source": "C:\\Users\\administrator\\.gradle\\daemon\\8.5\\com.example.base.app-main-39:\\layout\\activity_achievements.xml"
     },
     {
         "merged": "C:\\Users\\administrator\\.gradle\\daemon\\8.5\\com.example.base.app-merged_res-37:\\layout_nav_header.xml.flat",
         "source": "C:\\Users\\administrator\\.gradle\\daemon\\8.5\\com.example.base.app-main-39:\\layout\\nav_header.xml"
     },
     {
-        "merged": "C:\\Users\\administrator\\.gradle\\daemon\\8.5\\com.example.base.app-merged_res-37:\\layout_activity_achievements.xml.flat",
-        "source": "C:\\Users\\administrator\\.gradle\\daemon\\8.5\\com.example.base.app-main-39:\\layout\\activity_achievements.xml"
+        "merged": "C:\\Users\\administrator\\.gradle\\daemon\\8.5\\com.example.base.app-merged_res-37:\\mipmap-xhdpi_ic_launcher_foreground.webp.flat",
+        "source": "C:\\Users\\administrator\\.gradle\\daemon\\8.5\\com.example.base.app-main-39:\\mipmap-xhdpi\\ic_launcher_foreground.webp"
     },
     {
         "merged": "C:\\Users\\administrator\\.gradle\\daemon\\8.5\\com.example.base.app-merged_res-37:\\mipmap-xxxhdpi_ic_launcher_foreground.webp.flat",
@@ -62,6 +66,10 @@
     {
         "merged": "C:\\Users\\administrator\\.gradle\\daemon\\8.5\\com.example.base.app-merged_res-37:\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
         "source": "C:\\Users\\administrator\\.gradle\\daemon\\8.5\\com.example.base.app-main-39:\\mipmap-anydpi-v26\\ic_launcher_round.xml"
+    },
+    {
+        "merged": "C:\\Users\\administrator\\.gradle\\daemon\\8.5\\com.example.base.app-merged_res-37:\\layout_widget_small.xml.flat",
+        "source": "C:\\Users\\administrator\\.gradle\\daemon\\8.5\\com.example.base.app-main-39:\\layout\\widget_small.xml"
     },
     {
         "merged": "C:\\Users\\administrator\\.gradle\\daemon\\8.5\\com.example.base.app-merged_res-37:\\mipmap-xxxhdpi_ic_launcher.webp.flat",
@@ -124,6 +132,10 @@
         "source": "C:\\Users\\administrator\\.gradle\\daemon\\8.5\\com.example.base.app-main-39:\\mipmap-hdpi\\ic_launcher_round.webp"
     },
     {
+        "merged": "C:\\Users\\administrator\\.gradle\\daemon\\8.5\\com.example.base.app-merged_res-37:\\xml_widget_info.xml.flat",
+        "source": "C:\\Users\\administrator\\.gradle\\daemon\\8.5\\com.example.base.app-main-39:\\xml\\widget_info.xml"
+    },
+    {
         "merged": "C:\\Users\\administrator\\.gradle\\daemon\\8.5\\com.example.base.app-merged_res-37:\\drawable_ic_calendar_week.xml.flat",
         "source": "C:\\Users\\administrator\\.gradle\\daemon\\8.5\\com.example.base.app-main-39:\\drawable\\ic_calendar_week.xml"
     },
@@ -170,10 +182,6 @@
     {
         "merged": "C:\\Users\\administrator\\.gradle\\daemon\\8.5\\com.example.base.app-merged_res-37:\\drawable_dialog_background.xml.flat",
         "source": "C:\\Users\\administrator\\.gradle\\daemon\\8.5\\com.example.base.app-main-39:\\drawable\\dialog_background.xml"
-    },
-    {
-        "merged": "com.example.base.app-merged_res-37:/layout_activity_main.xml.flat",
-        "source": "com.example.base.app-main-39:/layout/activity_main.xml"
     },
     {
         "merged": "C:\\Users\\administrator\\.gradle\\daemon\\8.5\\com.example.base.app-merged_res-37:\\menu_drawer_menu.xml.flat",
@@ -252,12 +260,20 @@
         "source": "C:\\Users\\administrator\\.gradle\\daemon\\8.5\\com.example.base.app-main-39:\\drawable\\ic_trophy_new.xml"
     },
     {
+        "merged": "C:\\Users\\administrator\\.gradle\\daemon\\8.5\\com.example.base.app-merged_res-37:\\drawable_widget_button_background.xml.flat",
+        "source": "C:\\Users\\administrator\\.gradle\\daemon\\8.5\\com.example.base.app-main-39:\\drawable\\widget_button_background.xml"
+    },
+    {
         "merged": "C:\\Users\\administrator\\.gradle\\daemon\\8.5\\com.example.base.app-merged_res-37:\\drawable_ic_water_glass.xml.flat",
         "source": "C:\\Users\\administrator\\.gradle\\daemon\\8.5\\com.example.base.app-main-39:\\drawable\\ic_water_glass.xml"
     },
     {
         "merged": "C:\\Users\\administrator\\.gradle\\daemon\\8.5\\com.example.base.app-merged_res-37:\\mipmap-mdpi_ic_launcher_foreground.webp.flat",
         "source": "C:\\Users\\administrator\\.gradle\\daemon\\8.5\\com.example.base.app-main-39:\\mipmap-mdpi\\ic_launcher_foreground.webp"
+    },
+    {
+        "merged": "C:\\Users\\administrator\\.gradle\\daemon\\8.5\\com.example.base.app-merged_res-37:\\drawable_ic_wave.xml.flat",
+        "source": "C:\\Users\\administrator\\.gradle\\daemon\\8.5\\com.example.base.app-main-39:\\drawable\\ic_wave.xml"
     },
     {
         "merged": "C:\\Users\\administrator\\.gradle\\daemon\\8.5\\com.example.base.app-merged_res-37:\\drawable_ic_stats.xml.flat",

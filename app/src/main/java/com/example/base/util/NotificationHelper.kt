@@ -220,6 +220,51 @@ class NotificationHelper(private val context: Context) {
             currentHour += (2..3).random()
             slotId++
         }
+        
+        // Schedule next day planning
+        scheduleNextDayPlanning(startHour, alarmManager)
+    }
+
+    private fun scheduleNextDayPlanning(startHour: Int, alarmManager: AlarmManager) {
+        val nextDay = java.util.Calendar.getInstance().apply {
+            add(java.util.Calendar.DAY_OF_YEAR, 1)
+            set(java.util.Calendar.HOUR_OF_DAY, startHour)
+            set(java.util.Calendar.MINUTE, 0)
+            set(java.util.Calendar.SECOND, 0)
+        }
+        
+        val intent = Intent(context, NotificationReceiver::class.java).apply {
+            action = "android.intent.action.BOOT_COMPLETED" // Reuse boot logic to reschedule
+        }
+        
+        val pendingIntent = PendingIntent.getBroadcast(
+            context,
+            999, // Special ID for daily planner
+            intent,
+            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+        )
+        
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            if (alarmManager.canScheduleExactAlarms()) {
+                alarmManager.setExactAndAllowWhileIdle(
+                    AlarmManager.RTC_WAKEUP,
+                    nextDay.timeInMillis,
+                    pendingIntent
+                )
+            } else {
+                alarmManager.setAndAllowWhileIdle(
+                    AlarmManager.RTC_WAKEUP,
+                    nextDay.timeInMillis,
+                    pendingIntent
+                )
+            }
+        } else {
+            alarmManager.setExactAndAllowWhileIdle(
+                AlarmManager.RTC_WAKEUP,
+                nextDay.timeInMillis,
+                pendingIntent
+            )
+        }
     }
 
     suspend fun showNotification() {

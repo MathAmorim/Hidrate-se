@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:2:1-52:12
-INJECTED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:2:1-52:12
-INJECTED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:2:1-52:12
-INJECTED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:2:1-52:12
+ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:2:1-66:12
+INJECTED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:2:1-66:12
+INJECTED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:2:1-66:12
+INJECTED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:2:1-66:12
 MERGED from [com.google.android.material:material:1.11.0] C:\Users\administrator\.gradle\caches\transforms-3\eedc38a6be86e8d98a5613e5fc49d0ce\transformed\material-1.11.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] C:\Users\administrator\.gradle\caches\transforms-3\cd75f0cc07e51ec7fd23a101456422d5\transformed\constraintlayout-2.1.4\AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.appcompat:appcompat-resources:1.6.1] C:\Users\administrator\.gradle\caches\transforms-3\0e21b64f9fdc99eb848c0f53bda3d565\transformed\appcompat-resources-1.6.1\AndroidManifest.xml:17:1-22:12
@@ -75,8 +75,8 @@ ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidM
 	android:name
 		ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:8:22-78
 application
-ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:10:5-50:19
-INJECTED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:10:5-50:19
+ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:10:5-64:19
+INJECTED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:10:5-64:19
 MERGED from [com.google.android.material:material:1.11.0] C:\Users\administrator\.gradle\caches\transforms-3\eedc38a6be86e8d98a5613e5fc49d0ce\transformed\material-1.11.0\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.11.0] C:\Users\administrator\.gradle\caches\transforms-3\eedc38a6be86e8d98a5613e5fc49d0ce\transformed\material-1.11.0\AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] C:\Users\administrator\.gradle\caches\transforms-3\cd75f0cc07e51ec7fd23a101456422d5\transformed\constraintlayout-2.1.4\AndroidManifest.xml:9:5-20
@@ -173,6 +173,32 @@ action#android.intent.action.MY_PACKAGE_REPLACED
 ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:47:17-84
 	android:name
 		ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:47:25-81
+receiver#com.example.base.widget.WaterWidgetProvider
+ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:51:9-63:20
+	android:exported
+		ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:53:13-36
+	android:name
+		ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:52:13-55
+intent-filter#action:name:android.appwidget.action.APPWIDGET_UPDATE+action:name:com.example.base.widget.ACTION_ADD_200+action:name:com.example.base.widget.ACTION_ADD_500
+ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:54:13-58:29
+action#android.appwidget.action.APPWIDGET_UPDATE
+ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:55:17-84
+	android:name
+		ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:55:25-81
+action#com.example.base.widget.ACTION_ADD_200
+ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:56:17-81
+	android:name
+		ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:56:25-78
+action#com.example.base.widget.ACTION_ADD_500
+ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:57:17-81
+	android:name
+		ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:57:25-78
+meta-data#android.appwidget.provider
+ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:60:13-62:55
+	android:resource
+		ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:62:17-52
+	android:name
+		ADDED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml:61:17-58
 uses-sdk
 INJECTED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\administrator\Documents\projects\agua4\app\src\main\AndroidManifest.xml

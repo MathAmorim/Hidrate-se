@@ -3028,7 +3028,6 @@ drawable design_password_eye
 drawable design_snackbar_background
 drawable dialog_background
 drawable glass_background
-drawable ic_app_logo
 drawable ic_arrow_back
 drawable ic_arrow_back_black_24
 drawable ic_award
@@ -3154,6 +3153,8 @@ drawable notify_panel_notification_icon_bg
 drawable test_level_drawable
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
+drawable widget_button_background
+drawable widget_progress_horizontal
 id ALT
 id BOTTOM_END
 id BOTTOM_START
@@ -3252,8 +3253,8 @@ id bounce
 id bounceBoth
 id bounceEnd
 id bounceStart
-id btn_add_100
-id btn_add_250
+id btn_add_200
+id btn_add_300
 id btn_add_500
 id btn_cancel
 id btn_confirm
@@ -3698,6 +3699,11 @@ id visible
 id visible_removing_fragment_view_tag
 id water_wave
 id west
+id widget_btn_add_200
+id widget_btn_add_500
+id widget_progress_bar
+id widget_tv_incentive
+id widget_tv_progress
 id withText
 id with_icon
 id withinBounds
@@ -3910,6 +3916,7 @@ layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
 layout splash_screen_view
 layout support_simple_spinner_dropdown_item
+layout widget_small
 menu drawer_menu
 mipmap ic_launcher
 mipmap ic_launcher_foreground
@@ -5373,3 +5380,4 @@ styleable ViewTransition android_id SharedValue SharedValueId clearsTag duration
 styleable include constraintSet
 xml backup_rules
 xml data_extraction_rules
+xml widget_info

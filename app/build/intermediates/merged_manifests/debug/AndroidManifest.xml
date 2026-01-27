@@ -61,6 +61,19 @@
                 <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
             </intent-filter>
         </receiver>
+        <receiver
+            android:name="com.example.base.widget.WaterWidgetProvider"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="com.example.base.widget.ACTION_ADD_200" />
+                <action android:name="com.example.base.widget.ACTION_ADD_500" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_info" />
+        </receiver>
 
         <provider
             android:name="androidx.startup.InitializationProvider"

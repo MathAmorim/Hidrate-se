@@ -110,8 +110,10 @@ class StatisticsActivity : AppCompatActivity() {
             val totalVolume = db.waterRecordDao().getTotalVolume() ?: 0L
 
             // 3. Streak
-            val timestamps = db.waterRecordDao().getAllTimestamps()
-            val streak = calculateStreak(timestamps)
+            val user = db.userDao().getUser()
+            val goal = user?.dailyGoal ?: 2000
+            val allRecords = db.waterRecordDao().getAllRecords()
+            val streak = com.example.base.util.StreakManager.calculateStreak(allRecords, goal)
 
             // 4. Weekly Data (Last 7 days)
             val weeklyData = getDailyTotals(7)
@@ -161,37 +163,7 @@ class StatisticsActivity : AppCompatActivity() {
         return dailyTotals.toSortedMap()
     }
 
-    private fun calculateStreak(timestamps: List<Long>): Int {
-        if (timestamps.isEmpty()) return 0
 
-        val distinctDays = timestamps.map { DateUtils.getStartOfDay(it) }
-            .distinct()
-            .sortedDescending()
-
-        var streak = 0
-        val today = DateUtils.getStartOfDay()
-        val yesterday = today - 86400000
-
-        if (distinctDays.isEmpty()) return 0
-        
-        var currentCheck = if (distinctDays.contains(today)) today else yesterday
-        
-        if (!distinctDays.contains(currentCheck)) {
-             return 0
-        }
-
-        for (day in distinctDays) {
-            if (day == currentCheck) {
-                streak++
-                currentCheck -= 86400000
-            } else if (day > currentCheck) {
-                continue 
-            } else {
-                break
-            }
-        }
-        return streak
-    }
 
     private fun updateUI(
         todayTotal: Int,

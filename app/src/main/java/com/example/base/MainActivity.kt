@@ -126,8 +126,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupButtons() {
         val buttons = mapOf(
-            R.id.btn_add_100 to 100,
-            R.id.btn_add_250 to 250,
+            R.id.btn_add_200 to 200,
+            R.id.btn_add_300 to 300,
             R.id.btn_add_500 to 500
         )
 
@@ -149,6 +149,11 @@ class MainActivity : AppCompatActivity() {
             )
             db.waterRecordDao().insert(record)
             loadWaterData()
+            
+            // Update Widget
+            val intent = android.content.Intent(this@MainActivity, com.example.base.widget.WaterWidgetProvider::class.java)
+            intent.action = com.example.base.widget.WaterWidgetProvider.ACTION_UPDATE_WIDGET
+            sendBroadcast(intent)
         }
     }
 
@@ -164,8 +169,8 @@ class MainActivity : AppCompatActivity() {
             val userName = user?.name ?: "Usuário"
 
             // Calculate Streak
-            val timestamps = db.waterRecordDao().getAllTimestamps()
-            val streak = calculateStreak(timestamps)
+            val allRecords = db.waterRecordDao().getAllRecords()
+            val streak = com.example.base.util.StreakManager.calculateStreak(allRecords, goal)
 
             // Get History
             val history = db.waterRecordDao().getRecordsForDay(todayStart, todayEnd)
@@ -236,8 +241,8 @@ class MainActivity : AppCompatActivity() {
     
     private fun animateEntry() {
         val buttons = listOf(
-            findViewById<android.view.View>(R.id.btn_add_100),
-            findViewById<android.view.View>(R.id.btn_add_250),
+            findViewById<android.view.View>(R.id.btn_add_200),
+            findViewById<android.view.View>(R.id.btn_add_300),
             findViewById<android.view.View>(R.id.btn_add_500)
         )
         
@@ -254,43 +259,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun calculateStreak(timestamps: List<Long>): Int {
-        if (timestamps.isEmpty()) return 0
 
-        val distinctDays = timestamps.map { 
-            val cal = Calendar.getInstance()
-            cal.timeInMillis = it
-            cal.set(Calendar.HOUR_OF_DAY, 0)
-            cal.set(Calendar.MINUTE, 0)
-            cal.set(Calendar.SECOND, 0)
-            cal.set(Calendar.MILLISECOND, 0)
-            cal.timeInMillis
-        }.distinct().sortedDescending()
-
-        var streak = 0
-        val today = getStartOfDay()
-        val yesterday = today - 86400000
-
-        if (distinctDays.isEmpty()) return 0
-        
-        var currentCheck = if (distinctDays.contains(today)) today else yesterday
-        
-        if (!distinctDays.contains(currentCheck)) {
-             return 0
-        }
-
-        for (day in distinctDays) {
-            if (day == currentCheck) {
-                streak++
-                currentCheck -= 86400000
-            } else if (day > currentCheck) {
-                continue 
-            } else {
-                break
-            }
-        }
-        return streak
-    }
 
     private fun getStartOfDay(): Long {
         val calendar = Calendar.getInstance()

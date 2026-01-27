@@ -295,6 +295,44 @@ public final class WaterRecordDao_Impl implements WaterRecordDao {
     }, $completion);
   }
 
+  @Override
+  public Object getAllRecords(final Continuation<? super List<WaterRecord>> $completion) {
+    final String _sql = "SELECT * FROM water_record_table ORDER BY timestamp DESC";
+    final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 0);
+    final CancellationSignal _cancellationSignal = DBUtil.createCancellationSignal();
+    return CoroutinesRoom.execute(__db, false, _cancellationSignal, new Callable<List<WaterRecord>>() {
+      @Override
+      @NonNull
+      public List<WaterRecord> call() throws Exception {
+        final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
+        try {
+          final int _cursorIndexOfId = CursorUtil.getColumnIndexOrThrow(_cursor, "id");
+          final int _cursorIndexOfAmount = CursorUtil.getColumnIndexOrThrow(_cursor, "amount");
+          final int _cursorIndexOfDate = CursorUtil.getColumnIndexOrThrow(_cursor, "date");
+          final int _cursorIndexOfTimestamp = CursorUtil.getColumnIndexOrThrow(_cursor, "timestamp");
+          final List<WaterRecord> _result = new ArrayList<WaterRecord>(_cursor.getCount());
+          while (_cursor.moveToNext()) {
+            final WaterRecord _item;
+            final int _tmpId;
+            _tmpId = _cursor.getInt(_cursorIndexOfId);
+            final int _tmpAmount;
+            _tmpAmount = _cursor.getInt(_cursorIndexOfAmount);
+            final String _tmpDate;
+            _tmpDate = _cursor.getString(_cursorIndexOfDate);
+            final long _tmpTimestamp;
+            _tmpTimestamp = _cursor.getLong(_cursorIndexOfTimestamp);
+            _item = new WaterRecord(_tmpId,_tmpAmount,_tmpDate,_tmpTimestamp);
+            _result.add(_item);
+          }
+          return _result;
+        } finally {
+          _cursor.close();
+          _statement.release();
+        }
+      }
+    }, $completion);
+  }
+
   @NonNull
   public static List<Class<?>> getRequiredConverters() {
     return Collections.emptyList();
