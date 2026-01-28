@@ -152,6 +152,10 @@ class MainActivity : AppCompatActivity() {
                 source = "APP"
             )
             db.waterRecordDao().insert(record)
+            
+            // Check for goal reached notification
+            notificationHelper.showGoalReachedNotification()
+
             loadWaterData()
             
             // Update Widget

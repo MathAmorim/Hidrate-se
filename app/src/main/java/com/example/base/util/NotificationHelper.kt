@@ -13,6 +13,7 @@ import androidx.core.app.NotificationManagerCompat
 import com.example.base.MainActivity
 import com.example.base.R
 import com.example.base.receiver.NotificationReceiver
+import com.example.base.util.MotivationManager
 
 class NotificationHelper(private val context: Context) {
 
@@ -280,6 +281,10 @@ class NotificationHelper(private val context: Context) {
             return // Goal met, don't notify
         }
 
+        val goal = user?.dailyGoal ?: 2000
+        val percentage = if (goal > 0) (totalWater * 100 / goal) else 0
+        val motivationPhrase = MotivationManager.getPhrase(percentage)
+
         // Create an explicit intent for an Activity in your app
         val intent = Intent(context, MainActivity::class.java).apply {
             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
@@ -301,7 +306,7 @@ class NotificationHelper(private val context: Context) {
         val builder = NotificationCompat.Builder(context, CHANNEL_ID)
             .setSmallIcon(R.drawable.ic_droplet)
             .setContentTitle("Hora de se hidratar!")
-            .setContentText("Beba um copo de água para manter sua meta em dia.")
+            .setContentText(motivationPhrase)
             .setPriority(NotificationCompat.PRIORITY_HIGH)
             .setContentIntent(pendingIntent)
             .setAutoCancel(true)
@@ -326,6 +331,50 @@ class NotificationHelper(private val context: Context) {
             ) == android.content.pm.PackageManager.PERMISSION_GRANTED
         } else {
             true
+        }
+    }
+
+    suspend fun showGoalReachedNotification() {
+        val database = com.example.base.data.AppDatabase.getDatabase(context)
+        val user = database.userDao().getUser() ?: return
+        
+        val today = com.example.base.util.DateUtils.getCurrentDate()
+        val history = database.waterRecordDao().getRecordsByDate(today)
+        val totalWater = history.sumOf { it.amount }
+        
+        // Only notify if goal is reached or exceeded
+        if (totalWater >= user.dailyGoal) {
+            // Check if it was JUST reached (i.e., without the last entry, it was below)
+            // This prevents spamming if they drink more after reaching the goal
+            val lastEntry = history.maxByOrNull { it.timestamp }
+            val previousTotal = totalWater - (lastEntry?.amount ?: 0)
+            
+            if (previousTotal < user.dailyGoal) {
+                val phrase = MotivationManager.getPhrase(100)
+                
+                val intent = Intent(context, MainActivity::class.java).apply {
+                    flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                }
+                val pendingIntent: PendingIntent = PendingIntent.getActivity(
+                    context, 0, intent, PendingIntent.FLAG_IMMUTABLE
+                )
+
+                val builder = NotificationCompat.Builder(context, CHANNEL_ID)
+                    .setSmallIcon(R.drawable.ic_trophy_new)
+                    .setContentTitle("Meta Batida! 🎉")
+                    .setContentText(phrase)
+                    .setPriority(NotificationCompat.PRIORITY_HIGH)
+                    .setContentIntent(pendingIntent)
+                    .setAutoCancel(true)
+
+                try {
+                    with(NotificationManagerCompat.from(context)) {
+                        notify(NOTIFICATION_ID + 1, builder.build()) // Different ID
+                    }
+                } catch (e: SecurityException) {
+                    e.printStackTrace()
+                }
+            }
         }
     }
 }

@@ -57,6 +57,9 @@ class WaterWidgetProvider : AppWidgetProvider() {
                     )
                     db.waterRecordDao().insert(record)
                     
+                    // Check for goal reached notification
+                    com.example.base.util.NotificationHelper(context).showGoalReachedNotification()
+                    
                     // Trigger update for all widgets
                     val appWidgetManager = AppWidgetManager.getInstance(context)
                     val componentName = ComponentName(context, WaterWidgetProvider::class.java)
@@ -111,20 +114,28 @@ class WaterWidgetProvider : AppWidgetProvider() {
 
         // Visibility Logic
         if (percentage >= 100) {
-            views.setViewVisibility(R.id.widget_progress_bar, View.GONE)
-            views.setViewVisibility(R.id.widget_btn_add_200, View.GONE)
-            views.setViewVisibility(R.id.widget_btn_add_500, View.GONE)
-            views.setViewVisibility(R.id.widget_tv_progress, View.GONE)
+            views.setViewVisibility(R.id.widget_group_normal, View.GONE)
+            views.setViewVisibility(R.id.widget_group_success, View.VISIBLE)
+            
+            // Set dynamic success text
+            val incentive = MotivationManager.getPhrase(percentage)
+            views.setTextViewText(R.id.widget_tv_success_sub, incentive)
         } else {
-            views.setViewVisibility(R.id.widget_progress_bar, View.VISIBLE)
-            views.setViewVisibility(R.id.widget_btn_add_200, View.VISIBLE)
-            views.setViewVisibility(R.id.widget_btn_add_500, View.VISIBLE)
-            views.setViewVisibility(R.id.widget_tv_progress, View.VISIBLE)
+            views.setViewVisibility(R.id.widget_group_normal, View.VISIBLE)
+            views.setViewVisibility(R.id.widget_group_success, View.GONE)
         }
 
         // Setup Buttons
         views.setOnClickPendingIntent(R.id.widget_btn_add_200, getPendingIntent(context, ACTION_ADD_200))
         views.setOnClickPendingIntent(R.id.widget_btn_add_500, getPendingIntent(context, ACTION_ADD_500))
+
+        // Setup Open App Click (Apply to root and groups to ensure clickability)
+        val appIntent = Intent(context, com.example.base.MainActivity::class.java)
+        val appPendingIntent = PendingIntent.getActivity(context, 0, appIntent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
+        
+        views.setOnClickPendingIntent(R.id.widget_root, appPendingIntent)
+        views.setOnClickPendingIntent(R.id.widget_group_normal, appPendingIntent)
+        views.setOnClickPendingIntent(R.id.widget_group_success, appPendingIntent)
 
         // Instruct the widget manager to update the widget
         appWidgetManager.updateAppWidget(appWidgetId, views)

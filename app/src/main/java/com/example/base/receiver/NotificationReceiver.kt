@@ -55,6 +55,9 @@ class NotificationReceiver : BroadcastReceiver() {
         )
         database.waterRecordDao().insert(record)
         
+        // Check for goal reached notification
+        NotificationHelper(context).showGoalReachedNotification()
+        
         // Update Widget
         val intent = Intent(context, com.example.base.widget.WaterWidgetProvider::class.java)
         intent.action = com.example.base.widget.WaterWidgetProvider.ACTION_UPDATE_WIDGET

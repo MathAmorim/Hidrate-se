@@ -1,11 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/widget_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/dialog_background"
     android:padding="12dp">
 
+    <!-- Normal State Group -->
     <LinearLayout
+        android:id="@+id/widget_group_normal"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
@@ -17,7 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:orientation="vertical"
-            android:layout_marginEnd="16dp">
+            android:layout_marginEnd="8dp">
 
             <TextView
                 android:id="@+id/widget_tv_incentive"
@@ -26,7 +28,7 @@
                 android:text="Mantenha-se hidratado!"
                 android:textColor="@color/text_secondary"
                 android:textSize="12sp"
-                android:maxLines="1"
+                android:maxLines="2"
                 android:ellipsize="end" />
 
             <TextView
@@ -48,7 +50,6 @@
                 android:progressDrawable="@drawable/widget_progress_horizontal"
                 android:progress="0"
                 android:max="100" />
-                <!-- Note: circular_progress_primary might be a ring, need to check if it works as horizontal bar or use standard drawable -->
 
         </LinearLayout>
 
@@ -66,7 +67,7 @@
                 android:text="+200"
                 android:textColor="@color/white"
                 android:textSize="12sp"
-                android:layout_marginEnd="8dp" />
+                android:layout_marginEnd="4dp" />
 
             <Button
                 android:id="@+id/widget_btn_add_500"
@@ -78,6 +79,36 @@
                 android:textSize="12sp" />
 
         </LinearLayout>
+    </LinearLayout>
+
+    <!-- Success State Group (Hidden by default) -->
+    <LinearLayout
+        android:id="@+id/widget_group_success"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/widget_tv_success"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Meta Batida! 🎉"
+            android:textColor="@color/text_primary"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:gravity="center" />
+            
+        <TextView
+            android:id="@+id/widget_tv_success_sub"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Parabéns!"
+            android:textColor="@color/text_secondary"
+            android:textSize="14sp"
+            android:gravity="center"
+            android:layout_marginTop="4dp"/>
 
     </LinearLayout>
 

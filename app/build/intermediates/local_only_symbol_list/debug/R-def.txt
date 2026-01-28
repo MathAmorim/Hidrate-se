@@ -123,9 +123,14 @@ id tv_weekly_avg
 id water_wave
 id widget_btn_add_200
 id widget_btn_add_500
+id widget_group_normal
+id widget_group_success
 id widget_progress_bar
+id widget_root
 id widget_tv_incentive
 id widget_tv_progress
+id widget_tv_success
+id widget_tv_success_sub
 layout activity_about
 layout activity_achievements
 layout activity_main

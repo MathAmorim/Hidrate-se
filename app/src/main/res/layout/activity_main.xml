@@ -42,8 +42,8 @@
                         android:layout_height="48dp"
                         android:background="?attr/selectableItemBackgroundBorderless"
                         android:src="@drawable/ic_menu"
-                        android:tint="#FFFFFF"
-                        android:contentDescription="Menu" />
+                        android:contentDescription="Menu"
+                        app:tint="#FFFFFF" />
 
                     <View
                         android:layout_width="0dp"
@@ -176,8 +176,8 @@
                                 android:layout_width="64dp"
                                 android:layout_height="64dp"
                                 android:src="@drawable/ic_droplet"
-                                android:tint="@color/primary_color"
-                                android:layout_marginBottom="8dp" />
+                                android:layout_marginBottom="8dp"
+                                app:tint="@color/primary_color" />
 
                             <TextView
                                 android:id="@+id/tv_current_intake"
@@ -235,8 +235,8 @@
                             android:layout_width="48dp"
                             android:layout_height="48dp"
                             android:src="@drawable/ic_fire"
-                            android:tint="@color/fire_color"
-                            android:layout_marginEnd="16dp" />
+                            android:layout_marginEnd="16dp"
+                            app:tint="@color/fire_color" />
 
                         <LinearLayout
                             android:layout_width="0dp"
@@ -267,7 +267,7 @@
                             android:layout_width="24dp"
                             android:layout_height="24dp"
                             android:src="@drawable/ic_chevron_right"
-                            android:tint="#9ca3af" />
+                            app:tint="#9ca3af" />
 
                     </LinearLayout>
 

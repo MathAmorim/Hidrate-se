@@ -40,10 +40,10 @@
             <ImageView
                 android:layout_width="120dp"
                 android:layout_height="120dp"
-                android:src="@mipmap/ic_launcher"
-                android:tint="@color/primary_color"
+                android:src="@drawable/ic_water_tank"
                 android:layout_marginTop="32dp"
-                android:layout_marginBottom="24dp" />
+                android:layout_marginBottom="24dp"
+                app:tint="@color/primary_color" />
 
             <!-- App Name -->
             <TextView
@@ -136,8 +136,8 @@
                             android:layout_width="24dp"
                             android:layout_height="24dp"
                             android:src="@drawable/ic_check_circle"
-                            android:tint="@color/primary_color"
-                            android:layout_marginEnd="12dp" />
+                            android:layout_marginEnd="12dp"
+                            app:tint="@color/primary_color" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -160,8 +160,8 @@
                             android:layout_width="24dp"
                             android:layout_height="24dp"
                             android:src="@drawable/ic_check_circle"
-                            android:tint="@color/primary_color"
-                            android:layout_marginEnd="12dp" />
+                            android:layout_marginEnd="12dp"
+                            app:tint="@color/primary_color" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -184,8 +184,8 @@
                             android:layout_width="24dp"
                             android:layout_height="24dp"
                             android:src="@drawable/ic_check_circle"
-                            android:tint="@color/primary_color"
-                            android:layout_marginEnd="12dp" />
+                            android:layout_marginEnd="12dp"
+                            app:tint="@color/primary_color" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -208,8 +208,8 @@
                             android:layout_width="24dp"
                             android:layout_height="24dp"
                             android:src="@drawable/ic_check_circle"
-                            android:tint="@color/primary_color"
-                            android:layout_marginEnd="12dp" />
+                            android:layout_marginEnd="12dp"
+                            app:tint="@color/primary_color" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -231,8 +231,8 @@
                             android:layout_width="24dp"
                             android:layout_height="24dp"
                             android:src="@drawable/ic_check_circle"
-                            android:tint="@color/primary_color"
-                            android:layout_marginEnd="12dp" />
+                            android:layout_marginEnd="12dp"
+                            app:tint="@color/primary_color" />
 
                         <TextView
                             android:layout_width="wrap_content"
