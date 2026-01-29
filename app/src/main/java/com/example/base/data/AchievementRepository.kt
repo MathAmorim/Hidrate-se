@@ -143,7 +143,7 @@ class AchievementRepository(
             
             val sortedDates = dailyTotals.keys.sorted()
             var currentStreak = 0
-            val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+            val sdf = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
             
             // We need to iterate through dates and check continuity
             // This is a simplified version. A robust one would fill in missing dates with 0.
