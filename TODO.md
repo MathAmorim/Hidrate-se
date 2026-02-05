@@ -74,3 +74,20 @@ Tema Escuro: O design é feito nativamente com suporte a Material Design 3 e tem
 O AlarmScheduler deve usar setExactAndAllowWhileIdle para garantir que o alarme toque mesmo no modo Doze.
 O AndroidManifest deve conter a permissão SCHEDULE_EXACT_ALARM.
 Na tela "Sobre" (AboutActivity), adicione uma aba de ajuda que exibe as informações explicando como resolver o problema de recebimento de notificações: "Não está recebendo notificações?" "Em celulares Xiaomi/Samsung, ative o 'Início Automático' e coloque a economia de bateria em 'Sem Restrições' para este app."
+
+---
+
+9. Backup e Restauração de Dados
+Status: Implementado (Concluído).
+
+Detalhes Técnicos:
+- **Criptografia**: Implementado `AES/GCM/NoPadding` com chave fixa (para simplificação) em `BackupManager`.
+- **Exportação**:
+    - Serialização JSON via Gson (`BackupData`).
+    - Salva na pasta **Downloads** via `MediaStore`.
+    - Nome do arquivo com timestamp: `backup_hidratese_YYYYMMDD_HHmmss.hds`.
+- **Importação**:
+    - Seletor de arquivos (`ActivityResultContracts.OpenDocument`).
+    - Descriptografia e validação do JSON.
+    - **Estratégia de Restore**: Limpa o banco (`clearAllTables`) e re-insere usuário e registros (Substituição Completa).
+    - Recálculo automático de conquistas e atualização de widgets após restore.
