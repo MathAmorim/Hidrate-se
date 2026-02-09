@@ -1,20 +1,3 @@
-Atue como: Um Desenvolvedor Android Sênior especialista em Kotlin e Material Design 3.
-
-Objetivo: Criar um aplicativo nativo completo chamado "Hidrate-se" para monitoramento de ingestão de água. O código deve ser robusto, usar as melhores práticas de ciclo de vida do Android
-
-
-Crie o aplicativo com base na interface que já foi implementada nos arquivos listados abaixo.
-app\src\main\res\layout\ *
-app\src\main\res\menu\ *
-app\src\main\res\drawable\ *
-app\src\main\res\color\ *
-
-
-A primeiro momento faça somente a interface estar pronta para conpilação, não precisa da logica, somente faça o app abrir e o menu de navegação funcionar.
-
-E faça uma listar de a fazer com as funcionalidades abaixo separada em fases.
-
-
 1. Painel Principal (Dashboard)
 A tela inicial serve como o centro de controle do usuário:
 
