@@ -1,1 +1,25 @@
+*.iml
+.gradle
+/local.properties
+/.idea/
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
+local.properties
 
+# Android Studio Navigation editor temp files
+.navigation/
+
+# Logcat
+logcat.txt
+*.log
+
+# Build folders
+app/build/
+*/build/
+
+# Keystore files
+*.jks
+*.keystore
