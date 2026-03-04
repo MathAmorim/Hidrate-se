@@ -142,75 +142,6 @@
 
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- Goal Section -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Meta Diária"
-                android:textColor="#FFFFFF"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:layout_marginBottom="16dp" />
-
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="24dp"
-                app:cardBackgroundColor="#1f2937"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="0dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="16dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="center_vertical"
-                        android:layout_marginBottom="8dp">
-
-                        <ImageView
-                            android:layout_width="24dp"
-                            android:layout_height="24dp"
-                            android:src="@drawable/ic_target"
-                            android:layout_marginEnd="12dp" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="Meta calculada"
-                            android:textColor="#9ca3af"
-                            android:textSize="14sp" />
-
-                        <TextView
-                            android:id="@+id/tv_calculated_goal"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="2135ml"
-                            android:textColor="#FFFFFF"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
-
-                    </LinearLayout>
-
-                    <TextView
-                        android:id="@+id/tv_goal_explanation"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Baseado em 35ml por kg de peso corporal"
-                        android:textColor="#6b7280"
-                        android:textSize="12sp"
-                        android:layout_marginStart="36dp" />
-
-                </LinearLayout>
-
-            </com.google.android.material.card.MaterialCardView>
-
             <!-- Reminders Section -->
             <TextView
                 android:layout_width="wrap_content"
@@ -357,9 +288,90 @@
 
                 </LinearLayout>
 
+
+            </com.google.android.material.card.MaterialCardView>
+            <!-- Goal Section -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Meta Diária"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="16dp" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                app:cardBackgroundColor="#1f2937"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginBottom="8dp">
+
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/ic_target"
+                            android:layout_marginEnd="12dp" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Meta calculada"
+                            android:textColor="#9ca3af"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/tv_calculated_goal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="2135ml"
+                            android:textColor="#FFFFFF"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/tv_goal_explanation"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Baseado em 35ml por kg de peso corporal"
+                        android:textColor="#6b7280"
+                        android:textSize="12sp"
+                        android:layout_marginStart="36dp" />
+
+                </LinearLayout>
+
             </com.google.android.material.card.MaterialCardView>
 
-
+            <!-- Save Button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_save"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Salvar Alterações"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                app:backgroundTint="@color/primary_color"
+                app:cornerRadius="12dp"
+                android:paddingVertical="16dp"
+                android:layout_marginBottom="23dp"
+                />
 
             <!-- Permissões Section -->
             <TextView
@@ -399,7 +411,8 @@
                         android:layout_height="wrap_content"
                         android:text="Otimização de Bateria"
                         app:backgroundTint="#374151"
-                        app:icon="@drawable/ic_target"
+                        app:icon="@drawable/ic_battery_colored"
+                        app:iconTint="@null"
                         app:iconGravity="textStart"
                         app:cornerRadius="8dp"
                         android:layout_marginBottom="8dp" />
@@ -410,7 +423,8 @@
                         android:layout_height="wrap_content"
                         android:text="Início Automático"
                         app:backgroundTint="#374151"
-                        app:icon="@drawable/ic_target"
+                        app:icon="@drawable/ic_reload"
+                        app:iconTint="@null"
                         app:iconGravity="textStart"
                         app:cornerRadius="8dp"
                         android:layout_marginBottom="8dp" />
@@ -421,7 +435,8 @@
                         android:layout_height="wrap_content"
                         android:text="Alarmes e Lembretes"
                         app:backgroundTint="#374151"
-                        app:icon="@drawable/ic_target"
+                        app:icon="@drawable/ic_bell_colored"
+                        app:iconTint="@null"
                         app:iconGravity="textStart"
                         app:cornerRadius="8dp" />
 
@@ -478,17 +493,7 @@
 
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- Save Button -->
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_save"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Salvar Alterações"
-                android:textColor="#FFFFFF"
-                android:textSize="16sp"
-                app:backgroundTint="@color/primary_color"
-                app:cornerRadius="12dp"
-                android:paddingVertical="16dp" />
+
 
         </LinearLayout>
 
