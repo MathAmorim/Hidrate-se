@@ -4,22 +4,22 @@
         <item
             android:id="@+id/nav_home"
             android:icon="@drawable/ic_droplet"
-            android:title="Início" />
+            android:title="@string/inicio" />
         <item
             android:id="@+id/nav_statistics"
             android:icon="@drawable/ic_stats"
-            android:title="Estatísticas" />
+            android:title="@string/estatisticas" />
         <item
             android:id="@+id/nav_achievements"
             android:icon="@drawable/ic_award"
-            android:title="Conquistas" />
+            android:title="@string/conquistas" />
         <item
             android:id="@+id/nav_settings"
             android:icon="@drawable/ic_wrench"
-            android:title="Configurações" />
+            android:title="@string/configuracoes" />
         <item
             android:id="@+id/nav_about"
             android:icon="@drawable/ic_info"
-            android:title="Sobre" />
+            android:title="@string/sobre" />
     </group>
 </menu>

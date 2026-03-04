@@ -16,7 +16,7 @@
         android:background="@android:color/transparent"
         app:navigationIcon="@drawable/ic_arrow_back"
         app:navigationIconTint="#FFFFFF"
-        app:title="Configurações"
+        app:title="@string/configuracoes"
         app:titleTextColor="#FFFFFF" />
 
     <View
@@ -39,7 +39,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Perfil"
+                android:text="@string/perfil"
                 android:textColor="#FFFFFF"
                 android:textSize="18sp"
                 android:textStyle="bold"
@@ -64,7 +64,7 @@
                         style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Nome"
+                        android:hint="@string/nome"
                         android:textColorHint="#9ca3af"
                         app:hintTextColor="@color/primary_color"
                         app:boxStrokeColor="@color/primary_color"
@@ -78,7 +78,7 @@
                             android:id="@+id/et_user_name"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Usuário"
+                            android:text="@string/usuario"
                             android:textColor="#FFFFFF"
                             android:inputType="textPersonName" />
 
@@ -89,7 +89,7 @@
                         style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Peso (kg)"
+                        android:hint="@string/peso_kg"
                         android:textColorHint="#9ca3af"
                         app:hintTextColor="@color/primary_color"
                         app:boxStrokeColor="@color/primary_color"
@@ -114,7 +114,7 @@
                         style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Data de Nascimento"
+                        android:hint="@string/data_de_nascimento"
                         android:textColorHint="#9ca3af"
                         app:hintTextColor="@color/primary_color"
                         app:boxStrokeColor="@color/primary_color"
@@ -146,7 +146,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Lembretes"
+                android:text="@string/lembretes"
                 android:textColor="#FFFFFF"
                 android:textSize="18sp"
                 android:textStyle="bold"
@@ -184,7 +184,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="Início do dia"
+                            android:text="@string/inicio_do_dia"
                             android:textColor="#FFFFFF"
                             android:textSize="16sp" />
 
@@ -219,7 +219,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="Fim do dia"
+                            android:text="@string/fim_do_dia"
                             android:textColor="#FFFFFF"
                             android:textSize="16sp" />
 
@@ -266,14 +266,14 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Notificação Permanente"
+                                android:text="@string/notificacao_permanente"
                                 android:textColor="#FFFFFF"
                                 android:textSize="16sp" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Painel fixo para atalhos"
+                                android:text="@string/painel_fixo_para_atalhos"
                                 android:textColor="#6b7280"
                                 android:textSize="12sp" />
                         </LinearLayout>
@@ -286,6 +286,59 @@
 
                     </LinearLayout>
 
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="16dp"
+                        android:background="#374151" />
+
+                    <!-- Home Screen Widget -->
+                    <LinearLayout
+                        android:id="@+id/btn_add_widget"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:background="?attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:focusable="true">
+
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/ic_droplet"
+                            android:layout_marginEnd="12dp" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/adicionar_widget_ecra"
+                                android:textColor="#FFFFFF"
+                                android:textSize="16sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/adicione_painel_ecra"
+                                android:textColor="#6b7280"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/ic_add"
+                            app:tint="#6b7280" />
+
+                    </LinearLayout>
+
                 </LinearLayout>
 
 
@@ -294,7 +347,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Meta Diária"
+                android:text="@string/meta_diaria"
                 android:textColor="#FFFFFF"
                 android:textSize="18sp"
                 android:textStyle="bold"
@@ -331,7 +384,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="Meta calculada"
+                            android:text="@string/meta_calculada"
                             android:textColor="#9ca3af"
                             android:textSize="14sp" />
 
@@ -350,7 +403,7 @@
                         android:id="@+id/tv_goal_explanation"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Baseado em 35ml por kg de peso corporal"
+                        android:text="@string/baseado_em_35ml_por_kg_de_peso_corporal"
                         android:textColor="#6b7280"
                         android:textSize="12sp"
                         android:layout_marginStart="36dp" />
@@ -364,7 +417,7 @@
                 android:id="@+id/btn_save"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Salvar Alterações"
+                android:text="@string/salvar_alteracoes"
                 android:textColor="#FFFFFF"
                 android:textSize="16sp"
                 app:backgroundTint="@color/primary_color"
@@ -377,7 +430,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Permissões e Funcionamento"
+                android:text="@string/permissoes_e_funcionamento"
                 android:textColor="#FFFFFF"
                 android:textSize="18sp"
                 android:textStyle="bold"
@@ -400,7 +453,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Ajuste estas configurações no seu celular para garantir que os lembretes de água toquem na hora certa, mesmo com o aplicativo em segundo plano."
+                        android:text="@string/ajuste_estas_configuracoes_no_seu"
                         android:textColor="#9ca3af"
                         android:textSize="14sp"
                         android:layout_marginBottom="16dp" />
@@ -409,7 +462,7 @@
                         android:id="@+id/btn_battery_optimization"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Otimização de Bateria"
+                        android:text="@string/otimizacao_de_bateria"
                         app:backgroundTint="#374151"
                         app:icon="@drawable/ic_battery_colored"
                         app:iconTint="@null"
@@ -421,7 +474,7 @@
                         android:id="@+id/btn_auto_start"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Início Automático"
+                        android:text="@string/inicio_automatico"
                         app:backgroundTint="#374151"
                         app:icon="@drawable/ic_reload"
                         app:iconTint="@null"
@@ -433,7 +486,7 @@
                         android:id="@+id/btn_exact_alarms"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Alarmes e Lembretes"
+                        android:text="@string/alarmes_e_lembretes"
                         app:backgroundTint="#374151"
                         app:icon="@drawable/ic_bell_colored"
                         app:iconTint="@null"
@@ -448,7 +501,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Dados e Armazenamento"
+                android:text="@string/dados_e_armazenamento"
                 android:textColor="#FFFFFF"
                 android:textSize="18sp"
                 android:textStyle="bold"
@@ -472,7 +525,7 @@
                         android:id="@+id/btn_backup"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Fazer Backup"
+                        android:text="@string/fazer_backup"
                         app:backgroundTint="#374151"
                         app:icon="@drawable/ic_download"
                         app:iconGravity="textStart"
@@ -483,7 +536,7 @@
                         android:id="@+id/btn_restore"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Restaurar Backup"
+                        android:text="@string/restaurar_backup"
                         app:backgroundTint="#374151"
                         app:icon="@drawable/ic_upload"
                         app:iconGravity="textStart"

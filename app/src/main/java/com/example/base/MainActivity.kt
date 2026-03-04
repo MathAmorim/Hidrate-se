@@ -212,10 +212,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun updateUI(current: Int, goal: Int, userName: String, streak: Int, history: List<WaterRecord>) {
-        tvCurrentIntake.text = "${current}ml"
-        tvGoal.text = "de ${goal}ml"
+        tvCurrentIntake.text = getString(R.string.current_intake_format, current)
+        tvGoal.text = getString(R.string.goal_format, goal)
         val percentage = if (goal > 0) (current * 100 / goal) else 0
-        tvPercentage.text = "$percentage%"
+        tvPercentage.text = getString(R.string.percentage_format, percentage)
         
         // Smooth progress animation
         val targetProgress = percentage.coerceIn(0, 100)
@@ -225,15 +225,15 @@ class MainActivity : AppCompatActivity() {
             start()
         }
         
-        tvGreeting.text = "Olá, $userName"
-        tvStreakDays.text = "$streak dias"
+        tvGreeting.text = getString(R.string.greeting_format, userName)
+        tvStreakDays.text = resources.getQuantityString(R.plurals.streak_days, streak, streak)
         
         // Update Motivation
         tvMotivation.text = MotivationManager.getPhrase(percentage)
         
         // Update History
         historyAdapter.updateData(history)
-        tvTotalEntries.text = "${history.size} entradas"
+        tvTotalEntries.text = resources.getQuantityString(R.plurals.total_entries, history.size, history.size)
 
         animateWave(percentage)
         animateFire(current, goal)
@@ -263,10 +263,6 @@ class MainActivity : AppCompatActivity() {
         val scaleY = android.animation.ObjectAnimator.ofFloat(fireIcon, "scaleY", 1f, 1.3f, 0.9f, 1f)
         
         android.animation.AnimatorSet().apply {
-            // updateProgressUI(totalConsumed, dailyGoal) // This line is not part of animateFire's responsibility
-            // checkGoalReached(totalConsumed, dailyGoal) // This line is not part of animateFire's responsibility
-            
-            // Ensure permanent notification represents truth
             lifecycleScope.launch {
                 notificationHelper.showPermanentNotification()
             }
@@ -330,7 +326,7 @@ class MainActivity : AppCompatActivity() {
         val prefs = getSharedPreferences("hidrate_prefs", android.content.Context.MODE_PRIVATE)
         val nextTimeStr = prefs.getString("next_alarm_time_str", "---")
         
-        tvNextNotification.text = "Próximo: $nextTimeStr"
+        tvNextNotification.text = getString(R.string.next_notification_format, nextTimeStr)
     }
 
     override fun onBackPressed() {

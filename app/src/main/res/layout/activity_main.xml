@@ -54,7 +54,7 @@
                         android:id="@+id/tv_next_notification"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Próximo: 10:00"
+                        android:text="@string/proximo_10_00"
                         android:textColor="#9ca3af"
                         android:textSize="14sp"
                         android:drawablePadding="8dp"
@@ -83,7 +83,7 @@
                     android:id="@+id/tv_greeting"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Olá, Usuário"
+                    android:text="@string/ola_usuario"
                     android:textColor="#FFFFFF"
                     android:textSize="24sp"
                     android:textStyle="bold"
@@ -92,7 +92,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Mantenha-se hidratado hoje!"
+                    android:text="@string/mantenha_se_hidratado_hoje"
                     android:textColor="#9ca3af"
                     android:textSize="14sp"
                     android:layout_marginBottom="16dp" />
@@ -102,7 +102,7 @@
                     android:id="@+id/tv_motivation"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Hora de se hidratar! 💧"
+                    android:text="@string/hora_de_se_hidratar"
                     android:textColor="#4ade80"
                     android:textSize="16sp"
                     android:textStyle="italic"
@@ -192,7 +192,7 @@
                                 android:id="@+id/tv_goal"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="de 2000ml"
+                                android:text="@string/de_2000ml"
                                 android:textColor="#9ca3af"
                                 android:textSize="14sp"
                                 android:layout_marginTop="4dp" />
@@ -247,7 +247,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Sequência Atual"
+                                android:text="@string/sequencia_atual"
                                 android:textColor="#9ca3af"
                                 android:textSize="12sp"
                                 android:textAlignment="viewStart" />
@@ -256,7 +256,7 @@
                                 android:id="@+id/tv_streak_days"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="0 dias"
+                                android:text="@string/txt_0_dias"
                                 android:textColor="#FFFFFF"
                                 android:textSize="20sp"
                                 android:textStyle="bold"
@@ -275,7 +275,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Adicionar Água"
+                    android:text="@string/adicionar_agua"
                     android:textColor="#FFFFFF"
                     android:textSize="16sp"
                     android:textStyle="bold"
@@ -349,7 +349,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Histórico de Hoje"
+                        android:text="@string/historico_de_hoje"
                         android:textColor="#FFFFFF"
                         android:textSize="16sp"
                         android:textStyle="bold" />
@@ -358,7 +358,7 @@
                         android:id="@+id/tv_total_entries"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="0 entradas"
+                        android:text="@string/txt_0_entradas"
                         android:textColor="#9ca3af"
                         android:textSize="12sp" />
 

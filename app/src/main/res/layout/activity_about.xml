@@ -16,7 +16,7 @@
         android:background="@android:color/transparent"
         app:navigationIcon="@drawable/ic_arrow_back"
         app:navigationIconTint="#FFFFFF"
-        app:title="Sobre"
+        app:title="@string/sobre"
         app:titleTextColor="#FFFFFF" />
 
     <View
@@ -49,7 +49,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Hidrate-se"
+                android:text="@string/hidrate_se"
                 android:textColor="#FFFFFF"
                 android:textSize="28sp"
                 android:textStyle="bold"
@@ -59,7 +59,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Versão 1.0.0"
+                android:text="@string/versao_1_0_0"
                 android:textColor="#9ca3af"
                 android:textSize="14sp"
                 android:layout_marginBottom="32dp" />
@@ -82,7 +82,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Sobre o App"
+                        android:text="@string/sobre_o_app"
                         android:textColor="#FFFFFF"
                         android:textSize="18sp"
                         android:textStyle="bold"
@@ -91,7 +91,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Hidrate-se é seu companheiro diário para manter uma hidratação saudável. Com lembretes personalizados, acompanhamento de metas e conquistas motivadoras, nunca foi tão fácil cuidar da sua saúde."
+                        android:text="@string/hidrate_se_e_seu_companheiro"
                         android:textColor="#d1d5db"
                         android:textSize="14sp"
                         android:lineSpacingMultiplier="1.4" />
@@ -118,7 +118,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Recursos"
+                        android:text="@string/recursos"
                         android:textColor="#FFFFFF"
                         android:textSize="18sp"
                         android:textStyle="bold"
@@ -142,7 +142,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Acompanhamento de consumo diário"
+                            android:text="@string/acompanhamento_de_consumo_diario"
                             android:textColor="#d1d5db"
                             android:textSize="14sp" />
 
@@ -166,7 +166,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Lembretes inteligentes personalizados"
+                            android:text="@string/lembretes_inteligentes_personalizados"
                             android:textColor="#d1d5db"
                             android:textSize="14sp" />
 
@@ -190,7 +190,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Sistema de conquistas e metas"
+                            android:text="@string/sistema_de_conquistas_e_metas"
                             android:textColor="#d1d5db"
                             android:textSize="14sp" />
 
@@ -214,7 +214,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Estatísticas e gráficos detalhados"
+                            android:text="@string/estatisticas_e_graficos_detalhados"
                             android:textColor="#d1d5db"
                             android:textSize="14sp" />
 
@@ -237,7 +237,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Personalização de cores e temas"
+                            android:text="@string/personalizacao_de_cores_e_temas"
                             android:textColor="#d1d5db"
                             android:textSize="14sp" />
 
@@ -265,7 +265,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Desenvolvido com 💧"
+                        android:text="@string/desenvolvido_com"
                         android:textColor="#FFFFFF"
                         android:textSize="14sp"
                         android:layout_gravity="center_horizontal"
@@ -274,7 +274,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="© 2026 Hidrate-se"
+                        android:text="@string/txt_2026_hidrate_se"
                         android:textColor="#9ca3af"
                         android:textSize="12sp"
                         android:layout_gravity="center_horizontal" />

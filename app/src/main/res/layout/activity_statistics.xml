@@ -17,7 +17,7 @@
         android:background="@android:color/transparent"
         app:navigationIcon="@drawable/ic_arrow_back"
         app:navigationIconTint="#FFFFFF"
-        app:title="Estatísticas"
+        app:title="@string/estatisticas"
         app:titleTextColor="#FFFFFF" />
 
     <View
@@ -72,7 +72,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Hoje"
+                            android:text="@string/hoje"
                             android:textColor="#9ca3af"
                             android:textSize="12sp"
                             android:layout_marginBottom="4dp" />
@@ -117,7 +117,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Média 7 dias"
+                            android:text="@string/media_7_dias"
                             android:textColor="#9ca3af"
                             android:textSize="12sp"
                             android:layout_marginBottom="4dp" />
@@ -162,7 +162,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Sequência"
+                            android:text="@string/sequencia"
                             android:textColor="#9ca3af"
                             android:textSize="12sp"
                             android:layout_marginBottom="4dp" />
@@ -171,7 +171,7 @@
                             android:id="@+id/tv_current_streak"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="0 dias"
+                            android:text="@string/txt_0_dias"
                             android:textColor="#FFFFFF"
                             android:textSize="20sp"
                             android:textStyle="bold" />
@@ -207,7 +207,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Total"
+                            android:text="@string/total"
                             android:textColor="#9ca3af"
                             android:textSize="12sp"
                             android:layout_marginBottom="4dp" />
@@ -231,7 +231,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Últimos 7 Dias"
+                android:text="@string/ultimos_7_dias"
                 android:textColor="#FFFFFF"
                 android:textSize="18sp"
                 android:textStyle="bold"
@@ -266,7 +266,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Últimos 30 Dias"
+                android:text="@string/ultimos_30_dias"
                 android:textColor="#FFFFFF"
                 android:textSize="18sp"
                 android:textStyle="bold"
@@ -301,7 +301,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Recordes"
+                android:text="@string/recordes"
                 android:textColor="#FFFFFF"
                 android:textSize="18sp"
                 android:textStyle="bold"
@@ -341,7 +341,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Melhor Dia"
+                                android:text="@string/melhor_dia"
                                 android:textColor="#9ca3af"
                                 android:textSize="12sp" />
 

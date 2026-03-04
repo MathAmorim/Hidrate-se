@@ -15,6 +15,7 @@ local.properties
 # Logcat
 logcat.txt
 *.log
+log.txt
 
 # Build folders
 app/build/

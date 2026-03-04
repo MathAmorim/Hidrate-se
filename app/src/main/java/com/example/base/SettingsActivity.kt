@@ -113,6 +113,7 @@ class SettingsActivity : AppCompatActivity() {
         btnAutoStart = findViewById(R.id.btn_auto_start)
         btnExactAlarms = findViewById(R.id.btn_exact_alarms)
         switchPermanentNotification = findViewById(R.id.switch_permanent_notification)
+        val btnAddWidget = findViewById<android.view.View>(R.id.btn_add_widget)
 
         // Listeners
         etBirthDate.setOnClickListener { showDatePicker() }
@@ -121,6 +122,7 @@ class SettingsActivity : AppCompatActivity() {
         btnSave.setOnClickListener { saveSettings() }
         btnBackup.setOnClickListener { performBackup() }
         btnRestore.setOnClickListener { restoreLauncher.launch(arrayOf("*/*")) }
+        btnAddWidget.setOnClickListener { requestPinWidget() }
         
         // Listeners das Permissões
         btnBatteryOptimization.setOnClickListener {
@@ -177,28 +179,44 @@ class SettingsActivity : AppCompatActivity() {
         })
     }
 
+    private fun requestPinWidget() {
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            val appWidgetManager = android.appwidget.AppWidgetManager.getInstance(this)
+            val myProvider = android.content.ComponentName(this, com.example.base.widget.WaterWidgetProvider::class.java)
+            
+            if (appWidgetManager.isRequestPinAppWidgetSupported) {
+                Toast.makeText(this, getString(R.string.toast_widget_requested), Toast.LENGTH_SHORT).show()
+                appWidgetManager.requestPinAppWidget(myProvider, null, null)
+            } else {
+                Toast.makeText(this, getString(R.string.toast_widget_unsupported), Toast.LENGTH_SHORT).show()
+            }
+        } else {
+            Toast.makeText(this, getString(R.string.toast_widget_unsupported), Toast.LENGTH_SHORT).show()
+        }
+    }
+
     private fun performBackup() {
         lifecycleScope.launch {
-            Toast.makeText(this@SettingsActivity, "Iniciando backup...", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this@SettingsActivity, getString(R.string.toast_backup_start), Toast.LENGTH_SHORT).show()
             val result = backupManager.performBackup()
             result.onSuccess { message ->
                 Toast.makeText(this@SettingsActivity, message, Toast.LENGTH_LONG).show()
             }.onFailure { e ->
-                Toast.makeText(this@SettingsActivity, "Erro no backup: ${e.message}", Toast.LENGTH_LONG).show()
+                Toast.makeText(this@SettingsActivity, getString(R.string.dialog_error_backup, e.message ?: ""), Toast.LENGTH_LONG).show()
             }
         }
     }
 
     private fun performRestore(uri: android.net.Uri) {
         lifecycleScope.launch {
-            Toast.makeText(this@SettingsActivity, "Restaurando dados...", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this@SettingsActivity, getString(R.string.toast_restore_start), Toast.LENGTH_SHORT).show()
             val result = backupManager.performRestore(uri)
             result.onSuccess { message ->
                 Toast.makeText(this@SettingsActivity, message, Toast.LENGTH_LONG).show()
                 // Reload data
                 loadUserData()
             }.onFailure { e ->
-                Toast.makeText(this@SettingsActivity, "Erro na restauração: ${e.message}", Toast.LENGTH_LONG).show()
+                Toast.makeText(this@SettingsActivity, getString(R.string.dialog_error_restore, e.message ?: ""), Toast.LENGTH_LONG).show()
             }
         }
     }
@@ -290,11 +308,11 @@ class SettingsActivity : AppCompatActivity() {
             val multiplier = getMultiplier(age)
             val goal = (weight * multiplier).toInt()
             
-            tvCalculatedGoal.text = "${goal}ml"
-            tvGoalExplanation.text = "Baseado em ${multiplier}ml por kg de peso corporal"
+            tvCalculatedGoal.text = getString(R.string.current_intake_format, goal)
+            tvGoalExplanation.text = getString(R.string.goal_explanation_format, multiplier.toString())
         } else {
             tvCalculatedGoal.text = "---"
-            tvGoalExplanation.text = "Preencha peso e data de nascimento"
+            tvGoalExplanation.text = getString(R.string.goal_explanation_empty)
         }
     }
 
@@ -328,13 +346,13 @@ class SettingsActivity : AppCompatActivity() {
         val weightStr = etWeight.text.toString()
         
         if (name.isBlank() || weightStr.isBlank() || selectedBirthDate == 0L) {
-            Toast.makeText(this, "Por favor, preencha todos os campos", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.toast_fill_all_fields), Toast.LENGTH_SHORT).show()
             return
         }
 
         val weight = weightStr.toFloatOrNull()
         if (weight == null || weight <= 0) {
-            Toast.makeText(this, "Peso inválido", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.toast_invalid_weight), Toast.LENGTH_SHORT).show()
             return
         }
 
@@ -370,7 +388,7 @@ class SettingsActivity : AppCompatActivity() {
                 if (isFirstTimeOnboarding) {
                     requestPermissionsFlow()
                 } else {
-                    Toast.makeText(this@SettingsActivity, "Configurações salvas!", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@SettingsActivity, getString(R.string.toast_settings_saved), Toast.LENGTH_SHORT).show()
                     finish()
                 }
             }
@@ -379,9 +397,9 @@ class SettingsActivity : AppCompatActivity() {
 
     private fun requestPermissionsFlow() {
         androidx.appcompat.app.AlertDialog.Builder(this)
-            .setTitle("Permissões de Sistema")
-            .setMessage("Para garantir que os lembretes de água toquem na hora certa, o Hidrate-se precisa que você permita as Notificações, os Alarmes Exatos e desative a restrição de Bateria nas próximas telas de configuração.")
-            .setPositiveButton("Vamos Lá!") { _, _ ->
+            .setTitle(R.string.dialog_permissions_title)
+            .setMessage(R.string.dialog_permissions_msg)
+            .setPositiveButton(R.string.dialog_permissions_btn) { _, _ ->
                 checkAndRequestNotifications()
             }
             .setCancelable(false)
@@ -442,7 +460,7 @@ class SettingsActivity : AppCompatActivity() {
     }
 
     private fun finalizeOnboarding() {
-        Toast.makeText(this, "Tudo pronto! Bem-vindo(a) ao Hidrate-se.", Toast.LENGTH_LONG).show()
+        Toast.makeText(this, getString(R.string.toast_onboarding_done), Toast.LENGTH_LONG).show()
         val mainIntent = android.content.Intent(this, MainActivity::class.java)
         mainIntent.flags = android.content.Intent.FLAG_ACTIVITY_NEW_TASK or android.content.Intent.FLAG_ACTIVITY_CLEAR_TASK
         startActivity(mainIntent)

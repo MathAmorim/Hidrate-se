@@ -52,68 +52,13 @@ class NotificationHelper(private val context: Context) {
         }
     }
 
-    // OBSOLETO: Mantido apenas por assinatura, roteando para a nova otimizada.
-    suspend fun scheduleDailyNotifications() {
-        scheduleDailyNotificationsOptimized()
-    }
 
-    private fun scheduleAlarm(triggerTime: Long, alarmManager: AlarmManager) {
-        val intent = Intent(context, NotificationReceiver::class.java).apply {
-            action = "com.example.base.ACTION_SHOW_NOTIFICATION"
-        }
-        
-        val pendingIntent = PendingIntent.getBroadcast(
-            context,
-            triggerTime.toInt(), // Unique ID based on time to allow multiple alarms
-            intent,
-            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
-        )
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-            if (alarmManager.canScheduleExactAlarms()) {
-                alarmManager.setExactAndAllowWhileIdle(
-                    AlarmManager.RTC_WAKEUP,
-                    triggerTime,
-                    pendingIntent
-                )
-            } else {
-                alarmManager.setAndAllowWhileIdle(
-                    AlarmManager.RTC_WAKEUP,
-                    triggerTime,
-                    pendingIntent
-                )
-            }
-        } else {
-            alarmManager.setExactAndAllowWhileIdle(
-                AlarmManager.RTC_WAKEUP,
-                triggerTime,
-                pendingIntent
-            )
-        }
-    }
-    
     fun cancelNotifications() {
         val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
         val intent = Intent(context, NotificationReceiver::class.java).apply {
              action = "com.example.base.ACTION_SHOW_NOTIFICATION"
         }
-        // We can't easily cancel all specific pending intents without their IDs.
-        // A common strategy is to use a fixed range of IDs or just cancel the PendingIntent if we knew the ID.
-        // For this simple implementation, we might need a more robust ID tracking if we want to cancel perfectly.
-        // However, since we generate IDs based on time, it's tricky. 
-        // A simpler approach for this scope: Just cancel the one "main" recurring alarm if we were using setRepeating.
-        // Since we are scheduling multiple exact alarms, we should ideally store their IDs.
-        // For now, let's assume we are just scheduling one next alarm or we accept that 'cancel' might be limited 
-        // without a DB of scheduled alarms. 
-        // ALTERNATIVE: Use a single PendingIntent request code if we only ever want ONE future alarm at a time.
-        // But the requirement says "randomly within active hours".
-        
-        // To properly cancel, let's just try to cancel a range of potential IDs or use a specific one if we change logic.
-        // Let's stick to the plan: The user might have multiple. 
-        // For this iteration, let's just try to cancel the PendingIntent with ID 0 (legacy) and maybe we don't strictly cancel all previous ones 
-        // if we don't track them, which is a limitation. 
-        // IMPROVEMENT: Let's use a fixed set of Request Codes (e.g., 100, 101, 102...) for the daily slots.
-        
+
         for (i in 0..10) { // Cancel up to 10 slots
              val pendingIntent = PendingIntent.getBroadcast(
                 context,
