@@ -12,5 +12,6 @@ data class User(
     val birthDate: Long = 0L,
     val wakeUpTime: String = "08:00",
     val sleepTime: String = "22:00",
-    val onboardingCompleted: Boolean = false
+    val onboardingCompleted: Boolean = false,
+    val isPermanentNotificationEnabled: Boolean = false
 )

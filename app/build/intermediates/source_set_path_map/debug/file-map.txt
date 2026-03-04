@@ -31,10 +31,10 @@ com.example.base.app-lifecycle-viewmodel-2.6.1-29 C:\Users\administrator\.gradle
 com.example.base.app-core-splashscreen-1.0.1-30 C:\Users\administrator\.gradle\caches\transforms-3\e4b4125baa5a0d1189a30c39981d5d28\transformed\core-splashscreen-1.0.1\res
 com.example.base.app-material-1.11.0-31 C:\Users\administrator\.gradle\caches\transforms-3\eedc38a6be86e8d98a5613e5fc49d0ce\transformed\material-1.11.0\res
 com.example.base.app-lifecycle-livedata-core-2.6.1-32 C:\Users\administrator\.gradle\caches\transforms-3\f2c69a72db6652e548008de5ffe53fe4\transformed\lifecycle-livedata-core-2.6.1\res
-com.example.base.app-pngs-33 C:\Users\administrator\Documents\projects\agua4\app\build\generated\res\pngs\debug
-com.example.base.app-resValues-34 C:\Users\administrator\Documents\projects\agua4\app\build\generated\res\resValues\debug
-com.example.base.app-packageDebugResources-35 C:\Users\administrator\Documents\projects\agua4\app\build\intermediates\incremental\debug\packageDebugResources\merged.dir
-com.example.base.app-packageDebugResources-36 C:\Users\administrator\Documents\projects\agua4\app\build\intermediates\incremental\debug\packageDebugResources\stripped.dir
-com.example.base.app-merged_res-37 C:\Users\administrator\Documents\projects\agua4\app\build\intermediates\merged_res\debug
-com.example.base.app-debug-38 C:\Users\administrator\Documents\projects\agua4\app\src\debug\res
-com.example.base.app-main-39 C:\Users\administrator\Documents\projects\agua4\app\src\main\res
+com.example.base.app-pngs-33 C:\Users\administrator\Documents\Hidrate-se\app\build\generated\res\pngs\debug
+com.example.base.app-resValues-34 C:\Users\administrator\Documents\Hidrate-se\app\build\generated\res\resValues\debug
+com.example.base.app-packageDebugResources-35 C:\Users\administrator\Documents\Hidrate-se\app\build\intermediates\incremental\debug\packageDebugResources\merged.dir
+com.example.base.app-packageDebugResources-36 C:\Users\administrator\Documents\Hidrate-se\app\build\intermediates\incremental\debug\packageDebugResources\stripped.dir
+com.example.base.app-merged_res-37 C:\Users\administrator\Documents\Hidrate-se\app\build\intermediates\merged_res\debug
+com.example.base.app-debug-38 C:\Users\administrator\Documents\Hidrate-se\app\src\debug\res
+com.example.base.app-main-39 C:\Users\administrator\Documents\Hidrate-se\app\src\main\res

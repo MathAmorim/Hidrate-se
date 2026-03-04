@@ -19,7 +19,9 @@ class NotificationHelper(private val context: Context) {
 
     companion object {
         const val CHANNEL_ID = "water_reminder_channel"
+        const val PERMANENT_CHANNEL_ID = "water_permanent_channel"
         const val NOTIFICATION_ID = 1001
+        const val PERMANENT_NOTIFICATION_ID = 2002
         
         const val ACTION_ADD_200 = "com.example.base.ACTION_ADD_200"
         const val ACTION_ADD_300 = "com.example.base.ACTION_ADD_300"
@@ -34,50 +36,25 @@ class NotificationHelper(private val context: Context) {
             val channel = NotificationChannel(CHANNEL_ID, name, importance).apply {
                 description = descriptionText
             }
+            
+            val permName = "Painel Fixo de Hidratação"
+            val permDesc = "Atalhos contínuos para água"
+            val permImportance = NotificationManager.IMPORTANCE_LOW // Silencioso
+            val permChannel = NotificationChannel(PERMANENT_CHANNEL_ID, permName, permImportance).apply {
+                description = permDesc
+                setShowBadge(false)
+            }
+            
             val notificationManager: NotificationManager =
                 context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
             notificationManager.createNotificationChannel(channel)
+            notificationManager.createNotificationChannel(permChannel)
         }
     }
 
-    // Schedule notifications for the day based on user's active hours
+    // OBSOLETO: Mantido apenas por assinatura, roteando para a nova otimizada.
     suspend fun scheduleDailyNotifications() {
-        val database = com.example.base.data.AppDatabase.getDatabase(context)
-        val user = database.userDao().getUser() ?: return
-        
-        // Use default times if parsing fails, but try to parse user settings
-        val wakeUpParts = user.wakeUpTime.split(":").mapNotNull { it.toIntOrNull() }
-        val sleepParts = user.sleepTime.split(":").mapNotNull { it.toIntOrNull() }
-        
-        val startHour = if (wakeUpParts.size == 2) wakeUpParts[0] else 8
-        val endHour = if (sleepParts.size == 2) sleepParts[0] else 22
-        
-        // Cancel existing alarms first
-        cancelNotifications()
-        
-        val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
-        val now = java.util.Calendar.getInstance()
-        
-        // Schedule a few random notifications throughout the day
-        // For simplicity, let's aim for one every 2-3 hours within the window
-        var currentHour = startHour
-        
-        while (currentHour < endHour) {
-            val calendar = java.util.Calendar.getInstance().apply {
-                set(java.util.Calendar.HOUR_OF_DAY, currentHour)
-                set(java.util.Calendar.MINUTE, (0..59).random()) // Random minute
-                set(java.util.Calendar.SECOND, 0)
-            }
-            
-            // If the time is already passed for today, schedule for tomorrow? 
-            // Actually, for "daily" scheduling, we usually run this when settings change or boot.
-            // If it's passed, we just skip it for today.
-            if (calendar.timeInMillis > now.timeInMillis) {
-                scheduleAlarm(calendar.timeInMillis, alarmManager)
-            }
-            
-            currentHour += (2..3).random() // Next reminder in 2-3 hours
-        }
+        scheduleDailyNotificationsOptimized()
     }
 
     private fun scheduleAlarm(triggerTime: Long, alarmManager: AlarmManager) {
@@ -188,51 +165,126 @@ class NotificationHelper(private val context: Context) {
         }
     }
     
-    // Overloaded for the loop
+    // Schedule next notification dynamically based on remaining water and wake/sleep times
     suspend fun scheduleDailyNotificationsOptimized() {
         val database = com.example.base.data.AppDatabase.getDatabase(context)
         val user = database.userDao().getUser() ?: return
+        
+        cancelNotifications() // Sempre limpar pendentes para agendar apenas O PRÓXIMO alvo
+
+        val today = com.example.base.util.DateUtils.getCurrentDate()
+        val history = database.waterRecordDao().getRecordsByDate(today)
+        val totalWater = history.sumOf { it.amount }
         
         val wakeUpParts = user.wakeUpTime.split(":").mapNotNull { it.toIntOrNull() }
         val sleepParts = user.sleepTime.split(":").mapNotNull { it.toIntOrNull() }
         
         val startHour = if (wakeUpParts.size == 2) wakeUpParts[0] else 8
+        val startMinute = if (wakeUpParts.size == 2) wakeUpParts[1] else 0
         val endHour = if (sleepParts.size == 2) sleepParts[0] else 22
+        val endMinute = if (sleepParts.size == 2) sleepParts[1] else 0
         
-        cancelNotifications() // Cancel previous 0..10 IDs
-        
-        val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
         val now = java.util.Calendar.getInstance()
         
-        var currentHour = startHour
-        var slotId = 0
-        
-        while (currentHour < endHour && slotId < 10) {
-            val calendar = java.util.Calendar.getInstance().apply {
-                set(java.util.Calendar.HOUR_OF_DAY, currentHour)
-                set(java.util.Calendar.MINUTE, (0..59).random())
-                set(java.util.Calendar.SECOND, 0)
-            }
-            
-            if (calendar.timeInMillis > now.timeInMillis) {
-                scheduleAlarmWithId(calendar.timeInMillis, alarmManager, slotId)
-            }
-            
-            currentHour += (2..3).random()
-            slotId++
+        // --- 1. Ponte Matinal para o dia seguinte ---
+        val wakeUpToday = java.util.Calendar.getInstance().apply {
+            set(java.util.Calendar.HOUR_OF_DAY, startHour)
+            set(java.util.Calendar.MINUTE, startMinute)
+            set(java.util.Calendar.SECOND, 0)
         }
         
-        // Schedule next day planning
-        scheduleNextDayPlanning(startHour, alarmManager)
+        val sleepToday = java.util.Calendar.getInstance().apply {
+            set(java.util.Calendar.HOUR_OF_DAY, endHour)
+            set(java.util.Calendar.MINUTE, endMinute)
+            set(java.util.Calendar.SECOND, 0)
+        }
+        
+        // Se a hora de dormir for menor que acordar (ex: dorme à 01h e acorda às 08h), cruza a meia-noite
+        if (sleepToday.timeInMillis <= wakeUpToday.timeInMillis) {
+            if (now.get(java.util.Calendar.HOUR_OF_DAY) < 12) {
+                // De manhã: a hora de dormir é hoje à noite/madrugada de amanhã
+                 sleepToday.add(java.util.Calendar.DAY_OF_YEAR, 1)
+            } else {
+                 // De tarde/noite: a hora de dormir é amanhã de madrugada, wakeUp foi hoje de manhã
+                 sleepToday.add(java.util.Calendar.DAY_OF_YEAR, 1)
+            }
+        }
+
+        // Se a meta foi batida: programa a "Ponte Matinal" para acordar amanhã e finaliza
+        if (totalWater >= user.dailyGoal) {
+            scheduleNextDayPlanning(startHour, startMinute, alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager)
+            val prefs = context.getSharedPreferences("hidrate_prefs", Context.MODE_PRIVATE)
+            prefs.edit().putString("next_alarm_time_str", "Amanhã").apply()
+            return
+        }
+        
+        // --- 2. Fora de Horas (Madrugada): Agenda Alarme Estrito para o Acordar ---
+        if (now.timeInMillis < wakeUpToday.timeInMillis || now.timeInMillis >= sleepToday.timeInMillis) {
+             // É noite, agenda o Despertador amanhã ou hoje
+             val nextWakeUp = if (now.timeInMillis >= sleepToday.timeInMillis) {
+                 java.util.Calendar.getInstance().apply {
+                     timeInMillis = wakeUpToday.timeInMillis
+                     add(java.util.Calendar.DAY_OF_YEAR, 1) // É amanhã
+                 }
+             } else {
+                 wakeUpToday // É hoje de manhã
+             }
+             
+             scheduleAlarmWithId(nextWakeUp.timeInMillis, context.getSystemService(Context.ALARM_SERVICE) as AlarmManager, 0)
+             saveAlarmTimeForUI(nextWakeUp.timeInMillis)
+             return
+        }
+
+        // --- 3. Matemática e Jitter (Durante o dia) ---
+        val remainingWater = user.dailyGoal - totalWater
+        // Assumimos "Copo padrão" estimado em cerca de 250ml
+        var glassesRemaining = remainingWater.toFloat() / 250f
+        if (glassesRemaining < 1f) glassesRemaining = 1f // Mesmo se faltar apenas 50ml, trata como 1 ciclo
+
+        val timeRemainingMillis = sleepToday.timeInMillis - now.timeInMillis
+        var baseIntervalMillis = (timeRemainingMillis / glassesRemaining).toLong()
+
+        // Garantir intervalos saudáveis (Mín. 45 min, Máx. 3.5 horas)
+        if (baseIntervalMillis < 45 * 60 * 1000L) baseIntervalMillis = 45 * 60 * 1000L
+        if (baseIntervalMillis > 3.5 * 60 * 60 * 1000L) baseIntervalMillis = (3.5 * 60 * 60 * 1000L).toLong()
+
+        // Aplicar Variação (Jitter de ±20%)
+        val variationPercent = (-20..20).random() / 100.0
+        val jitterMillis = (baseIntervalMillis * variationPercent).toLong()
+        
+        var nextAlarmTime = now.timeInMillis + baseIntervalMillis + jitterMillis
+
+        // Assegurar que o jitter não atire o alarme para depois de dormir ou para o passado
+        if (nextAlarmTime > sleepToday.timeInMillis) {
+            nextAlarmTime = sleepToday.timeInMillis - (15 * 60 * 1000L) // Limite de 15min antes de dormir
+        }
+        if (nextAlarmTime <= now.timeInMillis) {
+             nextAlarmTime = now.timeInMillis + (15 * 60 * 1000L) // Minimo safe de alarme: daqui a 15 mins
+        }
+
+        // Agendar este único pulso (Com Jitter)
+        val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        scheduleAlarmWithId(nextAlarmTime, alarmManager, 0)
+        saveAlarmTimeForUI(nextAlarmTime)
+        
+        // Certificar a ponte matinal, na dúvida
+        scheduleNextDayPlanning(startHour, startMinute, alarmManager)
     }
 
-    private fun scheduleNextDayPlanning(startHour: Int, alarmManager: AlarmManager) {
+    private fun saveAlarmTimeForUI(timeInMillis: Long) {
+        val prefs = context.getSharedPreferences("hidrate_prefs", Context.MODE_PRIVATE)
+        val sdf = java.text.SimpleDateFormat("HH:mm", java.util.Locale.getDefault())
+        prefs.edit().putString("next_alarm_time_str", sdf.format(timeInMillis)).apply()
+    }
+
+    private fun scheduleNextDayPlanning(startHour: Int, startMinute: Int, alarmManager: AlarmManager) {
         val nextDay = java.util.Calendar.getInstance().apply {
             add(java.util.Calendar.DAY_OF_YEAR, 1)
             set(java.util.Calendar.HOUR_OF_DAY, startHour)
-            set(java.util.Calendar.MINUTE, 0)
+            set(java.util.Calendar.MINUTE, startMinute)
             set(java.util.Calendar.SECOND, 0)
         }
+
         
         val intent = Intent(context, NotificationReceiver::class.java).apply {
             action = "android.intent.action.BOOT_COMPLETED" // Reuse boot logic to reschedule
@@ -376,5 +428,83 @@ class NotificationHelper(private val context: Context) {
                 }
             }
         }
+        
+        // Sempre que o ecrã atualiza ou bate meta, se o widget fixo estiver ON, atualiza-o
+        if (user.isPermanentNotificationEnabled) {
+            showPermanentNotification()
+        }
+    }
+    
+    suspend fun showPermanentNotification() {
+         val database = com.example.base.data.AppDatabase.getDatabase(context)
+         val user = database.userDao().getUser()
+         if (user == null || !user.isPermanentNotificationEnabled) return
+         
+         val today = com.example.base.util.DateUtils.getCurrentDate()
+         val history = database.waterRecordDao().getRecordsByDate(today)
+         val totalWater = history.sumOf { it.amount }
+         val goal = user.dailyGoal
+         
+         val percentage = if (goal > 0) (totalWater * 100 / goal) else 0
+         val displayPhrase = "${totalWater}ml / ${goal}ml"
+         
+         val motivationText = if (percentage >= 100) {
+             MotivationManager.getPhrase(percentage)
+         } else {
+             "Faltam ${goal - totalWater}ml para a meta"
+         }
+         
+         val intent = Intent(context, MainActivity::class.java).apply {
+             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+         }
+         val pendingIntent: PendingIntent = PendingIntent.getActivity(
+             context, 0, intent, PendingIntent.FLAG_IMMUTABLE
+         )
+         
+         // Action Intents
+         val add200Intent = Intent(context, NotificationReceiver::class.java).apply { action = ACTION_ADD_200 }
+         val add200Pending = PendingIntent.getBroadcast(context, 200, add200Intent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
+         
+         val add300Intent = Intent(context, NotificationReceiver::class.java).apply { action = ACTION_ADD_300 }
+         val add300Pending = PendingIntent.getBroadcast(context, 300, add300Intent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
+         
+         val add500Intent = Intent(context, NotificationReceiver::class.java).apply { action = ACTION_ADD_500 }
+         val add500Pending = PendingIntent.getBroadcast(context, 500, add500Intent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
+ 
+         val builder = NotificationCompat.Builder(context, PERMANENT_CHANNEL_ID)
+             .setSmallIcon(R.drawable.ic_droplet)
+             .setContentTitle("Hidrate-se: $displayPhrase")
+             .setContentText(motivationText)
+             .setPriority(NotificationCompat.PRIORITY_LOW) // Silencioso
+             .setOngoing(true) // Assinala como trabalho contínuo
+             .setContentIntent(pendingIntent)
+             
+         if (percentage < 100) {
+             builder.addAction(0, "+200ml", add200Pending)
+                    .addAction(0, "+300ml", add300Pending)
+                    .addAction(0, "+500ml", add500Pending)
+         }
+ 
+         try {
+             val notification = builder.build()
+             // Forçar inamovibilidade no Android
+             notification.flags = notification.flags or NotificationCompat.FLAG_ONGOING_EVENT or NotificationCompat.FLAG_NO_CLEAR
+             
+             with(NotificationManagerCompat.from(context)) {
+                 notify(PERMANENT_NOTIFICATION_ID, notification)
+             }
+         } catch (e: SecurityException) {
+             e.printStackTrace()
+         }
+    }
+    
+    fun hidePermanentNotification() {
+         try {
+             with(NotificationManagerCompat.from(context)) {
+                 cancel(PERMANENT_NOTIFICATION_ID)
+             }
+         } catch (e: SecurityException) {
+             e.printStackTrace()
+         }
     }
 }

@@ -41,7 +41,7 @@ public final class UserDao_Impl implements UserDao {
       @Override
       @NonNull
       protected String createQuery() {
-        return "INSERT OR REPLACE INTO `user_table` (`id`,`name`,`weight`,`dailyGoal`,`birthDate`,`wakeUpTime`,`sleepTime`,`onboardingCompleted`) VALUES (nullif(?, 0),?,?,?,?,?,?,?)";
+        return "INSERT OR REPLACE INTO `user_table` (`id`,`name`,`weight`,`dailyGoal`,`birthDate`,`wakeUpTime`,`sleepTime`,`onboardingCompleted`,`isPermanentNotificationEnabled`) VALUES (nullif(?, 0),?,?,?,?,?,?,?,?)";
       }
 
       @Override
@@ -56,6 +56,8 @@ public final class UserDao_Impl implements UserDao {
         statement.bindString(7, entity.getSleepTime());
         final int _tmp = entity.getOnboardingCompleted() ? 1 : 0;
         statement.bindLong(8, _tmp);
+        final int _tmp_1 = entity.isPermanentNotificationEnabled() ? 1 : 0;
+        statement.bindLong(9, _tmp_1);
       }
     };
     this.__preparedStmtOfUpdateGoal = new SharedSQLiteStatement(__db) {
@@ -133,6 +135,7 @@ public final class UserDao_Impl implements UserDao {
           final int _cursorIndexOfWakeUpTime = CursorUtil.getColumnIndexOrThrow(_cursor, "wakeUpTime");
           final int _cursorIndexOfSleepTime = CursorUtil.getColumnIndexOrThrow(_cursor, "sleepTime");
           final int _cursorIndexOfOnboardingCompleted = CursorUtil.getColumnIndexOrThrow(_cursor, "onboardingCompleted");
+          final int _cursorIndexOfIsPermanentNotificationEnabled = CursorUtil.getColumnIndexOrThrow(_cursor, "isPermanentNotificationEnabled");
           final User _result;
           if (_cursor.moveToFirst()) {
             final int _tmpId;
@@ -153,7 +156,11 @@ public final class UserDao_Impl implements UserDao {
             final int _tmp;
             _tmp = _cursor.getInt(_cursorIndexOfOnboardingCompleted);
             _tmpOnboardingCompleted = _tmp != 0;
-            _result = new User(_tmpId,_tmpName,_tmpWeight,_tmpDailyGoal,_tmpBirthDate,_tmpWakeUpTime,_tmpSleepTime,_tmpOnboardingCompleted);
+            final boolean _tmpIsPermanentNotificationEnabled;
+            final int _tmp_1;
+            _tmp_1 = _cursor.getInt(_cursorIndexOfIsPermanentNotificationEnabled);
+            _tmpIsPermanentNotificationEnabled = _tmp_1 != 0;
+            _result = new User(_tmpId,_tmpName,_tmpWeight,_tmpDailyGoal,_tmpBirthDate,_tmpWakeUpTime,_tmpSleepTime,_tmpOnboardingCompleted,_tmpIsPermanentNotificationEnabled);
           } else {
             _result = null;
           }

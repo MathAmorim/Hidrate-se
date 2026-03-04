@@ -3253,10 +3253,13 @@ id bounceStart
 id btn_add_200
 id btn_add_300
 id btn_add_500
+id btn_auto_start
 id btn_backup
+id btn_battery_optimization
 id btn_cancel
 id btn_confirm
 id btn_end_time
+id btn_exact_alarms
 id btn_menu
 id btn_restore
 id btn_save
@@ -3616,6 +3619,7 @@ id stretch
 id submenuarrow
 id submit_area
 id supportScrollUp
+id switch_permanent_notification
 id tabMode
 id tag_accessibility_actions
 id tag_accessibility_clickable_spans

@@ -38,6 +38,10 @@ class SettingsActivity : AppCompatActivity() {
     private lateinit var btnSave: MaterialButton
     private lateinit var btnBackup: MaterialButton
     private lateinit var btnRestore: MaterialButton
+    private lateinit var btnBatteryOptimization: MaterialButton
+    private lateinit var btnAutoStart: MaterialButton
+    private lateinit var btnExactAlarms: MaterialButton
+    private lateinit var switchPermanentNotification: com.google.android.material.materialswitch.MaterialSwitch
     private lateinit var backupManager: com.example.base.data.BackupManager
 
     // State
@@ -49,6 +53,12 @@ class SettingsActivity : AppCompatActivity() {
         if (uri != null) {
             performRestore(uri)
         }
+    }
+    
+    // Launcher para forçar a espera do ecrã de permissão de Alarmes Exatos
+    private val alarmPermissionLauncher = registerForActivityResult(androidx.activity.result.contract.ActivityResultContracts.StartActivityForResult()) {
+        // Quando o utilizador volta da janela de Alarmes da Xiaomi/Samsung, avança na cascata
+        checkAndRequestBattery()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -62,6 +72,23 @@ class SettingsActivity : AppCompatActivity() {
 
         setupViews()
         loadUserData()
+        checkIfIsFirstRun()
+    }
+    
+    private var isFirstTimeOnboarding = false
+
+    private fun checkIfIsFirstRun() {
+        lifecycleScope.launch(Dispatchers.IO) {
+            val user = db.userDao().getUser()
+            if (user == null || !user.onboardingCompleted) {
+                isFirstTimeOnboarding = true
+                withContext(Dispatchers.Main) {
+                    supportActionBar?.title = "Configuração Inicial"
+                    supportActionBar?.setDisplayHomeAsUpEnabled(false)
+                    btnSave.text = "Concluir e Começar"
+                }
+            }
+        }
     }
 
     private fun setupViews() {
@@ -82,6 +109,10 @@ class SettingsActivity : AppCompatActivity() {
         btnSave = findViewById(R.id.btn_save)
         btnBackup = findViewById(R.id.btn_backup)
         btnRestore = findViewById(R.id.btn_restore)
+        btnBatteryOptimization = findViewById(R.id.btn_battery_optimization)
+        btnAutoStart = findViewById(R.id.btn_auto_start)
+        btnExactAlarms = findViewById(R.id.btn_exact_alarms)
+        switchPermanentNotification = findViewById(R.id.switch_permanent_notification)
 
         // Listeners
         etBirthDate.setOnClickListener { showDatePicker() }
@@ -90,6 +121,51 @@ class SettingsActivity : AppCompatActivity() {
         btnSave.setOnClickListener { saveSettings() }
         btnBackup.setOnClickListener { performBackup() }
         btnRestore.setOnClickListener { restoreLauncher.launch(arrayOf("*/*")) }
+        
+        // Listeners das Permissões
+        btnBatteryOptimization.setOnClickListener {
+            try {
+                val intent = android.content.Intent(android.provider.Settings.ACTION_IGNORE_BATTERY_OPTIMIZATION_SETTINGS)
+                startActivity(intent)
+            } catch (e: Exception) {
+                // Fallback Settings
+                val intent = android.content.Intent(android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
+                intent.data = android.net.Uri.parse("package:$packageName")
+                startActivity(intent)
+            }
+        }
+        
+        btnAutoStart.setOnClickListener {
+            try {
+                // Alvo principal: Xiaomi MIUI que bloqueia brutalmente as notificações
+                val intent = android.content.Intent()
+                intent.setComponent(android.content.ComponentName("com.miui.securitycenter", "com.miui.permcenter.autostart.AutoStartManagementActivity"))
+                startActivity(intent)
+            } catch (e: Exception) {
+                try {
+                    // Outras marcas
+                    val intent = android.content.Intent(android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
+                    intent.data = android.net.Uri.parse("package:$packageName")
+                    startActivity(intent)
+                } catch (ex: Exception) {
+                    ex.printStackTrace()
+                }
+            }
+        }
+        
+        btnExactAlarms.setOnClickListener {
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.S) {
+                try {
+                    val intent = android.content.Intent(android.provider.Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM)
+                    intent.data = android.net.Uri.parse("package:$packageName")
+                    startActivity(intent)
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
+            } else {
+                Toast.makeText(this, "Esta versão do Android não bloqueia alarmes exatos por padrão.", Toast.LENGTH_LONG).show()
+            }
+        }
 
         // Watch for weight changes to update goal preview
         etWeight.addTextChangedListener(object : TextWatcher {
@@ -147,6 +223,8 @@ class SettingsActivity : AppCompatActivity() {
                     selectedEndTime = user.sleepTime
                     btnStartTime.text = selectedStartTime
                     btnEndTime.text = selectedEndTime
+                    
+                    switchPermanentNotification.isChecked = user.isPermanentNotificationEnabled
 
                     // Update Goal Display
                     updateGoalDisplay()
@@ -265,26 +343,109 @@ class SettingsActivity : AppCompatActivity() {
 
         lifecycleScope.launch(Dispatchers.IO) {
             val newUser = User(
+                // Use id 1 to assure it edits the user instead of creating multiples if logic implies so. 
+                // We fetch current user first to preserve ID if necessary:
+                id = db.userDao().getUser()?.id ?: 0,
                 name = name,
                 weight = weight,
                 dailyGoal = goal,
                 birthDate = selectedBirthDate,
                 wakeUpTime = selectedStartTime,
                 sleepTime = selectedEndTime,
-                onboardingCompleted = true
+                onboardingCompleted = true,
+                isPermanentNotificationEnabled = switchPermanentNotification.isChecked
             )
             
             db.userDao().insertUser(newUser)
             
-            // Reschedule notifications (simple implementation: cancel all and schedule next)
-            // Ideally we would pass the new times to the helper
-            // For now, let's just ensure the channel exists
             notificationHelper.createNotificationChannel()
             
+            if (newUser.isPermanentNotificationEnabled) {
+                notificationHelper.showPermanentNotification()
+            } else {
+                notificationHelper.hidePermanentNotification()
+            }
+            
             withContext(Dispatchers.Main) {
-                Toast.makeText(this@SettingsActivity, "Configurações salvas!", Toast.LENGTH_SHORT).show()
-                finish()
+                if (isFirstTimeOnboarding) {
+                    requestPermissionsFlow()
+                } else {
+                    Toast.makeText(this@SettingsActivity, "Configurações salvas!", Toast.LENGTH_SHORT).show()
+                    finish()
+                }
             }
         }
+    }
+
+    private fun requestPermissionsFlow() {
+        androidx.appcompat.app.AlertDialog.Builder(this)
+            .setTitle("Permissões de Sistema")
+            .setMessage("Para garantir que os lembretes de água toquem na hora certa, o Hidrate-se precisa que você permita as Notificações, os Alarmes Exatos e desative a restrição de Bateria nas próximas telas de configuração.")
+            .setPositiveButton("Vamos Lá!") { _, _ ->
+                checkAndRequestNotifications()
+            }
+            .setCancelable(false)
+            .show()
+    }
+
+    private fun checkAndRequestNotifications() {
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
+            if (checkSelfPermission(android.Manifest.permission.POST_NOTIFICATIONS) != android.content.pm.PackageManager.PERMISSION_GRANTED) {
+                requestPermissions(arrayOf(android.Manifest.permission.POST_NOTIFICATIONS), 101)
+                return // Prossegue no callback
+            }
+        }
+        checkAndRequestAlarms()
+    }
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == 101) {
+            checkAndRequestAlarms()
+        }
+    }
+
+    private fun checkAndRequestAlarms() {
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.S) {
+            val alarmManager = getSystemService(android.app.AlarmManager::class.java)
+            if (!alarmManager.canScheduleExactAlarms()) {
+                val intent = android.content.Intent(android.provider.Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM)
+                intent.data = android.net.Uri.parse("package:$packageName")
+                try {
+                    // Impede o ecrã de fugir, aguardando que o utiilizador leia e retorne!
+                    alarmPermissionLauncher.launch(intent)
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                    checkAndRequestBattery()
+                }
+                return
+            }
+        }
+        checkAndRequestBattery()
+    }
+
+    private fun checkAndRequestBattery() {
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+            val powerManager = getSystemService(android.content.Context.POWER_SERVICE) as android.os.PowerManager
+            if (!powerManager.isIgnoringBatteryOptimizations(packageName)) {
+                val intent = android.content.Intent(android.provider.Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS)
+                intent.data = android.net.Uri.parse("package:$packageName")
+                try {
+                    startActivity(intent)
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
+            }
+        }
+        
+        finalizeOnboarding()
+    }
+
+    private fun finalizeOnboarding() {
+        Toast.makeText(this, "Tudo pronto! Bem-vindo(a) ao Hidrate-se.", Toast.LENGTH_LONG).show()
+        val mainIntent = android.content.Intent(this, MainActivity::class.java)
+        mainIntent.flags = android.content.Intent.FLAG_ACTIVITY_NEW_TASK or android.content.Intent.FLAG_ACTIVITY_CLEAR_TASK
+        startActivity(mainIntent)
+        finish()
     }
 }

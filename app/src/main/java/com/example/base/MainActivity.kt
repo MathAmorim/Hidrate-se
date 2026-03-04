@@ -49,14 +49,28 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         installSplashScreen()
         super.onCreate(savedInstanceState)
+        
+        // Init Database
+        db = AppDatabase.getDatabase(this)
+
+        lifecycleScope.launch(Dispatchers.Main) {
+            val user = withContext(Dispatchers.IO) { db.userDao().getUser() }
+            if (user == null || !user.onboardingCompleted) {
+                startActivity(android.content.Intent(this@MainActivity, SettingsActivity::class.java))
+                finish()
+                return@launch
+            }
+            
+            setupMainActivityContent()
+        }
+    }
+
+    private fun setupMainActivityContent() {
         setContentView(R.layout.activity_main)
 
         drawerLayout = findViewById(R.id.drawer_layout)
         navigationView = findViewById(R.id.nav_view)
         btnMenu = findViewById(R.id.btn_menu)
-
-        // Init Database
-        db = AppDatabase.getDatabase(this)
 
         // Init Views
         tvCurrentIntake = findViewById(R.id.tv_current_intake)
@@ -75,6 +89,12 @@ class MainActivity : AppCompatActivity() {
         
         notificationHelper = NotificationHelper(this)
         notificationHelper.createNotificationChannel()
+            
+        // Reagendar alarmes (apenas 1 futuro através da dinâmica otimizada) e redesenhar janela
+        lifecycleScope.launch {
+            notificationHelper.scheduleDailyNotificationsOptimized()
+            notificationHelper.showPermanentNotification()
+        }
         
         checkNotificationPermissions()
         scheduleNextNotification()
@@ -86,7 +106,9 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        loadWaterData()
+        if (::tvCurrentIntake.isInitialized) {
+            loadWaterData()
+        }
     }
 
     private fun setupHistoryRecyclerView() {
@@ -214,7 +236,7 @@ class MainActivity : AppCompatActivity() {
         tvTotalEntries.text = "${history.size} entradas"
 
         animateWave(percentage)
-        animateFire()
+        animateFire(current, goal)
     }
     
     private fun animateWave(percentage: Int) {
@@ -234,15 +256,20 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun animateFire() {
+    private fun animateFire(totalConsumed: Int, dailyGoal: Int) {
         val fireIcon = findViewById<android.widget.ImageView>(R.id.iv_streak_fire)
         
         val scaleX = android.animation.ObjectAnimator.ofFloat(fireIcon, "scaleX", 1f, 1.3f, 0.9f, 1f)
         val scaleY = android.animation.ObjectAnimator.ofFloat(fireIcon, "scaleY", 1f, 1.3f, 0.9f, 1f)
         
         android.animation.AnimatorSet().apply {
-            playTogether(scaleX, scaleY)
-            duration = 1200
+            // updateProgressUI(totalConsumed, dailyGoal) // This line is not part of animateFire's responsibility
+            // checkGoalReached(totalConsumed, dailyGoal) // This line is not part of animateFire's responsibility
+            
+            // Ensure permanent notification represents truth
+            lifecycleScope.launch {
+                notificationHelper.showPermanentNotification()
+            }
             interpolator = android.view.animation.BounceInterpolator()
             scaleX.repeatCount = android.animation.ValueAnimator.INFINITE
             scaleY.repeatCount = android.animation.ValueAnimator.INFINITE
@@ -299,15 +326,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun scheduleNextNotification() {
-        // Schedule for 2 hours from now for demo purposes
-        // In a real app, this would be based on user settings
-        // Updated to use the new daily scheduler
-        lifecycleScope.launch {
-            notificationHelper.scheduleDailyNotificationsOptimized()
-        }
+        // Recuperar a hora do próximo alarme salvo pelo Helper
+        val prefs = getSharedPreferences("hidrate_prefs", android.content.Context.MODE_PRIVATE)
+        val nextTimeStr = prefs.getString("next_alarm_time_str", "---")
         
-        // Just show a generic message since we have multiple alarms now
-        tvNextNotification.text = "Notificações Ativas"
+        tvNextNotification.text = "Próximo: $nextTimeStr"
     }
 
     override fun onBackPressed() {

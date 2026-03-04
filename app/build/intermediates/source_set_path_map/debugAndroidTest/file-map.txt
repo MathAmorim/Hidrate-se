@@ -1,0 +1,6 @@
+com.example.base.test.app-core-1.5.0-0 C:\Users\administrator\.gradle\caches\transforms-3\457ff76266254cc83b021c2096697fc7\transformed\core-1.5.0\res
+com.example.base.test.app-annotation-experimental-1.3.0-1 C:\Users\administrator\.gradle\caches\transforms-3\ce15b9164daaf072f1595a48682ce74c\transformed\annotation-experimental-1.3.0\res
+com.example.base.test.app-androidTest-2 C:\Users\administrator\Documents\Hidrate-se\app\build\generated\res\resValues\androidTest\debug
+com.example.base.test.app-mergeDebugAndroidTestResources-3 C:\Users\administrator\Documents\Hidrate-se\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\merged.dir
+com.example.base.test.app-mergeDebugAndroidTestResources-4 C:\Users\administrator\Documents\Hidrate-se\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\stripped.dir
+com.example.base.test.app-merged_res-5 C:\Users\administrator\Documents\Hidrate-se\app\build\intermediates\merged_res\debugAndroidTest
