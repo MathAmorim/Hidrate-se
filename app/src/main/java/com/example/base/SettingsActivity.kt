@@ -460,10 +460,17 @@ class SettingsActivity : AppCompatActivity() {
     }
 
     private fun finalizeOnboarding() {
-        Toast.makeText(this, getString(R.string.toast_onboarding_done), Toast.LENGTH_LONG).show()
-        val mainIntent = android.content.Intent(this, MainActivity::class.java)
-        mainIntent.flags = android.content.Intent.FLAG_ACTIVITY_NEW_TASK or android.content.Intent.FLAG_ACTIVITY_CLEAR_TASK
-        startActivity(mainIntent)
-        finish()
+        lifecycleScope.launch(kotlinx.coroutines.Dispatchers.IO) {
+            // Assim que finaliza permissões e configurações, planta a primeira semente do alarme para arrancar de vez
+            notificationHelper.scheduleDailyNotificationsOptimized()
+            
+            kotlinx.coroutines.withContext(kotlinx.coroutines.Dispatchers.Main) {
+                Toast.makeText(this@SettingsActivity, getString(R.string.toast_onboarding_done), Toast.LENGTH_LONG).show()
+                val mainIntent = android.content.Intent(this@SettingsActivity, MainActivity::class.java)
+                mainIntent.flags = android.content.Intent.FLAG_ACTIVITY_NEW_TASK or android.content.Intent.FLAG_ACTIVITY_CLEAR_TASK
+                startActivity(mainIntent)
+                finish()
+            }
+        }
     }
 }

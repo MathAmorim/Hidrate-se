@@ -33,10 +33,14 @@ class NotificationReceiver : BroadcastReceiver() {
                     }
                     "com.example.base.ACTION_SHOW_NOTIFICATION" -> {
                         notificationHelper.showNotification()
+                        // AGENDAR O PRÓXIMO: mal a notificação surge, reagenda a seguinte 
+                        // para não quebrar o loop se a pessoa dispensar a notificação sem interagir
+                        notificationHelper.scheduleDailyNotificationsOptimized()
                     }
                     else -> {
                         // Default behavior for simple alarm
                         notificationHelper.showNotification()
+                        notificationHelper.scheduleDailyNotificationsOptimized()
                     }
                 }
             } finally {
@@ -62,5 +66,8 @@ class NotificationReceiver : BroadcastReceiver() {
         val intent = Intent(context, com.example.base.widget.WaterWidgetProvider::class.java)
         intent.action = com.example.base.widget.WaterWidgetProvider.ACTION_UPDATE_WIDGET
         context.sendBroadcast(intent)
+        
+        // RECALCULAR O PRÓXIMO ALARME: Se bebeu água da notificação, remonta o agendamento
+        NotificationHelper(context).scheduleDailyNotificationsOptimized()
     }
 }

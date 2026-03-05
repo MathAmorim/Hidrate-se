@@ -90,14 +90,12 @@ class MainActivity : AppCompatActivity() {
         notificationHelper = NotificationHelper(this)
         notificationHelper.createNotificationChannel()
             
-        // Reagendar alarmes (apenas 1 futuro através da dinâmica otimizada) e redesenhar janela
+        // Redesenhar janela de espelho (Notificação Fixa) mas NÃO re-agendar alarmes do zero por abrir o app
         lifecycleScope.launch {
-            notificationHelper.scheduleDailyNotificationsOptimized()
             notificationHelper.showPermanentNotification()
         }
         
         checkNotificationPermissions()
-        scheduleNextNotification()
 
         setupNavigation()
         setupButtons()
@@ -175,9 +173,13 @@ class MainActivity : AppCompatActivity() {
             )
             db.waterRecordDao().insert(record)
             
-            // Check for goal reached notification
+            // 1. Check for goal
             notificationHelper.showGoalReachedNotification()
 
+            // 2. Re-agendar a notificação dinâmicamente porque foi introduzida água ANTES de carregar e desenhar os dados UI
+            notificationHelper.scheduleDailyNotificationsOptimized()
+                        
+            // 3. Somente agora puxamos os dados e redesenhamos a interface
             loadWaterData()
             
             // Update Widget
@@ -212,6 +214,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun updateUI(current: Int, goal: Int, userName: String, streak: Int, history: List<WaterRecord>) {
+        updateNextNotificationUI()
+        
         tvCurrentIntake.text = getString(R.string.current_intake_format, current)
         tvGoal.text = getString(R.string.goal_format, goal)
         val percentage = if (goal > 0) (current * 100 / goal) else 0
@@ -321,7 +325,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun scheduleNextNotification() {
+    private fun updateNextNotificationUI() {
         // Recuperar a hora do próximo alarme salvo pelo Helper
         val prefs = getSharedPreferences("hidrate_prefs", android.content.Context.MODE_PRIVATE)
         val nextTimeStr = prefs.getString("next_alarm_time_str", "---")
